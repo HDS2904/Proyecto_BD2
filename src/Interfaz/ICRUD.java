@@ -11,7 +11,7 @@ public interface ICRUD<T> {
 
     public String Delete(T t);
 
-    public String SearchId(String r, T t);
+    public String SearchId(T t);
 
     public String ListAll(JTable tabla);
 }

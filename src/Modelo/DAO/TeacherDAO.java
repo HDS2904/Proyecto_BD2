@@ -24,15 +24,16 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
         Person per = t.getPer();
         PreparedStatement pst = null;
         Connection con = getConnection();
-        String sql = "{call PACK_MANT_TEACHER.INSERT_T(?,?,?,?,?,?)}";
+        String sql = "{call PACK_MANT_TEACHER.INSERT_T(?,?,?,?,?,?,?)}";
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, t.getCod_teacher());
             pst.setString(2, per.getFirs_name());
             pst.setString(3, per.getLast_name());
-            pst.setInt(4, per.getPhone());
-            pst.setString(5, per.getDireccion());
-            pst.setString(6, per.getEmail());
+            pst.setInt(4, per.getDni());
+            pst.setInt(5, per.getPhone());
+            pst.setString(6, per.getDireccion());
+            pst.setString(7, per.getEmail());
             mensaje = "DATOS GUARDADOS EXITOSAMENTE";
             pst.execute();
             pst.close();
@@ -53,16 +54,17 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
         Person per = t.getPer();
         PreparedStatement pst = null;
         Connection con = getConnection();
-        String sql = "{call PACK_MANT_TEACHER.UPDATE_T(?,?,?,?,?,?)";
+        String sql = "{call PACK_MANT_TEACHER.UPDATE_T(?,?,?,?,?,?,?)";
         
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, t.getCod_teacher());
             pst.setString(2, per.getFirs_name());
             pst.setString(3, per.getLast_name());
-            pst.setInt(4, per.getPhone());
-            pst.setString(5, per.getDireccion());
-            pst.setString(6, per.getEmail());
+            pst.setInt(4, per.getDni());
+            pst.setInt(5, per.getPhone());
+            pst.setString(6, per.getDireccion());
+            pst.setString(7, per.getEmail());
             mensaje = "SE ACTUALIZO CORRECTAMENTE";
             pst.execute();
             pst.close();
@@ -103,7 +105,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
     }
 
     @Override
-    public String SearchId(String r, Teacher t) {
+    public String SearchId(Teacher t) {
         Person pe = new Person();
         ResultSet rs;
         CallableStatement call;
@@ -112,7 +114,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
         
         try {
             call = con.prepareCall(sql);
-            call.setString(1, r);
+            call.setString(1, t.getCod_teacher());
             call.registerOutParameter(2,OracleTypes.CURSOR);
             call.executeQuery();
             rs = (ResultSet)call.getObject(2);
@@ -122,13 +124,14 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
                 t.setCod_teacher(rs.getString("CODETEACHER"));
                 pe.setFirs_name(rs.getString("FIRSNAME"));
                 pe.setLast_name(rs.getString("LASTNAME"));
+                pe.setDni(Integer.parseInt(rs.getString("DNI")));
                 pe.setPhone(Integer.parseInt(rs.getString("PHONE")));
                 pe.setDireccion(rs.getString("ADDRESS"));
                 pe.setEmail(rs.getString("EMAIL"));
                 t.setPer(pe);
-                mensaje = "SE UBICO LA ENTIDAD: "+r+"\n";
+                mensaje = "SE UBICO LA ENTIDAD: "+t.getCod_teacher()+"\n";
             }else
-                mensaje = "NO SE PUDO ENCONTRAR LA ENTDAD DE CODIGO: "+r+"\n";
+                mensaje = "NO SE PUDO ENCONTRAR LA ENTDAD DE CODIGO: "+t.getCod_teacher()+"\n";
             mensaje = mensaje+ "SE EJECUTO CORRECTAMENTE LA BUSQUEDA";
             call.execute();
             call.close();
@@ -149,11 +152,11 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
         Connection con = getConnection();
         CallableStatement call= null;
         DefaultTableModel ad=new DefaultTableModel();
-        ad.setColumnIdentifiers(new Object[]{"Pos","Código","Nombre","Apellido","Telefono","Dirección","Email"});
+        ad.setColumnIdentifiers(new Object[]{"Pos","Código","Nombre","Apellido","DNI","Telefono","Dirección","Email"});
         
         String sql = "{call PACK_LIST_TEACHER.GET_TEACHERS(?)}";
         
-        String[] filas = new String[7];
+        String[] filas = new String[8];
         Statement st = null;
         ResultSet rs = null;
        
@@ -165,7 +168,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
             int c = 1;
              while(rs.next()){
                  filas[0] = String.valueOf(c + "°");
-                 for(int i =1; i<7; i++){
+                 for(int i =1; i<8; i++){
                      filas[i] = rs.getString(i);
                  }
                  ad.addRow(filas);

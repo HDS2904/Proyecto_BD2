@@ -48,6 +48,7 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
             tea.setCod_teacher(vista.txid.getText());
             per.setFirs_name(vista.txnombre.getText());
             per.setLast_name(vista.txapellido.getText());
+            per.setDni(Integer.parseInt(vista.txdni.getText()));
             per.setPhone(Integer.parseInt(vista.txtel.getText()));
             per.setDireccion(vista.txdir.getText());
             per.setEmail(vista.txem.getText());
@@ -59,6 +60,7 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
         if(e.getSource() == vista.btnmodificar){
             per.setFirs_name(vista.txnombre.getText());
             per.setLast_name(vista.txapellido.getText());
+            per.setDni(Integer.parseInt(vista.txdni.getText()));
             per.setPhone(Integer.parseInt(vista.txtel.getText()));
             per.setDireccion(vista.txdir.getText());
             per.setEmail(vista.txem.getText());
@@ -72,24 +74,41 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
         }
         
         if(e.getSource() == vista.btnbus){
-            JOptionPane.showMessageDialog(null, Pcrud.SearchId(vista.txid.getText(), tea));
+            tea.setCod_teacher(vista.txid.getText());
+            JOptionPane.showMessageDialog(null, Pcrud.SearchId(tea));
+            vista.txnombre.setText(tea.getPer().getFirs_name());
+            vista.txapellido.setText(tea.getPer().getLast_name());
+            vista.txdni.setText(tea.getPer().getDni()+"");
+            vista.txtel.setText(tea.getPer().getPhone()+"");
+            vista.txdir.setText(tea.getPer().getDireccion());
+            vista.txem.setText(tea.getPer().getEmail());
+            vista.txid.setEditable(false);
+            vista.txdni.setEditable(false);
+        }
+        
+        if(e.getSource() == vista.btnlimpiar){
+            Limpiar();
         }
         
         Pcrud.ListAll(vista.tabla);
-        Limpiar();
         
     }
     
     @Override
     public void mouseClicked(MouseEvent e){
+        Person per = new Person();
         int id = vista.tabla.rowAtPoint(e.getPoint());
-        tea.setCod_teacher((vista.tabla.getValueAt(id, 1)+""));
-        vista.txid.setText(vista.tabla.getValueAt(id, 1)+"");
-        vista.txnombre.setText(vista.tabla.getValueAt(id,2)+"");
-        vista.txapellido.setText(vista.tabla.getValueAt(id,3)+"");
-        vista.txtel.setText(vista.tabla.getValueAt(id,4)+"");
-        vista.txdir.setText(vista.tabla.getValueAt(id,5)+"");
-        vista.txem.setText(vista.tabla.getValueAt(id,6)+"");
+        tea.setCod_teacher(vista.tabla.getValueAt(id,1)+"");
+        per.setFirs_name(vista.tabla.getValueAt(id,2)+"");
+        per.setLast_name(vista.tabla.getValueAt(id,3)+"");
+        per.setDni(Integer.parseInt(vista.tabla.getValueAt(id,4)+""));
+        per.setPhone(Integer.parseInt(vista.tabla.getValueAt(id,5)+""));
+        per.setDireccion(vista.tabla.getValueAt(id,6)+"");
+        per.setEmail(vista.tabla.getValueAt(id,7)+"");
+        tea.setPer(per);
+        vista.txid.setText(tea.getCod_teacher());
+        System.out.println("dni: "+tea.getPer().getDni());
+
     }
     
             
@@ -97,7 +116,12 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
         vista.txid.setText("");
         vista.txnombre.setText("");
         vista.txapellido.setText("");
+        vista.txdni.setText("");
         vista.txtel.setText("");
+        vista.txdir.setText("");
+        vista.txem.setText("");
+        vista.txid.setEditable(true);
+        vista.txdni.setEditable(true);
     }
 
     @Override

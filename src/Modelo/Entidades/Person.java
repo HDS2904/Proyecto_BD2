@@ -2,15 +2,15 @@
 package Modelo.Entidades;
 
 public class Person {
-    private String id_person;
+    private int dni;
     private String firs_name;
     private String last_name;
     private int phone;
     private String direccion;
     private String email;
 
-    public Person(String id_person, String firs_name, String last_name, int phone, String direccion, String email) {
-        this.id_person = id_person;
+    public Person(int dni, String firs_name, String last_name, int phone, String direccion, String email) {
+        this.dni = dni;
         this.firs_name = firs_name;
         this.last_name = last_name;
         this.phone = phone;
@@ -30,12 +30,12 @@ public class Person {
         
     }
 
-    public String getId_person() {
-        return id_person;
+    public int getDni() {
+        return dni;
     }
 
-    public void setId_person(String id_person) {
-        this.id_person = id_person;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getFirs_name() {
@@ -72,7 +72,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "id_person=" + id_person + ", firs_name=" + firs_name + ", last_name=" + last_name + ", phone=" + phone + ", direccion=" + direccion + ", email=" + email + '}';
+        return "Person{" + "id_person=" + dni + ", firs_name=" + firs_name + ", last_name=" + last_name + ", phone=" + phone + ", direccion=" + direccion + ", email=" + email + '}';
     }
 
     
