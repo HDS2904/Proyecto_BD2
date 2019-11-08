@@ -1,5 +1,6 @@
 CREATE TABLE PERSON(
-  id_Person CHAR(4),
+  id_Person CHAR (4),
+  dni CHAR(8),
   names VARCHAR2(10),
   lastName VARCHAR2(15),
   phone NUMBER(9),
@@ -9,13 +10,13 @@ CREATE TABLE PERSON(
 
 
 CREATE TABLE TEACHER(
-  id_Person CHAR(4),
+  id_Person CHAR (4),
   code_Teacher CHAR(4)
 );
 
 
 CREATE TABLE STUDENT(
-  id_Person CHAR(4),
+  id_Person CHAR (4),
   code_Student CHAR(4),
   id_School CHAR(4)
 );
@@ -31,24 +32,37 @@ CREATE TABLE Faculty(
     nameFaculty varchar2(15)
 );
 
-CREATE TABLE SOLUTION (
-  id_Solution Number(10),
-  id_Person CHAR(4),
-  id_Exam CHAR(4),
-  note NUMBER(2,1)
-);
+create table CLAS-STUDENT (
 
-CREATE TABLE EXAM (
-  id_Exam CHAR(4),
-  nameSubject VARCHAR2(15)
+  id_Class_Alumno	NUMBER(10),
+  id_Class		NUMBER(10),
+  id_Person CHAR (4)
 );
 
 CREATE TABLE Answers_Student(
     id_AnswersStudent CHAR(4),
-    id_Solution Number(10),
     answer char(15),
     n_question number(2)
 );
+
+CREATE TABLE NOTE(
+    id_Result NUMBER(10),
+    note      NUMBER(2,1)
+);
+
+create table CLAS (
+
+  id_Class	NUMBER(10),
+  id_Subject	CHAR(4),
+  id_Person CHAR (4),
+  group1		VARCHAR(20)	
+
+);
+
+CREATE TABLE EXAM (
+  id_Exam CHAR(4)
+);
+
 
 CREATE TABLE QUESTION_EXAM (
   id_QuestionsExam CHAR(4),
@@ -57,27 +71,19 @@ CREATE TABLE QUESTION_EXAM (
   n_question NUMBER(2)
 );
 
+CREATE TABLE ALTERNATIVE-EXAM(
+  id_alternative_exam CHAR(4),
+  id_QuestionsExam CHAR(4),
+  alternativeA VARCHAR2(200),
+  alternativeB VARCHAR2(200),
+  alternativeC VARCHAR2(200),
+);
 
 create table SUBJECT (
 
   id_Subject	CHAR(4),
   namesubject	VARCHAR2(15)
   
-);
-
-create table CLAS (
-
-  id_Class	NUMBER(10),
-  id_Subject	CHAR(4),
-  id_Person	CHAR(4),
-  group1		VARCHAR(20)	
-);
-
-create table CLAS-STUDENT (
-
-  id_Class_Alumno	NUMBER(10),
-  id_Class		NUMBER(10),
-  id_Person		CHAR(4)	
 );
 
 
@@ -90,26 +96,26 @@ create table THEME (
 create table QUESTION (
   id_Question CHAR (4),
   id_Theme CHAR(4),
-  question VARCHAR2(15),
-  score NUMBER(1)
+  question VARCHAR2(200),
+  score NUMBER(2)
 );
 
 create table ALTERNATIVE(
   id_Alternative CHAR (4),
   id_Question CHAR(4),
-  alternativeA VARCHAR2(15),
-  alternativeB VARCHAR2(15),
-  alternativeC VARCHAR2(15),
-  answer VARCHAR2(15)
+  alternativeA VARCHAR2(200),
+  alternativeB VARCHAR2(200),
+  alternativeC VARCHAR2(200),
+  answer VARCHAR2(10)
 );
 
 
 
-ALTER TABLE PERSON ADD CONSTRAINT PK_PERSON PRIMARY KEY (id_Person);
+ALTER TABLE PERSON ADD CONSTRAINT PK_PERSON PRIMARY KEY (id_Person) AUTOINCREMENT;
 ALTER TABLE STUDENT ADD CONSTRAINT PK_STUDENT PRIMARY KEY (id_Person);
-ALTER TABLE TEACHER ADD CONSTRAINT PK_TEACHER PRIMARY KEY (id_Person);
+ALTER TABLE TEACHER ADD CONSTRAINT PK_TEACHER PRIMARY KEY (id_Person);PREGU
 ALTER TABLE STUDENT ADD FOREIGN KEY (id_Person) REFERENCES PERSON;
-ALTER TABLE STUDENT ADD FOREIGN KEY (id_School) REFERENCES SCHOOL;
+ALTER TABLE STUDENT ADD FOREIGN KEY (id_Person) REFERENCES SCHOOL;
 ALTER TABLE TEACHER ADD FOREIGN KEY (id_Person) REFERENCES PERSON;
 
 ALTER TABLE PERSON MODIFY (names NOT NULL ENABLE);
@@ -141,7 +147,7 @@ ALTER TABLE SOLUTION ADD CONSTRAINT SOLUTION_FK FOREIGN KEY (id_Person) REFERENC
 ALTER TABLE SOLUTION ADD CONSTRAINT SOLUTION2_FK FOREIGN KEY (id_Exam) REFERENCES EXAM(id_Exam);
 
 ALTER TABLE SOLUTION MODIFY (note NOT NULL ENABLE);
-------FALTA LA PARTE DE ANGEL !!!!!! 
+
 ALTER TABLE SUBJECT ADD CONSTRAINT SUBJECT_PK PRIMARY KEY (id_Subject);
 ALTER TABLE CLAS ADD CONSTRAINT CLAS_FK PRIMARY KEY (id_Class);
 ALTER TABLE CLAS ADD CONSTRAINT CLAS_PK FOREIGN KEY SUBJECT(id_Subject);
@@ -150,7 +156,7 @@ ALTER TABLE CLAS-STUDENT ADD CONSTRAINT CLAS-STUDENT_PK PRIMARY KEY (id_Class_Al
 ALTER TABLE CLAS-STUDENT  ADD CONSTRAINT CLAS-STUDENT_FK FOREIGN KEY (id_Clas) REFERENCES Clas(id_Clas);
 ALTER TABLE CLAS-STUDENT  ADD CONSTRAINT CLAS-STUDENT_FK1 FOREIGN KEY (id_Person) REFERENCES STUDENT(id_Person);
 
-ALTER TABLE THEME ADD CONSTRAINT THEME_PK PRIMARY KEY (id_Theme);
+ALTER TABLE THEME ADD CONSTRAINT THEME_PK PRIMARY KEY (id_Theme) AUTOINCREMENT;
 ALTER TABLE THEME ADD CONSTRAINT THEME_FK FOREIGN KEY (id_Subject) REFERENCES SUBJECT(id_Subject);
 ALTER TABLE QUESTION ADD CONSTRAINT QUESTION_PK PRIMARY KEY(id_Question);
 ALTER TABLE QUESTION ADD CONSTRAINT QUESTION_FK FOREIGN KEY(id_Theme) REFERENCES THEME(id_Theme);
