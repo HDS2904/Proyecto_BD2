@@ -2,6 +2,8 @@
 package Modelo.Entidades;
 
 public class Person {
+    
+    private int id_person;
     private int dni;
     private String firs_name;
     private String last_name;
@@ -9,7 +11,12 @@ public class Person {
     private String direccion;
     private String email;
 
-    public Person(int dni, String firs_name, String last_name, int phone, String direccion, String email) {
+    public Person(){
+        
+    }
+
+    public Person(int id_person, int dni, String firs_name, String last_name, int phone, String direccion, String email) {
+        this.id_person = id_person;
         this.dni = dni;
         this.firs_name = firs_name;
         this.last_name = last_name;
@@ -17,7 +24,8 @@ public class Person {
         this.direccion = direccion;
         this.email = email;
     }
-
+    
+     
     public String getDireccion() {
         return direccion;
     }
@@ -26,9 +34,7 @@ public class Person {
         this.direccion = direccion;
     }
     
-    public Person(){
-        
-    }
+    
 
     public int getDni() {
         return dni;
