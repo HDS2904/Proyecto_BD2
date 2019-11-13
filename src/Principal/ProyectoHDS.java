@@ -19,6 +19,8 @@ public class ProyectoHDS {
         cc.iniciar();
         vc.setVisible(true);
         
+        
+        
     }
     
 }
