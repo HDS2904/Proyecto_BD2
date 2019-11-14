@@ -1,7 +1,7 @@
 
 package Interfaz;
 
-import javax.swing.JTable;
+import java.util.ArrayList;
 
 public interface ICRUD<T> {
     
@@ -11,7 +11,7 @@ public interface ICRUD<T> {
 
     public String Delete(T t);
 
-    public String SearchId(T t);
+    public T SearchId(int t);
 
-    public String ListAll(JTable tabla);
+    public ArrayList<T> ListAll();
 }

@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Note;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -30,13 +31,14 @@ public class NoteDAO implements ICRUD<Note>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
-    public String SearchId(Note t) {
+    public Note SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<Note> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

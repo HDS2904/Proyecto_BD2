@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Alternative;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,13 +32,14 @@ public class AlternativeDAO implements ICRUD<Alternative> {
     }
 
     @Override
-    public String SearchId(Alternative t) {
+    public Alternative SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<Alternative> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+       
 }

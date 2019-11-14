@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.AnswerStundent;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,13 +32,15 @@ public class AnswerStudentDAO implements ICRUD<AnswerStundent>{
     }
 
     @Override
-    public String SearchId(AnswerStundent t) {
+    public AnswerStundent SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<AnswerStundent> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
 }

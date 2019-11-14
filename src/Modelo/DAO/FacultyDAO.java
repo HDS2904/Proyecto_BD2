@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Faculty;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,13 +32,15 @@ public class FacultyDAO implements ICRUD<Faculty>{
     }
 
     @Override
-    public String SearchId(Faculty t) {
+    public Faculty SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<Faculty> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
 }

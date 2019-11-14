@@ -2,6 +2,7 @@
 package Modelo.DAO;
 
 import Interfaz.ICRUD;
+import Interfaz.ICRUD2;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Teacher;
 import java.sql.CallableStatement;
@@ -15,15 +16,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import oracle.jdbc.OracleTypes;
+import principal.Conectar;
 
-public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
+public class TeacherDAO implements ICRUD2<Teacher>{
     private String mensaje = " ";
 
     @Override
     public String Create(Teacher t) {
         Person per = t.getPer();
         PreparedStatement pst = null;
-        Connection con = getConnection();
+        Connection con = Conectar.getConnection();
         String sql = "{call PACK_MANT_TEACHER.INSERT_T(?,?,?,?,?,?,?)}";
         try {
             pst = con.prepareStatement(sql);
@@ -53,7 +55,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
     public String Update(Teacher t) {
         Person per = t.getPer();
         PreparedStatement pst = null;
-        Connection con = getConnection();
+        Connection con = Conectar.getConnection();
         String sql = "{call PACK_MANT_TEACHER.UPDATE_T(?,?,?,?,?,?,?)";
         
         try {
@@ -83,7 +85,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
     @Override
     public String Delete(Teacher t) {
         PreparedStatement pst = null;
-        Connection con = getConnection();
+        Connection con = Conectar.getConnection();
         String sql = "{call PACK_MANT_TEACHER.DELETE_T(?)";
         
         try {
@@ -109,7 +111,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
         Person pe = new Person();
         ResultSet rs;
         CallableStatement call;
-        Connection con = getConnection();
+        Connection con = Conectar.getConnection();
         String sql = "{call PACK_LIST_TEACHER.GET_TEACHER(?,?)}";
         
         try {
@@ -149,7 +151,7 @@ public class TeacherDAO extends Conectar implements ICRUD<Teacher>{
     
     @Override
     public String ListAll(JTable tabla) {
-        Connection con = getConnection();
+        Connection con = Conectar.getConnection();
         CallableStatement call= null;
         DefaultTableModel ad=new DefaultTableModel();
         ad.setColumnIdentifiers(new Object[]{"Pos","Código","Nombre","Apellido","DNI","Telefono","Dirección","Email"});

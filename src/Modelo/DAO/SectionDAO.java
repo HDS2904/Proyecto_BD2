@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Section;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,12 +32,12 @@ public class SectionDAO implements ICRUD<Section>{
     }
 
     @Override
-    public String SearchId(Section t) {
+    public Section SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<Section> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

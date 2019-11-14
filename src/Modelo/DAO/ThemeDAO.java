@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Theme;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,12 +32,12 @@ public class ThemeDAO implements ICRUD<Theme> {
     }
 
     @Override
-    public String SearchId(Theme t) {
+    public Theme SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<Theme> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

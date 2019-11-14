@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.School;
+import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
@@ -31,12 +32,12 @@ public class SchoolDAO implements ICRUD<School>{
     }
 
     @Override
-    public String SearchId(School t) {
+    public School SearchId(int t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String ListAll(JTable tabla) {
+    public ArrayList<School> ListAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
