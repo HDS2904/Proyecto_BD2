@@ -26,7 +26,7 @@ public class TeacherDAO implements ICRUD2<Teacher>{
         Person per = t.getPer();
         PreparedStatement pst = null;
         Connection con = Conectar.getConnection();
-        String sql = "{call PACK_MANT_TEACHER.INSERT_T(?,?,?,?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_TEACHER.INSERT_T(?,?,?,?,?,?,?)}";
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, t.getCod_teacher());
@@ -56,7 +56,7 @@ public class TeacherDAO implements ICRUD2<Teacher>{
         Person per = t.getPer();
         PreparedStatement pst = null;
         Connection con = Conectar.getConnection();
-        String sql = "{call PACK_MANT_TEACHER.UPDATE_T(?,?,?,?,?,?,?)";
+        String sql = "{call PACK_MANAGE_TEACHER.UPDATE_T(?,?,?,?,?,?,?)";
         
         try {
             pst = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class TeacherDAO implements ICRUD2<Teacher>{
     public String Delete(Teacher t) {
         PreparedStatement pst = null;
         Connection con = Conectar.getConnection();
-        String sql = "{call PACK_MANT_TEACHER.DELETE_T(?)";
+        String sql = "{call PACK_MANAGE_TEACHER.DELETE_T(?)";
         
         try {
             pst = con.prepareStatement(sql);
