@@ -8,40 +8,29 @@ public class Person {
     private String firs_name;
     private String last_name;
     private int phone;
-    private String direccion;
+    private String address;
     private String email;
 
     public Person(){
         
     }
 
-    public Person(int id_person, int dni, String firs_name, String last_name, int phone, String direccion, String email) {
+    public Person(int id_person, String firs_name, String last_name, int dni, int phone, String address, String email) {
         this.id_person = id_person;
         this.dni = dni;
         this.firs_name = firs_name;
         this.last_name = last_name;
         this.phone = phone;
-        this.direccion = direccion;
+        this.address = address;
         this.email = email;
     }
     
-     
-    public String getDireccion() {
-        return direccion;
+    public int getId_person() {
+        return id_person;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    
-    
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setId_person(int id_person) {
+        this.id_person = id_person;
     }
 
     public String getFirs_name() {
@@ -58,6 +47,24 @@ public class Person {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+    
+        
+     
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public int getPhone() {
@@ -78,9 +85,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "id_person=" + dni + ", firs_name=" + firs_name + ", last_name=" + last_name + ", phone=" + phone + ", direccion=" + direccion + ", email=" + email + '}';
+        return "Person{" + "id_person=" + id_person + ", dni=" + dni + ", firs_name=" + firs_name + ", last_name=" + last_name + ", phone=" + phone + ", address=" + address + ", email=" + email + '}';
     }
 
-    
-    
 }

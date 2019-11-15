@@ -5,7 +5,7 @@ import Controladores.Controlador_Profesor;
 import Modelo.DAO.TeacherDAO;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Teacher;
-import Vista.V_Profesores;
+import Vistas.V_Profesores;
 
 public class ProyectoHDS {
 

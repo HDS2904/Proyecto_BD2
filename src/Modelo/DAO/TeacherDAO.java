@@ -34,7 +34,7 @@ public class TeacherDAO implements ICRUD2<Teacher>{
             pst.setString(3, per.getLast_name());
             pst.setInt(4, per.getDni());
             pst.setInt(5, per.getPhone());
-            pst.setString(6, per.getDireccion());
+            pst.setString(6, per.getAddress());
             pst.setString(7, per.getEmail());
             mensaje = "DATOS GUARDADOS EXITOSAMENTE";
             pst.execute();
@@ -65,7 +65,7 @@ public class TeacherDAO implements ICRUD2<Teacher>{
             pst.setString(3, per.getLast_name());
             pst.setInt(4, per.getDni());
             pst.setInt(5, per.getPhone());
-            pst.setString(6, per.getDireccion());
+            pst.setString(6, per.getAddress());
             pst.setString(7, per.getEmail());
             mensaje = "SE ACTUALIZO CORRECTAMENTE";
             pst.execute();
@@ -112,14 +112,14 @@ public class TeacherDAO implements ICRUD2<Teacher>{
         ResultSet rs;
         CallableStatement call;
         Connection con = Conectar.getConnection();
-        String sql = "{call PACK_LIST_TEACHER.GET_TEACHER(?,?)}";
+        String sql = "{? = call PACK_MANAGE_TEACHER.GET_TEACHER(?)}";
         
         try {
             call = con.prepareCall(sql);
-            call.setString(1, t.getCod_teacher());
-            call.registerOutParameter(2,OracleTypes.CURSOR);
+            call.registerOutParameter(1,OracleTypes.CURSOR);
+            call.setString(2, t.getCod_teacher());
             call.executeQuery();
-            rs = (ResultSet)call.getObject(2);
+            rs = (ResultSet)call.getObject(1);
             int c = 0;
             if(rs.next()){
                 System.out.println(rs.getString("EMAIL"));
@@ -128,12 +128,14 @@ public class TeacherDAO implements ICRUD2<Teacher>{
                 pe.setLast_name(rs.getString("LASTNAME"));
                 pe.setDni(Integer.parseInt(rs.getString("DNI")));
                 pe.setPhone(Integer.parseInt(rs.getString("PHONE")));
-                pe.setDireccion(rs.getString("ADDRESS"));
+                pe.setAddress(rs.getString("ADDRESS"));
                 pe.setEmail(rs.getString("EMAIL"));
                 t.setPer(pe);
                 mensaje = "SE UBICO LA ENTIDAD: "+t.getCod_teacher()+"\n";
-            }else
+            }else{
                 mensaje = "NO SE PUDO ENCONTRAR LA ENTDAD DE CODIGO: "+t.getCod_teacher()+"\n";
+                t.setCod_teacher("fail");
+            }
             mensaje = mensaje+ "SE EJECUTO CORRECTAMENTE LA BUSQUEDA";
             call.execute();
             call.close();
@@ -156,10 +158,9 @@ public class TeacherDAO implements ICRUD2<Teacher>{
         DefaultTableModel ad=new DefaultTableModel();
         ad.setColumnIdentifiers(new Object[]{"Pos","Código","Nombre","Apellido","DNI","Telefono","Dirección","Email"});
         
-        String sql = "{call PACK_LIST_TEACHER.GET_TEACHERS(?)}";
+        String sql = "{ ? = call PACK_MANAGE_TEACHER.GET_TEACHERS}";
         
         String[] filas = new String[8];
-        Statement st = null;
         ResultSet rs = null;
        
         try {

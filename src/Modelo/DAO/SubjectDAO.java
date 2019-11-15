@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTable;
 import oracle.jdbc.OracleTypes;
 import principal.Conectar;
 
@@ -149,7 +148,7 @@ public class SubjectDAO implements ICRUD<Subject> {
                 su.setId_subject(Integer.parseInt(rs.getString("DNI")));
                 mensaje = "SE UBICO EL CURSO: "+t+"\n";
             }else
-                mensaje = "NO SE PUDO ENCONTRAR LA ENTDAD DE CODIGO: "+t+"\n";
+                mensaje = "NO SE PUDO ENCONTRAR LA ENTIDAD DE CODIGO: "+t+"\n";
             mensaje = mensaje+ "SE EJECUTO CORRECTAMENTE LA BUSQUEDA";
             
             ca.close();
@@ -168,12 +167,7 @@ public class SubjectDAO implements ICRUD<Subject> {
 
     @Override
     public ArrayList<Subject> ListAll() {
-    
-        
         ArrayList<Subject> lista = new ArrayList<Subject>();
-        
-        
-        
          try {
              cn = Conectar.getConnection();
             String sql = "{call PACK_LIST_SUBJECT.GET_SUBJECTS(?)}";
