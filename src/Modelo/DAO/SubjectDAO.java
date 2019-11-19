@@ -32,7 +32,7 @@ public class SubjectDAO implements ICRUD<Subject> {
     Subject su;
     
     @Override
-    public String Create(Subject t) {
+    public void Create(Subject t) throws Exception{
         
         
         cn = Conectar.getConnection();
@@ -48,7 +48,7 @@ public class SubjectDAO implements ICRUD<Subject> {
             
             
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO GUARDAR LOS DATOS \n" + ex.getMessage();
+            throw ex;
         }finally{
             
             try {
@@ -59,12 +59,10 @@ public class SubjectDAO implements ICRUD<Subject> {
             
         }
         
-        
-        return mensaje;
     }
 
     @Override
-    public String Update(Subject t) {
+    public void Update(Subject t) throws Exception{
     
         cn = Conectar.getConnection();
         String sql = "{call PACK_MANT_SUBJECT.UPDATE_SU(?,?)}";
@@ -80,7 +78,7 @@ public class SubjectDAO implements ICRUD<Subject> {
             
             
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO ACTUALIZAR LOS DATOS \n" + ex.getMessage();
+            throw ex;
         }finally{
             
             try {
@@ -91,12 +89,10 @@ public class SubjectDAO implements ICRUD<Subject> {
             
         }
         
-        
-        return mensaje;
     }
 
     @Override
-    public String Delete(Subject t) {
+    public void Delete(Subject t) throws Exception{
     
         cn = Conectar.getConnection();
         String sql = "{call PACK_MANT_SUBJECT.DELETE_SU(?)}";
@@ -107,11 +103,8 @@ public class SubjectDAO implements ICRUD<Subject> {
             ps.execute();
             mensaje="DATOS ELIMINADOS EXITOSAMENTE";
             ps.close();
-            
-            
-            
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO ELIMINAR LOS DATOS \n" + ex.getMessage();
+            throw ex;
         }finally{
             
             try {
@@ -122,13 +115,11 @@ public class SubjectDAO implements ICRUD<Subject> {
             
         }
         
-        
-        return mensaje;
     }
 
     
     @Override
-    public Subject SearchId(int t) {
+    public Subject Search(int t) throws Exception{
     
         Subject su = new Subject();
         cn = Conectar.getConnection();
@@ -141,20 +132,16 @@ public class SubjectDAO implements ICRUD<Subject> {
             ca.registerOutParameter(2,OracleTypes.CURSOR);
             ca.execute();
             rs = (ResultSet)ca.getObject(2);
-            int c = 0;
             if(rs.next()){
                 System.out.println(rs.getString("NAME_SUBJECT"));
                 su.setName_subject(rs.getString("NAME_SUBJECT"));
                 su.setId_subject(Integer.parseInt(rs.getString("DNI")));
-                mensaje = "SE UBICO EL CURSO: "+t+"\n";
-            }else
-                mensaje = "NO SE PUDO ENCONTRAR LA ENTIDAD DE CODIGO: "+t+"\n";
-            mensaje = mensaje+ "SE EJECUTO CORRECTAMENTE LA BUSQUEDA";
+            }
             
             ca.close();
             rs.close();
         } catch (SQLException e) {
-            mensaje = mensaje + "ERROR AL EJECUTAR LA BUSQUEDA \n" + e.getMessage();
+            throw e;
         }finally{
             try {
                 cn.close();
@@ -166,7 +153,7 @@ public class SubjectDAO implements ICRUD<Subject> {
     }
 
     @Override
-    public ArrayList<Subject> ListAll() {
+    public ArrayList<Subject> ListAll() throws Exception{
         ArrayList<Subject> lista = new ArrayList<Subject>();
          try {
              cn = Conectar.getConnection();
@@ -185,7 +172,7 @@ public class SubjectDAO implements ICRUD<Subject> {
             ca.close();
             rs.close();
         } catch (SQLException e) {
-            mensaje = mensaje + "ERROR AL EJECUTAR LA BUSQUEDA \n" + e.getMessage();
+            throw e;
         }finally{
             try {
                 cn.close();

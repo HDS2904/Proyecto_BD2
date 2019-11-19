@@ -17,27 +17,27 @@ import javax.swing.JTable;
 public class SchoolDAO implements ICRUD<School>{
 
     @Override
-    public String Create(School t) {
+    public void Create(School t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Update(School t) {
+    public void Update(School t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Delete(School t) {
+    public void Delete(School t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public School SearchId(int t) {
+    public School Search(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<School> ListAll() {
+    public ArrayList<School> ListAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

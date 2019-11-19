@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public interface ICRUD<T> {
     
-    public String Create(T t);
+    public void Create(T t) throws Exception;
 
-    public String Update(T t);
+    public void Update(T t) throws Exception;
 
-    public String Delete(T t);
+    public void Delete(T t) throws Exception;
 
-    public T SearchId(int t);
+    public T Search(int t) throws Exception;
 
-    public ArrayList<T> ListAll();
+    public ArrayList<T> ListAll() throws Exception;
 }

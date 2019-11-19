@@ -2,46 +2,36 @@
 package Modelo.Entidades;
 
 public class Teacher {
-    private int dni_teacher;
-    private String cod_teacher;
-    private Person per;
+    private int id_person;
+    private String code_teacher;
 
     public Teacher() {
     }
 
-    public Teacher(int dni_teacher, String cod_teacher, Person per) {
-        this.dni_teacher = dni_teacher;
-        this.cod_teacher = cod_teacher;
-        this.per = per;
+    public Teacher(int id_person, String code_teacher) {
+        this.id_person = id_person;
+        this.code_teacher = code_teacher;
     }
     
-    public int getDni_teacher() {
-        return dni_teacher;
+    public int getId_person() {
+        return id_person;
     }
 
-    public void setDni_teacher(int dni_teacher) {
-        this.dni_teacher = dni_teacher;
+    public void setId_person(int dni_person) {
+        this.id_person = dni_person;
     }
 
-    public String getCod_teacher() {
-        return cod_teacher;
+    public String getCode_teacher() {
+        return code_teacher;
     }
 
-    public void setCod_teacher(String cod_teacher) {
-        this.cod_teacher = cod_teacher;
-    }
-
-    public Person getPer() {
-        return per;
-    }
-
-    public void setPer(Person per) {
-        this.per = per;
+    public void setCode_teacher(String code_teacher) {
+        this.code_teacher = code_teacher;
     }
 
     @Override
     public String toString() {
-        return "Teacher{" + "id_teacher=" + dni_teacher + ", cod_teacher=" + cod_teacher + ", per=" + per + '}';
+        return "Teacher{" + "id_person=" + id_person + ", code_teacher=" + code_teacher;
     }
 
     

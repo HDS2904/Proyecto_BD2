@@ -17,28 +17,29 @@ import javax.swing.JTable;
 public class ThemeDAO implements ICRUD<Theme> {
 
     @Override
-    public String Create(Theme t) {
+    public void Create(Theme t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Update(Theme t) {
+    public void Update(Theme t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Delete(Theme t) {
+    public void Delete(Theme t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Theme SearchId(int t) {
+    public Theme Search(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Theme> ListAll() {
+    public ArrayList<Theme> ListAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
 }

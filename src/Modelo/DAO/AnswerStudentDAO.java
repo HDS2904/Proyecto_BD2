@@ -17,30 +17,28 @@ import javax.swing.JTable;
 public class AnswerStudentDAO implements ICRUD<AnswerStundent>{
 
     @Override
-    public String Create(AnswerStundent t) {
+    public void Create(AnswerStundent t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Update(AnswerStundent t) {
+    public void Update(AnswerStundent t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Delete(AnswerStundent t) {
+    public void Delete(AnswerStundent t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public AnswerStundent SearchId(int t) {
+    public AnswerStundent Search(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<AnswerStundent> ListAll() {
+    public ArrayList<AnswerStundent> ListAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-    
 }

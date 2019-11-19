@@ -5,6 +5,7 @@
  */
 package Controladores;
 
+import Modelo.DAO.PersonDAO;
 import Modelo.DAO.TeacherDAO;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Teacher;
@@ -14,18 +15,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public class Controlador_Profesor implements ActionListener, MouseListener {
     private Teacher tea;
     private Person per;
-    private TeacherDAO Pcrud;
+    private PersonDAO Pcrud;
+    private TeacherDAO Tcrud;
     private V_Profesores vista;
+    private DefaultTableModel ad;
 
-    public Controlador_Profesor(Person per, Teacher tea, TeacherDAO Pcrud, V_Profesores vista) {
+    public Controlador_Profesor(Person per, Teacher tea, PersonDAO Pcrud, TeacherDAO Tcrud, V_Profesores vista) {
         this.tea = tea;
         this.per = per;
         this.Pcrud = Pcrud;
+        this.Tcrud = Tcrud;
         this.vista = vista;
         this.vista.btnagregar.addActionListener(this);
         this.vista.btneliminar.addActionListener(this);
@@ -38,7 +45,13 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
     public void iniciar() {
         vista.setTitle("PROFESORES");
         vista.setLocationRelativeTo(null);
-        Pcrud.ListAll(vista.tabla);
+        DefaultTableModel ad=new DefaultTableModel();
+        ad.setColumnIdentifiers(new Object[]{"Pos","Código","Nombre","Apellido","DNI","Telefono","Dirección","Email"});
+        
+        TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(ad);
+        vista.tabla.setRowSorter(order);
+        vista.tabla.setModel(ad);
+             
         
     }
     
@@ -46,16 +59,17 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == vista.btnagregar){
-            tea.setCod_teacher(vista.txid.getText());
-            per.setFirs_name(vista.txnombre.getText());
-            per.setLast_name(vista.txapellido.getText());
-            per.setDni(Integer.parseInt(vista.txdni.getText()));
-            per.setPhone(Integer.parseInt(vista.txtel.getText()));
-            per.setAddress(vista.txdir.getText());
-            per.setEmail(vista.txem.getText());
-            tea.setPer(per);
-            JOptionPane.showMessageDialog(null, Pcrud.Create(tea));
-            Limpiar();
+//            per.setFirs_name(vista.txnombre.getText());
+//            per.setLast_name(vista.txapellido.getText());
+//            per.setDni(Integer.parseInt(vista.txdni.getText()));
+//            per.setPhone(Integer.parseInt(vista.txtel.getText()));
+//            per.setAddress(vista.txdir.getText());
+//            per.setEmail(vista.txem.getText());
+//            JOptionPane.showMessageDialog(null, Pcrud.Create(per));
+//            tea.setId_person(per.getId_person());
+//            tea.setCod_teacher(vista.txid.getText());
+//            JOptionPane.showMessageDialog(null, Tcrud.Create(tea));
+//            Limpiar();
         }
         
         
@@ -66,54 +80,54 @@ public class Controlador_Profesor implements ActionListener, MouseListener {
             per.setPhone(Integer.parseInt(vista.txtel.getText()));
             per.setAddress(vista.txdir.getText());
             per.setEmail(vista.txem.getText());
-            tea.setPer(per);
-            JOptionPane.showMessageDialog(null, Pcrud.Update(tea));
-            Limpiar();
+            //tea.setPer(per);
+//            JOptionPane.showMessageDialog(null, Pcrud.Update(tea));
+//            Limpiar();
         }
         
-        
-        if(e.getSource() == vista.btneliminar){
-            JOptionPane.showMessageDialog(null, Pcrud.Delete(tea));
-            Limpiar();
-        }
-        
-        if(e.getSource() == vista.btnbus){
-            tea.setCod_teacher(vista.txid.getText());
-            JOptionPane.showMessageDialog(null, Pcrud.SearchId(tea));
-            if(!(tea.getCod_teacher().equals("fail"))){
-                vista.txnombre.setText(tea.getPer().getFirs_name());
-                vista.txapellido.setText(tea.getPer().getLast_name());
-                vista.txdni.setText(tea.getPer().getDni()+"");
-                vista.txtel.setText(tea.getPer().getPhone()+"");
-                vista.txdir.setText(tea.getPer().getAddress());
-                vista.txem.setText(tea.getPer().getEmail());
-                vista.txid.setEditable(false);
-                vista.txdni.setEditable(false);
-            }
-            
-        }
+//        
+//        if(e.getSource() == vista.btneliminar){
+//            JOptionPane.showMessageDialog(null, Pcrud.Delete(tea));
+//            Limpiar();
+//        }
+//        
+//        if(e.getSource() == vista.btnbus){
+//            tea.setCod_teacher(vista.txid.getText());
+//            JOptionPane.showMessageDialog(null, Pcrud.SearchId(tea));
+//            if(!(tea.getCod_teacher().equals("fail"))){
+//                vista.txnombre.setText(tea.getPer().getFirs_name());
+//                vista.txapellido.setText(tea.getPer().getLast_name());
+//                vista.txdni.setText(tea.getPer().getDni()+"");
+//                vista.txtel.setText(tea.getPer().getPhone()+"");
+//                vista.txdir.setText(tea.getPer().getAddress());
+//                vista.txem.setText(tea.getPer().getEmail());
+//                vista.txid.setEditable(false);
+//                vista.txdni.setEditable(false);
+//            }
+//            
+//        }
         
         if(e.getSource() == vista.btnlimpiar){
             Limpiar();
         }
         
-        Pcrud.ListAll(vista.tabla);
+        //Pcrud.ListAll(vista.tabla);
         
     }
     
     @Override
     public void mouseClicked(MouseEvent e){
-        Person per = new Person();
-        int id = vista.tabla.rowAtPoint(e.getPoint());
-        tea.setCod_teacher(vista.tabla.getValueAt(id,1)+"");
-        per.setFirs_name(vista.tabla.getValueAt(id,2)+"");
-        per.setLast_name(vista.tabla.getValueAt(id,3)+"");
-        per.setDni(Integer.parseInt(vista.tabla.getValueAt(id,4)+""));
-        per.setPhone(Integer.parseInt(vista.tabla.getValueAt(id,5)+""));
-        per.setAddress(vista.tabla.getValueAt(id,6)+"");
-        per.setEmail(vista.tabla.getValueAt(id,7)+"");
-        tea.setPer(per);
-        vista.txid.setText(tea.getCod_teacher());
+//        Person per = new Person();
+//        int id = vista.tabla.rowAtPoint(e.getPoint());
+//        tea.setCod_teacher(vista.tabla.getValueAt(id,1)+"");
+//        per.setFirs_name(vista.tabla.getValueAt(id,2)+"");
+//        per.setLast_name(vista.tabla.getValueAt(id,3)+"");
+//        per.setDni(Integer.parseInt(vista.tabla.getValueAt(id,4)+""));
+//        per.setPhone(Integer.parseInt(vista.tabla.getValueAt(id,5)+""));
+//        per.setAddress(vista.tabla.getValueAt(id,6)+"");
+//        per.setEmail(vista.tabla.getValueAt(id,7)+"");
+//       // tea.setPer(per);
+//        vista.txid.setText(tea.getCod_teacher());
 
     }
     

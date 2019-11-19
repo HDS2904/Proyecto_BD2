@@ -4,9 +4,9 @@ package Modelo.Entidades;
 public class Person {
     
     private int id_person;
-    private int dni;
     private String firs_name;
     private String last_name;
+    private int dni;
     private int phone;
     private String address;
     private String email;
@@ -16,10 +16,10 @@ public class Person {
     }
 
     public Person(int id_person, String firs_name, String last_name, int dni, int phone, String address, String email) {
-        this.id_person = id_person;
-        this.dni = dni;
+        this.id_person = id_person;        
         this.firs_name = firs_name;
         this.last_name = last_name;
+        this.dni = dni;
         this.phone = phone;
         this.address = address;
         this.email = email;
@@ -49,7 +49,13 @@ public class Person {
         this.last_name = last_name;
     }
     
-        
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }     
      
     public String getAddress() {
         return address;
@@ -59,13 +65,6 @@ public class Person {
         this.address = address;
     }
 
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
 
     public int getPhone() {
         return phone;
@@ -85,7 +84,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "id_person=" + id_person + ", dni=" + dni + ", firs_name=" + firs_name + ", last_name=" + last_name + ", phone=" + phone + ", address=" + address + ", email=" + email + '}';
+        return "Person{" + "id_person=" + id_person + ", firs_name=" + firs_name + ", last_name=" + last_name + ", dni=" + dni + ", phone=" + phone + ", address=" + address + ", email=" + email + '}';
     }
 
 }

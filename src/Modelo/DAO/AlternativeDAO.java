@@ -17,29 +17,30 @@ import javax.swing.JTable;
 public class AlternativeDAO implements ICRUD<Alternative> {
 
     @Override
-    public String Create(Alternative t) {
+    public void Create(Alternative t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Update(Alternative t) {
+    public void Update(Alternative t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Delete(Alternative t) {
+    public void Delete(Alternative t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Alternative SearchId(int t) {
+    public Alternative Search(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Alternative> ListAll() {
+    public ArrayList<Alternative> ListAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
        
 }

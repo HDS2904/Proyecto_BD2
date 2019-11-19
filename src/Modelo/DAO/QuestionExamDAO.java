@@ -17,28 +17,28 @@ import javax.swing.JTable;
 public class QuestionExamDAO implements ICRUD<QuestionExam>{
 
     @Override
-    public String Create(QuestionExam t) {
+    public void Create(QuestionExam t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Update(QuestionExam t) {
+    public void Update(QuestionExam t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String Delete(QuestionExam t) {
+    public void Delete(QuestionExam t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public QuestionExam SearchId(int t) {
+    public QuestionExam Search(int t) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<QuestionExam> ListAll() {
+    public ArrayList<QuestionExam> ListAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
