@@ -98,7 +98,7 @@ public class SubjectDAO implements ICRUD<Subject> {
         String sql = "{call PACK_MANT_SUBJECT.DELETE_SU(?)}";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(1,t.getName_subject());
+            ps.setInt(1,t.getId_subject());
                        
             ps.execute();
             mensaje="DATOS ELIMINADOS EXITOSAMENTE";
