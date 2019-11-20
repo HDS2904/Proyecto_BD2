@@ -23,7 +23,7 @@ public class ProyectoHDS {
         vc.setVisible(true);
         //Login a = new Login();
         //a.setVisible(true);
-        
+        // dsad
         
     }
     
