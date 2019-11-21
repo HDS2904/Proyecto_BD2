@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Subject;
+import Principal.conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,8 +36,8 @@ public class SubjectDAO implements ICRUD<Subject> {
     public void Create(Subject t) throws Exception{
         
         
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_SUBJECT.INSERT_SU(?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_SUBJECT.INSERT_SU(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1,t.getName_subject());
@@ -64,8 +65,8 @@ public class SubjectDAO implements ICRUD<Subject> {
     @Override
     public void Update(Subject t) throws Exception{
     
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_SUBJECT.UPDATE_SU(?,?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_SUBJECT.UPDATE_SU(?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_subject());
@@ -94,8 +95,8 @@ public class SubjectDAO implements ICRUD<Subject> {
     @Override
     public void Delete(Subject t) throws Exception{
     
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_SUBJECT.DELETE_SU(?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_SUBJECT.DELETE_SU(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_subject());
@@ -122,20 +123,20 @@ public class SubjectDAO implements ICRUD<Subject> {
     public Subject Search(int t) throws Exception{
     
         Subject su = new Subject();
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_LIST_SUBJECT.GET_SUBJECT(?,?)}";
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_SUBJECT.SEARCH_SU(?)}";
         
         
          try {
             ca = cn.prepareCall(sql);
-            ca.setInt(1, t);
-            ca.registerOutParameter(2,OracleTypes.CURSOR);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
             ca.execute();
             rs = (ResultSet)ca.getObject(2);
             if(rs.next()){
                 System.out.println(rs.getString("NAME_SUBJECT"));
                 su.setName_subject(rs.getString("NAME_SUBJECT"));
-                su.setId_subject(Integer.parseInt(rs.getString("DNI")));
+                su.setId_subject(rs.getInt("ID_SUBJECT"));
             }
             
             ca.close();
@@ -156,8 +157,8 @@ public class SubjectDAO implements ICRUD<Subject> {
     public ArrayList<Subject> ListAll() throws Exception{
         ArrayList<Subject> lista = new ArrayList<Subject>();
          try {
-             cn = Conectar.getConnection();
-            String sql = "{call PACK_LIST_SUBJECT.GET_SUBJECTS(?)}";
+             cn = conexion.getConnection();
+            String sql = "{? = call PACK_MANAGE_SUBJECT.LIST_SU}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();
@@ -166,7 +167,7 @@ public class SubjectDAO implements ICRUD<Subject> {
                 
                 su = new Subject();
                 su.setName_subject(rs.getString("NAME_SUBJECT"));
-                su.setId_subject(Integer.parseInt(rs.getString("DNI")));
+                su.setId_subject(rs.getInt("ID_SUBJECT"));
                 lista.add(su);
             }            
             ca.close();

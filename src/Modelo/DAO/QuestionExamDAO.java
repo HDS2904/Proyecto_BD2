@@ -7,6 +7,7 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.QuestionExam;
+import Principal.conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,13 +34,14 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
     
     @Override
     public void Create(QuestionExam t) throws Exception{
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_QUESTION_EXAM.INSERT_QEX(?,?,?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_QUESTION_EXAM.INSERT_QEX(?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
-            ps.setString(1,t.getQuestion());
-            ps.setInt(2,t.getN_question());
-            ps.setInt(3,t.getId_exam());
+            
+            ps.setInt(1,t.getId_exam());
+            ps.setString(2,t.getQuestion());
+            ps.setInt(3,t.getN_question());
                        
             ps.execute();
             mensaje="DATOS GUARDADOS EXITOSAMENTE";
@@ -62,14 +64,14 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
 
     @Override
     public void Update(QuestionExam t) throws Exception{
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_QUESTION_EXAM.UPDATE_QEX(?,?,?,?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_QUESTION_EXAM.UPDATE_QEX(?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question_exam());
-            ps.setString(2,t.getQuestion());
-            ps.setInt(3,t.getN_question());
-            ps.setInt(4,t.getId_exam());
+            ps.setInt(2,t.getId_exam());
+            ps.setString(3,t.getQuestion());
+            ps.setInt(4,t.getN_question());
                        
             ps.execute();
             mensaje="DATOS ACTUALIZADOS EXITOSAMENTE";
@@ -93,8 +95,8 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
 
     @Override
     public void Delete(QuestionExam t) throws Exception{
-        cn = Conectar.getConnection();
-        String sql = "{call PACK_MANT_QUESTION_EXAM.DELETE_QEX(?)}";
+        cn = conexion.getConnection();
+        String sql = "{call PACK_MANAGE_QUESTION_EXAM.DELETE_QEX(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question_exam());
@@ -121,12 +123,78 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
 
     @Override
     public QuestionExam Search(int t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        qe = new QuestionExam();
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_QUESTION_EXAM.SEARCH_QEX(?)}";
+        
+        
+         try {
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
+            ca.execute();
+            rs = (ResultSet)ca.getObject(2);
+            if(rs.next()){
+                
+                qe.setId_question_exam(rs.getInt("ID_QUESTION_EXAM"));
+                qe.setId_exam(rs.getInt("ID_EXAM"));
+                qe.setQuestion(rs.getString("QUESTION"));
+                qe.setN_question(rs.getInt("N_QUESTION"));
+                
+                
+                
+            }
+            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return qe;
+        
     }
 
     @Override
     public ArrayList<QuestionExam> ListAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        ArrayList<QuestionExam> lista = new ArrayList<QuestionExam>();
+         try {
+             cn = conexion.getConnection();
+            String sql = "{? = call PACK_MANAGE_QUESTION_EXAM.LIST_QEX}";
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.execute();
+            rs = (ResultSet)ca.getObject(1);
+            while(rs.next()){
+                
+                qe = new QuestionExam();
+                qe.setId_question_exam(rs.getInt("ID_QUESTION_EXAM"));
+                qe.setId_exam(rs.getInt("ID_EXAM"));
+                qe.setQuestion(rs.getString("QUESTION"));
+                qe.setN_question(rs.getInt("N_QUESTION"));
+                lista.add(qe);
+            }            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return lista;
+        
+        
     }
 
 }
