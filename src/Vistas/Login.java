@@ -1,20 +1,16 @@
 
 package Vistas;
 import AppPackage.AnimationClass;
+import Modelo.DAO.PersonDAO;
 import Modelo.DAO.TeacherDAO;
-import Modelo.Entidades.Person;
-import Modelo.Entidades.Teacher;
-import java.awt.Color;
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
 import javax.swing.JOptionPane;
 
 
 public class Login extends javax.swing.JFrame {
     int cont = 0;
-    private Teacher tea;
-    private Person per;
-    private TeacherDAO Pcrud;
     
     public Login() {
         initComponents();
@@ -41,12 +37,12 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txpass = new javax.swing.JPasswordField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnenter = new javax.swing.JToggleButton();
         jlmusica = new javax.swing.JLabel();
         jlinternet = new javax.swing.JLabel();
         jlcalculadora = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jctipo = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jlnot = new javax.swing.JLabel();
         jlsoc = new javax.swing.JLabel();
@@ -114,20 +110,20 @@ public class Login extends javax.swing.JFrame {
         txpass.setBorder(null);
         pingreso.add(txpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_OFF.png"))); // NOI18N
-        jToggleButton1.setBorder(null);
-        jToggleButton1.setBorderPainted(false);
-        jToggleButton1.setContentAreaFilled(false);
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jToggleButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        jToggleButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        jToggleButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnenter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_OFF.png"))); // NOI18N
+        btnenter.setBorder(null);
+        btnenter.setBorderPainted(false);
+        btnenter.setContentAreaFilled(false);
+        btnenter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnenter.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        btnenter.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        btnenter.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        btnenter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton1MouseClicked(evt);
+                btnenterMouseClicked(evt);
             }
         });
-        pingreso.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
+        pingreso.add(btnenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
 
         jlmusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Musical_Notes_32px.png"))); // NOI18N
         pingreso.add(jlmusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, 40));
@@ -153,10 +149,10 @@ public class Login extends javax.swing.JFrame {
         jLabel16.setText("LOGIN");
         pingreso.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Profesor", "Estudiante", "Administrador" }));
-        jComboBox1.setBorder(null);
-        pingreso.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 150, 20));
+        jctipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jctipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Profesor", "Estudiante", "Administrador" }));
+        jctipo.setBorder(null);
+        pingreso.add(jctipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 150, 20));
 
         getContentPane().add(pingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
@@ -397,11 +393,20 @@ public class Login extends javax.swing.JFrame {
         jlsoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlsocMouseExited
 
-    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+    private void btnenterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnenterMouseClicked
         String users = txusers.getText();
         String password = txpass.getText();
+        int a = jctipo.getSelectedIndex();
         
-    }//GEN-LAST:event_jToggleButton1MouseClicked
+        PersonDAO pdao;
+        TeacherDAO tdao;
+        //StudentDAO sdao;
+        //DirectorDAO ddao;
+        if(a == 1){
+            
+        }
+        
+    }//GEN-LAST:event_btnenterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -439,7 +444,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JToggleButton btnenter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -461,7 +466,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JComboBox<String> jctipo;
     private javax.swing.JLabel jlcalculadora;
     private javax.swing.JLabel jlcron;
     private javax.swing.JLabel jldri;
@@ -479,9 +484,9 @@ public class Login extends javax.swing.JFrame {
     public void OpenMenu1(int i){
         Runtime rt = Runtime.getRuntime();
         switch(i){
-            case 1: try {
+            case 1:  try {
                         Desktop.getDesktop().browse(URI.create("www.google.com.pe"));
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         JOptionPane.showConfirmDialog(this, e);
                     }
                     break;
@@ -489,14 +494,14 @@ public class Login extends javax.swing.JFrame {
                         
                         Process p = rt.exec("calc");
                         p.waitFor();
-                    } catch (Exception e) {
+                    } catch (IOException | InterruptedException e) {
                         JOptionPane.showConfirmDialog(this, e);
                     }
                     break;
             case 3: try {
                         Process p = rt.exec("wmplayer");
                         p.waitFor();
-                    } catch (Exception e) {
+                    } catch (IOException | InterruptedException e) {
                         JOptionPane.showConfirmDialog(this, e);
                     }
                     break;
