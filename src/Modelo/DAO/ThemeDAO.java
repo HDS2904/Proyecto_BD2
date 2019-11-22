@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import oracle.jdbc.OracleTypes;
-import principal.Conectar;
+import Principal.conexion;
 
 /**
  *

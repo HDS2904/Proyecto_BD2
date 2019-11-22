@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
-import principal.Conectar;
+import Principal.conexion;
 
 /**
  *
@@ -33,7 +33,7 @@ public class SectionStudentDAO implements ICRUD<SectionStudent>{
 
     @Override
     public void Create(SectionStudent t) throws Exception {
-        cn = Conectar.getConnection();
+        cn = conexion.getConnection();
         String sql = "{call PACK_MANT_SECTION_STUDENT.INSERT_SCT(?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class SectionStudentDAO implements ICRUD<SectionStudent>{
 
     @Override
     public void Update(SectionStudent t) throws Exception {
-        cn = Conectar.getConnection();
+        cn = conexion.getConnection();
         String sql = "{call PACK_MANT_SECTION_STUDENT.UPDATE_SCT(?,?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
@@ -95,7 +95,7 @@ public class SectionStudentDAO implements ICRUD<SectionStudent>{
 
     @Override
     public void Delete(SectionStudent t) throws Exception {
-        cn = Conectar.getConnection();
+        cn = conexion.getConnection();
         String sql = "{call PACK_MANT_SECTION_STUDENT.DELETE_SCT(?)}";
         try {
             ps = cn.prepareStatement(sql);

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
-import principal.Conectar;
+import Principal.conexion;
 
 
 
@@ -19,7 +19,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
     
     @Override
     public void Create(Teacher t) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         String sql = "{call PACK_MANAGE_TEACHERS.INSERT_T(?,?)}";
         try {
@@ -41,7 +41,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
 
     @Override
     public void Update(Teacher t) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         String sql = "{call PACK_MANAGE_TEACHERS.UPDATE_T(?,?)";
         
@@ -64,7 +64,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
 
     @Override
     public void Delete(Teacher t) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         String sql = "{call PACK_MANAGE_TEACHERS.DELETE_T(?)";
         try {
@@ -85,7 +85,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
 
     @Override
     public Teacher Search(int t) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         Teacher te = new Teacher();
         ResultSet rs;
@@ -120,7 +120,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
     @Override
     public ArrayList<Teacher> ListAll() throws Exception{
         ArrayList<Teacher> lista = new ArrayList<Teacher>();
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call= null;
         Teacher te = new Teacher();
         ResultSet rs = null;

@@ -1,27 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Principal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public final class conexion {
- 
-    public static Connection getConnection() throws SQLException {
-        Connection cn = null;
+public class conexion {
+    private static Connection con = null;
+    private static String user = "Jonathan_HDS";
+    private static String password = "HDS2904";
+    private static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+    private static String driver = "oracle.jdbc.driver.OracleDriver";
+    
+    public static Connection getConnection() throws SQLException{
         try {
-            // Parámetros de Connexión
-            String driver = "oracle.jdbc.OracleDriver";
-            String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-            String user = "angel";
-            String pwd = "angel";
-            // Proceso
             Class.forName(driver).newInstance();
-            cn = DriverManager.getConnection(url, user, pwd);
+            con = DriverManager.getConnection(url, user, password);
+            con.setAutoCommit(false);
+            if(con != null){
+                System.out.println("CONEXIÓN EXITOSA");
+            }
         } catch (SQLException e) {
             throw e;
         } catch (ClassNotFoundException ex) {
@@ -29,7 +27,15 @@ public final class conexion {
         } catch (InstantiationException | IllegalAccessException e) {
             throw new SQLException("No se puede acceder a la base de datos.");
         }
-        return cn;
+        return con;
     }
-
+    
+    public void desconectar() throws SQLException{
+        try {
+            con.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
 }

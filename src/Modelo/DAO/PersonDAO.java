@@ -7,13 +7,13 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Person;
+import Principal.conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
-import principal.Conectar;
 
 public class PersonDAO implements ICRUD<Person>{
     Connection con;
@@ -21,11 +21,13 @@ public class PersonDAO implements ICRUD<Person>{
     
     @Override
     public void Create(Person p) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_PERSONS.INSERT_P(?,?,?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_PERSONS.INSERT_D(?,?,?,?,?,?)}";
         try {
+            System.out.println("paso1");
             call = con.prepareCall(sql);
+            System.out.println("paso2");
             call.setString(1, p.getFirs_name());
             call.setString(2, p.getLast_name());
             call.setInt(3, p.getDni());
@@ -47,7 +49,7 @@ public class PersonDAO implements ICRUD<Person>{
 
     @Override
     public void Update(Person p) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         String sql = "{call PACK_MANAGE_PERSONS.UPDATE_P(?,?,?,?,?,?,?)";
         try {
@@ -74,7 +76,7 @@ public class PersonDAO implements ICRUD<Person>{
 
     @Override
     public void Delete(Person p) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         String sql = "{call PACK_MANAGE_PERSONS.DELETE_P(?)";
         
@@ -96,12 +98,12 @@ public class PersonDAO implements ICRUD<Person>{
 
     @Override
     public Person Search(int t) throws Exception{
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call = null;
         Person p = new Person();
         ResultSet rs;
         
-        String sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_P(?)}";
+        String sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_D(?)}";
         
         try {
             call = con.prepareCall(sql);
@@ -131,13 +133,14 @@ public class PersonDAO implements ICRUD<Person>{
                 System.out.println(e);
             }
         }
+        System.out.println("te devolvio");
         return p;
     }
 
     @Override
     public ArrayList<Person> ListAll() throws Exception{
         ArrayList<Person> lista = new ArrayList<Person>();
-        con = Conectar.getConnection();
+        con = conexion.getConnection();
         call= null;
         Person ps = new Person();
         ResultSet rs = null;
