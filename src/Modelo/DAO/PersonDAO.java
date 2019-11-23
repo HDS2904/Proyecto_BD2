@@ -25,9 +25,7 @@ public class PersonDAO implements ICRUD<Person>{
         call = null;
         String sql = "{call PACK_MANAGE_PERSONS.INSERT_D(?,?,?,?,?,?)}";
         try {
-            System.out.println("paso1");
             call = con.prepareCall(sql);
-            System.out.println("paso2");
             call.setString(1, p.getFirs_name());
             call.setString(2, p.getLast_name());
             call.setInt(3, p.getDni());
@@ -133,17 +131,16 @@ public class PersonDAO implements ICRUD<Person>{
                 System.out.println(e);
             }
         }
-        System.out.println("te devolvio");
         return p;
     }
 
     @Override
     public ArrayList<Person> ListAll() throws Exception{
-        ArrayList<Person> lista = new ArrayList<Person>();
+        ArrayList<Person> lista = new ArrayList<>();
         con = conexion.getConnection();
         call= null;
-        Person ps = new Person();
-        ResultSet rs = null;
+        Person ps;
+        ResultSet rs;
         String sql = "{? = call PACK_MANAGE_TEACHERS.LIST_T}";
        
         try {
