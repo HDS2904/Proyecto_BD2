@@ -1,11 +1,19 @@
 
 package Vistas;
 import AppPackage.AnimationClass;
-import Modelo.DAO.PersonDAO;
-import Modelo.DAO.TeacherDAO;
+import Controladores.Controler_Teacher;
+import Modelo.Entidades.Director;
+import Modelo.Entidades.Person;
+import Modelo.Entidades.Student;
+import Modelo.Entidades.Teacher;
+import Principal.conexion;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
@@ -37,12 +45,12 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txpass = new javax.swing.JPasswordField();
-        btnenter = new javax.swing.JToggleButton();
         jlmusica = new javax.swing.JLabel();
         jlinternet = new javax.swing.JLabel();
         jlcalculadora = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jctipo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jlnot = new javax.swing.JLabel();
         jlsoc = new javax.swing.JLabel();
@@ -80,7 +88,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 0));
         jLabel2.setText("PASSWORD:");
-        pingreso.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        pingreso.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_User_96px_2.png"))); // NOI18N
         pingreso.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
@@ -110,21 +118,6 @@ public class Login extends javax.swing.JFrame {
         txpass.setBorder(null);
         pingreso.add(txpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
 
-        btnenter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_OFF.png"))); // NOI18N
-        btnenter.setBorder(null);
-        btnenter.setBorderPainted(false);
-        btnenter.setContentAreaFilled(false);
-        btnenter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnenter.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        btnenter.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        btnenter.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
-        btnenter.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnenterMouseClicked(evt);
-            }
-        });
-        pingreso.add(btnenter, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
-
         jlmusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Musical_Notes_32px.png"))); // NOI18N
         pingreso.add(jlmusica, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 150, 40, 40));
 
@@ -150,9 +143,24 @@ public class Login extends javax.swing.JFrame {
         pingreso.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
         jctipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jctipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Profesor", "Estudiante", "Administrador" }));
+        jctipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Administrador", "Profesor", "Estudiante" }));
         jctipo.setBorder(null);
         pingreso.add(jctipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 150, 20));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_OFF.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Enter_ON.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        pingreso.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
 
         getContentPane().add(pingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
@@ -312,29 +320,25 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        cont++;
-        AnimationClass ani = new AnimationClass();
-        if (cont%2 != 0){
-            ani.jLabelXRight(-40, 10, 10, 5, jlinternet);
-            ani.jLabelXRight(-40, 10, 10, 5, jlcalculadora);
-            ani.jLabelXRight(-40, 10, 10, 5, jlmusica);
-        }else{
-            ani.jLabelXLeft(10, -40, 10, 5, jlinternet);
-            ani.jLabelXLeft(10, -40, 10, 5, jlcalculadora);
-            ani.jLabelXLeft(10, -40, 10, 5, jlmusica);
-        }
+    cont++;
+    AnimationClass ani = new AnimationClass();
+    if (cont%2 != 0){
+        ani.jLabelXRight(-40, 10, 10, 5, jlinternet);
+        ani.jLabelXRight(-40, 10, 10, 5, jlcalculadora);
+        ani.jLabelXRight(-40, 10, 10, 5, jlmusica);
+    }else{
+        ani.jLabelXLeft(10, -40, 10, 5, jlinternet);
+        ani.jLabelXLeft(10, -40, 10, 5, jlcalculadora);
+        ani.jLabelXLeft(10, -40, 10, 5, jlmusica);
+    }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        int res = JOptionPane.YES_NO_OPTION;
-        int dialog = JOptionPane.showConfirmDialog(null,"¿Seguro que quiere salir?","Exit",res);
-        if(dialog == 0){
-            System.exit(0);
-        }
+    aviso();
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-        this.setState(Login.ICONIFIED);
+    this.setState(Login.ICONIFIED);
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jlinternetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinternetMouseClicked
@@ -342,71 +346,60 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jlinternetMouseClicked
 
     private void jlcalculadoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlcalculadoraMouseClicked
-     OpenMenu1(2);
+    OpenMenu1(2);
     }//GEN-LAST:event_jlcalculadoraMouseClicked
 
     private void jlprogMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlprogMouseMoved
-        jlprog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jlprog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jlprogMouseMoved
 
     private void jlprogMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlprogMouseExited
-        jlprog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jlprog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlprogMouseExited
 
     private void jlcronMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlcronMouseMoved
-        jlcron.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jlcron.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jlcronMouseMoved
 
     private void jlcronMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlcronMouseExited
-        jlcron.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jlcron.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlcronMouseExited
 
     private void jlmanMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlmanMouseMoved
-        jlman.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jlman.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jlmanMouseMoved
 
     private void jlmanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlmanMouseExited
-        jlman.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jlman.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlmanMouseExited
 
     private void jlnotMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlnotMouseMoved
-        jlnot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jlnot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jlnotMouseMoved
 
     private void jlnotMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlnotMouseExited
-        jlnot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jlnot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlnotMouseExited
 
     private void jldriMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jldriMouseMoved
-        jldri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jldri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jldriMouseMoved
 
     private void jldriMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jldriMouseExited
-        jldri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jldri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jldriMouseExited
 
     private void jlsocMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlsocMouseMoved
-        jlsoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
+    jlsoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153,153,153)));
     }//GEN-LAST:event_jlsocMouseMoved
 
     private void jlsocMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlsocMouseExited
-        jlsoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+    jlsoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
     }//GEN-LAST:event_jlsocMouseExited
 
-    private void btnenterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnenterMouseClicked
-        String users = txusers.getText();
-        String password = txpass.getText();
-        int a = jctipo.getSelectedIndex();
-        
-        PersonDAO pdao;
-        TeacherDAO tdao;
-        //StudentDAO sdao;
-        //DirectorDAO ddao;
-        if(a == 1){
-            
-        }
-        
-    }//GEN-LAST:event_btnenterMouseClicked
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    ejecutar_accion();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -444,7 +437,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnenter;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -480,7 +473,15 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txpass;
     private javax.swing.JTextField txusers;
     // End of variables declaration//GEN-END:variables
-
+    
+    public void aviso(){
+        int res = JOptionPane.YES_NO_OPTION;
+        int dialog = JOptionPane.showConfirmDialog(null,"¿Seguro que quiere salir?","Exit",res);
+        if(dialog == 0){
+            System.exit(0);
+        }
+    }
+    
     public void OpenMenu1(int i){
         Runtime rt = Runtime.getRuntime();
         switch(i){
@@ -509,5 +510,75 @@ public class Login extends javax.swing.JFrame {
         
     }
 
+    public void ejecutar_accion(){
+        int op = jctipo.getSelectedIndex();
+        String user = txusers.getText();
+        int pass = Integer.parseInt(txpass.getText());
+        if(op != 0 && !(user.equals("")) && pass != 0){
+            Connection con;
+            Person p = new Person();
+            PreparedStatement ps;
+            ResultSet rs;
+            try {
+                con = conexion.getConnection();
+                switch(op){
+                    case 1: ps = con.prepareStatement("SELECT ID_PERSON FROM DIRECTOR WHERE CODE_DIRECTOR = ?");
+                            ps.setString(1, user);
+                            ps.setInt(2, pass);
+                            rs = ps.executeQuery();
+                            if(rs.next()){
+                                JOptionPane.showMessageDialog(null, "BIENVENIDO DIRECTOR "+rs.getString("LAST_NAME"));
 
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
+                            }
+                            break;
+                    case 2: ps = con.prepareStatement("SELECT * FROM VIEW_TEACHER WHERE CODE_TEACHER = ? AND DNI = ?");
+                            ps.setString(1,user);
+                            System.out.println(user);
+                            ps.setInt(2,pass);
+                            System.out.println(pass);
+                            rs = ps.executeQuery();
+                            if(rs.next()){
+                                Teacher t = new Teacher();
+                                t.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                t.setCode_teacher(rs.getString("CODE_TEACHER"));
+                                p.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                p.setFirs_name(rs.getString("FIRST_NAME"));
+                                p.setLast_name(rs.getString("LAST_NAME"));
+                                p.setDni(Integer.parseInt(rs.getString("DNI")));
+                                p.setPhone(Integer.parseInt(rs.getString("PHONE")));
+                                p.setAddress(rs.getString("ADDRESS"));
+                                p.setEmail(rs.getString("EMAIL"));
+                                JOptionPane.showMessageDialog(null, "BIENVENIDO PROFESOR "+rs.getString("LAST_NAME"));
+                                Controler_Teacher as = new Controler_Teacher(t,p);
+                                this.setVisible(false);
+                                as.inicio();
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
+                            }
+                            break;
+                    case 3: ps = con.prepareStatement("SELECT ID_PERSON FROM STUDENT WHERE CODE_STUDENT = ? ");
+                            ps.setString(1, user);
+                            ps.setInt(2, pass);
+                            rs = ps.executeQuery();
+                            if(rs.next()){
+                                JOptionPane.showMessageDialog(null, "BIENVENIDO PROFESOR "+rs.getString("LAST_NAME"));
+                                this.setVisible(false);
+
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
+                            }
+                            break;
+                }
+            } catch (SQLException e) {
+                System.out.println("error al Logearse"+e.getMessage());
+            }
+        }else
+            JOptionPane.showMessageDialog(null,"Ingrese todos los campos para logearse");
+        
+        
+    }
+    
+    
 }
