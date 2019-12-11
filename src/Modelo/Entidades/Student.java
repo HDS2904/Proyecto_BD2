@@ -4,9 +4,9 @@ package Modelo.Entidades;
 public class Student {
     private int id_person;
     private String code_student;
-    private String id_school;
+    private int id_school;
 
-    public Student(int id_person, String code_student, String id_school) {
+    public Student(int id_person, String code_student, int id_school) {
         this.id_person = id_person;
         this.code_student = code_student;
         this.id_school = id_school;
@@ -31,11 +31,11 @@ public class Student {
         this.code_student = code_student;
     }
 
-    public String getId_school() {
+    public int getId_school() {
         return id_school;
     }
 
-    public void setId_school(String id_school) {
+    public void setId_school(int id_school) {
         this.id_school = id_school;
     }
 

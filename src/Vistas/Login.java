@@ -512,8 +512,10 @@ public class Login extends javax.swing.JFrame {
 
     public void ejecutar_accion(){
         int op = jctipo.getSelectedIndex();
-        String user = txusers.getText();
-        int pass = Integer.parseInt(txpass.getText());
+        //String user = txusers.getText();
+        String user = "10000101";
+        //int pass = Integer.parseInt(txpass.getText());
+        int pass = 47089746;
         if(op != 0 && !(user.equals("")) && pass != 0){
             Connection con;
             Person p = new Person();

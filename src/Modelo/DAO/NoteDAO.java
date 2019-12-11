@@ -36,7 +36,7 @@ public class NoteDAO implements ICRUD<Note>{
     public void Create(Note t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_NOTE.INSERT_NO(?,?)}";
+        String sql = "{call PACK_MANAGE_NOTES.INSERT_D(?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_section_student());
@@ -67,7 +67,7 @@ public class NoteDAO implements ICRUD<Note>{
     public void Update(Note t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_NOTE.UPDATE_NO(?,?,?)}";
+        String sql = "{call PACK_MANAGE_NOTES.UPDATE_D(?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_note());
@@ -98,7 +98,7 @@ public class NoteDAO implements ICRUD<Note>{
     public void Delete(Note t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_NOTE.DELETE_NO(?)}";
+        String sql = "{call PACK_MANAGE_NOTES.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_note());
@@ -128,7 +128,7 @@ public class NoteDAO implements ICRUD<Note>{
         
         no = new Note();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_NOTE.SEARCH_NO(?)}";
+        String sql = "{? = call PACK_MANAGE_NOTES.SEARCH_D(?)}";
         
         
          try {
@@ -169,7 +169,7 @@ public class NoteDAO implements ICRUD<Note>{
         ArrayList<Note> lista = new ArrayList<Note>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_QUESTION_EXAM.LIST_QEX}";
+            String sql = "{? = call PACK_MANAGE_NOTES.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

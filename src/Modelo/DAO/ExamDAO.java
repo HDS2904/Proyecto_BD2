@@ -35,7 +35,7 @@ public class ExamDAO implements ICRUD<Exam>{
     @Override
     public void Create(Exam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_EXAM.INSERT_EX(?)}";
+        String sql = "{call PACK_MANAGE_EXAMS.INSERT_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_section());
@@ -62,7 +62,7 @@ public class ExamDAO implements ICRUD<Exam>{
     @Override
     public void Update(Exam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_EXAM.UPDATE_EX(?,?)}";
+        String sql = "{call PACK_MANAGE_EXAMS.UPDATE_D(?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_exam());
@@ -91,7 +91,7 @@ public class ExamDAO implements ICRUD<Exam>{
     @Override
     public void Delete(Exam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_EXAM.DELETE_EX(?)}";
+        String sql = "{call PACK_MANAGE_EXAMS.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_exam());
@@ -120,7 +120,7 @@ public class ExamDAO implements ICRUD<Exam>{
     public Exam Search(int t) throws Exception {
         exa = new Exam();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_EXAM.SEARCH_EX(?)}";
+        String sql = "{? = call PACK_MANAGE_EXAMS.SEARCH_D(?)}";
         
         
          try {
@@ -158,7 +158,7 @@ public class ExamDAO implements ICRUD<Exam>{
         ArrayList<Exam> lista = new ArrayList<Exam>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_EXAM.LIST_EX}";
+            String sql = "{? = call PACK_MANAGE_EXAMS.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

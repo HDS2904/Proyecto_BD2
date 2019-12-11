@@ -37,7 +37,7 @@ public class QuestionDAO implements ICRUD<Question>{
     public void Create(Question t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION.INSERT_QU(?,?,?)}";
+        String sql = "{call PACK_MANAGE_QUESTIONS.INSERT_D(?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_theme());
@@ -67,7 +67,7 @@ public class QuestionDAO implements ICRUD<Question>{
     public void Update(Question t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION.UPDATE_QH(?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_QUESTIONS.UPDATE_D(?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question());
@@ -98,7 +98,7 @@ public class QuestionDAO implements ICRUD<Question>{
     public void Delete(Question t) throws Exception {
     
          cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION.DELETE_QU(?)}";
+        String sql = "{call PACK_MANAGE_QUESTIONS.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question());
@@ -124,7 +124,7 @@ public class QuestionDAO implements ICRUD<Question>{
     public Question Search(int t) throws Exception {
         qu = new Question();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_QUESTION.SEARCH_QU(?)}";
+        String sql = "{? = call PACK_MANAGE_QUESTIONS.SEARCH_D(?)}";
         
         
          try {
@@ -162,7 +162,7 @@ public class QuestionDAO implements ICRUD<Question>{
         ArrayList<Question> lista = new ArrayList<Question>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_QUESTION.LIST_QU}";
+            String sql = "{? = call PACK_MANAGE_QUESTIONS.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

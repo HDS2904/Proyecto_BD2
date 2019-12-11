@@ -21,11 +21,10 @@ public class TeacherDAO implements ICRUD<Teacher>{
     public void Create(Teacher t) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_TEACHERS.INSERT_T(?,?)}";
+        String sql = "{call PACK_MANAGE_TEACHERS.INSERT_D(?)}";
         try {
             call = con.prepareCall(sql);
-            call.setInt(1, t.getId_person());
-            call.setString(2, t.getCode_teacher());
+            call.setString(1, t.getCode_teacher());
             call.execute();
             call.close();
         } catch (SQLException e) {
@@ -43,7 +42,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
     public void Update(Teacher t) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_TEACHERS.UPDATE_T(?,?)";
+        String sql = "{call PACK_MANAGE_TEACHERS.UPDATE_D(?,?)";
         
         try {
             call = con.prepareCall(sql);
@@ -66,7 +65,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
     public void Delete(Teacher t) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_TEACHERS.DELETE_T(?)";
+        String sql = "{call PACK_MANAGE_TEACHERS.DELETE_D(?)";
         try {
             call = con.prepareCall(sql);
             call.setInt(1, t.getId_person());
@@ -89,7 +88,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
         call = null;
         Teacher te = new Teacher();
         ResultSet rs;
-        String sql = "{? = call PACK_MANAGE_TEACHERS.SEARCH_T(?)}";
+        String sql = "{? = call PACK_MANAGE_TEACHERS.SEARCH_D(?)}";
         
         try {
             call = con.prepareCall(sql);
@@ -119,12 +118,12 @@ public class TeacherDAO implements ICRUD<Teacher>{
 
     @Override
     public ArrayList<Teacher> ListAll() throws Exception{
-        ArrayList<Teacher> lista = new ArrayList<Teacher>();
+        ArrayList<Teacher> lista = new ArrayList<>();
         con = conexion.getConnection();
         call= null;
-        Teacher te = new Teacher();
-        ResultSet rs = null;
-        String sql = "{ ? = call PACK_MANAGE_TEACHERS.LIST_T}";
+        Teacher te ;
+        ResultSet rs;
+        String sql = "{ ? = call PACK_MANAGE_TEACHERS.LIST_D}";
        
         try {
             call = con.prepareCall(sql);
@@ -132,6 +131,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
             call.executeQuery();
             rs = (ResultSet)call.getObject(1);
              while(rs.next()){
+                te = new Teacher();
                 te.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
                 te.setCode_teacher(rs.getString("CODE_TEACHER"));
                 lista.add(te);

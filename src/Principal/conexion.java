@@ -6,11 +6,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class conexion {
-    private static Connection con = null;
-    private static String user = "Jonathan_HDS";
-    private static String password = "HDS2904";
-    private static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-    private static String driver = "oracle.jdbc.driver.OracleDriver";
+    static Connection con = null;
+    static String user = "Jonathan_HDS";
+    static String password = "HDS2904";
+    static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+    static String driver = "oracle.jdbc.driver.OracleDriver";
     
     public static Connection getConnection() throws SQLException{
         try {

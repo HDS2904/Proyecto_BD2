@@ -6,118 +6,114 @@
 package Modelo.DAO;
 
 import Interfaz.ICRUD;
-import Modelo.Entidades.Subject;
+import Modelo.Entidades.Student;
+import Principal.conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
-import Principal.conexion;
 
 /**
  *
- * @author Angel
+ * @author HDS
  */
-public class SubjectDAO implements ICRUD<Subject> {
-    
+public class StudentDAO implements ICRUD<Student>{
     Connection con;
     CallableStatement call;
     
     @Override
-    public void Create(Subject t) throws Exception{
+    public void Create(Student t) throws Exception {
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_SUBJECTS.INSERT_D(?)}";
+        String sql = "{call PACK_MANAGE_STUDENTS.INSERT_D(?,?)}";
         try {
             call = con.prepareCall(sql);
-            call.setString(1,t.getName_subject());
+            call.setString(1, t.getCode_student());
+            call.setInt(2, t.getId_school());
             call.execute();
             call.close();
-        } catch (SQLException ex) {
-            throw ex;
+        } catch (SQLException e) {
+            throw e;
         }finally{
-            
             try {
                 con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
 
     @Override
-    public void Update(Subject t) throws Exception{
+    public void Update(Student t) throws Exception {
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_SUBJECTS.UPDATE_D(?,?)}";
+        String sql = "{call PACK_MANAGE_STUDENTS.UPDATE_D(?,?,?)";
         try {
             call = con.prepareCall(sql);
-            call.setInt(1,t.getId_subject());
-            call.setString(2,t.getName_subject());
+            call.setInt(1, t.getId_person());
+            call.setString(2, t.getCode_student());
+            call.setInt(3, t.getId_school());
             call.execute();
             call.close();
-        } catch (SQLException ex) {
-            throw ex;
+        } catch (SQLException e) {
+            throw e;
         }finally{
-            
             try {
                 con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-            
         }
+    }
+
+    @Override
+    public void Delete(Student t) throws Exception {
+        con = conexion.getConnection();
+        call = null;
+        String sql = "{call PACK_MANAGE_STUDENTS.DELETE_D(?)";
         
-    }
-
-    @Override
-    public void Delete(Subject t) throws Exception{
-        con = conexion.getConnection();
-        call = null;
-        String sql = "{call PACK_MANAGE_SUBJECTS.DELETE_D(?)}";
         try {
             call = con.prepareCall(sql);
-            call.setInt(1,t.getId_subject());
-                       
+            call.setInt(1, t.getId_person());
             call.execute();
             call.close();
-        } catch (SQLException ex) {
-            throw ex;
+        } catch (SQLException e) {
+            throw e;
         }finally{
-            
             try {
                 con.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
 
-    
     @Override
-    public Subject Search(int t) throws Exception{
+    public Student Search(int t) throws Exception {
         con = conexion.getConnection();
         call = null;
-        Subject s = new Subject();
+        Student s = new Student();
         ResultSet rs;
-        String sql = "{? = call PACK_MANAGE_SUBJECTS.SEARCH_D(?)}";
         
+        String sql = "{? = call PACK_MANAGE_STUDENTS.SEARCH_D(?)}";
         
-         try {
+        try {
             call = con.prepareCall(sql);
             call.registerOutParameter(1,OracleTypes.CURSOR);
             call.setInt(2, t);
-            call.execute();
+            call.executeQuery();
             rs = (ResultSet)call.getObject(1);
             if(rs.next()){
-                s.setId_subject(rs.getInt("ID_SUBJECT"));
-                s.setName_subject(rs.getString("NAME_SUBJECT"));
+                s.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                s.setCode_student(rs.getString("CODE_STUDENT"));
+                s.setId_school(Integer.parseInt(rs.getString("ID_SCHOOL")));
+            }else{
+                s.setId_person(0);
             }
-            call.close();
             rs.close();
+            call.close();
         } catch (SQLException e) {
             throw e;
         }finally{
@@ -131,28 +127,28 @@ public class SubjectDAO implements ICRUD<Subject> {
     }
 
     @Override
-    public ArrayList<Subject> ListAll() throws Exception{
-        ArrayList<Subject> lista = new ArrayList<>();
+    public ArrayList<Student> ListAll() throws Exception {
+        ArrayList<Student> lista = new ArrayList<>();
         con = conexion.getConnection();
         call= null;
-        Subject s;
+        Student st;
         ResultSet rs;
-        String sql = "{? = call PACK_MANAGE_SUBJECTS.LIST_D}";
-         try {
-            call = con.prepareCall(sql);
+        String sql = "{? = call PACK_MANAGE_STUDENTS.LIST_D}";
+       
+        try {
             call = con.prepareCall(sql);
             call.registerOutParameter(1,OracleTypes.CURSOR);
-            call.execute();
+            call.executeQuery();
             rs = (ResultSet)call.getObject(1);
-            while(rs.next()){
-                
-                s = new Subject();
-                s.setName_subject(rs.getString("NAME_SUBJECT"));
-                s.setId_subject(rs.getInt("ID_SUBJECT"));
-                lista.add(s);
-            }            
-            call.close();
-            rs.close();
+             while(rs.next()){
+                st = new Student();
+                st.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                st.setCode_student(rs.getString("CODE_STUDENT"));
+                st.setId_school(Integer.parseInt(rs.getString("ID_SCHOOL")));
+                lista.add(st);
+             }
+             rs.close();
+             call.close();
         } catch (SQLException e) {
             throw e;
         }finally{

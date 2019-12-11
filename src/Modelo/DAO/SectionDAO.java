@@ -7,10 +7,8 @@ package Modelo.DAO;
 
 import Interfaz.ICRUD;
 import Modelo.Entidades.Section;
-import Principal.conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,45 +16,37 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
 import Principal.conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Angel
  */
 public class SectionDAO implements ICRUD<Section>{
-    
-    Connection cn;
-    ResultSet rs;
-    PreparedStatement ps;
-    CallableStatement ca;
-    String mensaje = " ";
-    Section sec;
+    Connection con;
+    CallableStatement call;
 
     @Override
     public void Create(Section t) throws Exception{
-
-        cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_SECTION.INSERT_SE(?,?,?,?)}";
+        con = conexion.getConnection();
+        call = null;
+        String sql = "{call PACK_MANAGE_SECTIONS.INSERT_D(?,?,?,?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            
-            ps.setInt(1,t.getId_subject());
-            ps.setInt(2,t.getId_person());
-            ps.setInt(3,t.getId_exam());
-            ps.setString(4,t.getSection_group());
-                       
-            ps.execute();
-            mensaje="DATOS GUARDADOS EXITOSAMENTE";
-            ps.close();
-            
-            
-            
+            System.out.println("paso chidori1");
+            call = con.prepareCall(sql);
+            call.setInt(1,t.getId_subject());
+            call.setInt(2,t.getId_person());
+            call.setInt(3,t.getId_exam());
+            call.setString(4,t.getSection_group());
+            call.execute();
+            System.out.println("paso chidori2");
+            call.close();
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO GUARDAR LOS DATOS \n" + ex.getMessage();
+            JOptionPane.showMessageDialog(null, "Error: "+ex.getMessage());
         }finally{
             
             try {
-                cn.close();
+                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(SectionDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -66,29 +56,24 @@ public class SectionDAO implements ICRUD<Section>{
 
     @Override
     public void Update(Section t) throws Exception{
+        con = conexion.getConnection();
+        call = null;
+        String sql = "{call PACK_MANAGE_SECTIONS.UPDATE_D(?,?,?,?,?)}";
         
-        cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_SECTION.UPDATE_SE(?,?,?,?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1,t.getId_section());
-            ps.setInt(2,t.getId_subject());
-            ps.setInt(3,t.getId_person());
-            ps.setInt(4,t.getId_exam());
-            ps.setString(5,t.getSection_group());
-                       
-            ps.execute();
-            mensaje="DATOS ACTUALIZADOS EXITOSAMENTE";
-            ps.close();
-            
-            
-            
+            call = con.prepareCall(sql);
+            call.setInt(1,t.getId_section());
+            call.setInt(2,t.getId_subject());
+            call.setInt(3,t.getId_person());
+            call.setInt(4,t.getId_exam());
+            call.setString(5,t.getSection_group());
+            call.execute();
+            call.close();
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO ACTUALIZAR LOS DATOS \n" + ex.getMessage();
+            JOptionPane.showMessageDialog(null, ex);
         }finally{
-            
             try {
-                cn.close();
+                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(SectionDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -99,24 +84,20 @@ public class SectionDAO implements ICRUD<Section>{
 
     @Override
     public void Delete(Section t) throws Exception {
-        cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_SECTION.DELETE_SE(?)}";
+        con = conexion.getConnection();
+        call = null;
+        String sql = "{call PACK_MANAGE_SECTIONS.DELETE_D(?)}";
         try {
-            ps = cn.prepareStatement(sql);
-            ps.setInt(1,t.getId_section());
-                       
-            ps.execute();
-            mensaje="DATOS ELIMINADOS EXITOSAMENTE";
-            ps.close();
-            
-            
-            
+            call = con.prepareCall(sql);
+            call.setInt(1,t.getId_section());
+            call.execute();
+            call.close();
         } catch (SQLException ex) {
-            mensaje = "NO SE PUDO ELIMINAR LOS DATOS \n" + ex.getMessage();
+            throw ex;
         }finally{
             
             try {
-                cn.close();
+                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(SectionDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -127,71 +108,68 @@ public class SectionDAO implements ICRUD<Section>{
 
     @Override
     public Section Search(int t) throws Exception {
-        sec = new Section();
-        cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_SECTION.SEARCH_SE(?)}";
-        
-        
+        con = conexion.getConnection();
+        call = null;
+        Section st = new Section();
+        ResultSet rs;
+        String sql = "{? = call PACK_MANAGE_SECTIONS.SEARCH_D(?)}";
          try {
-            ca = cn.prepareCall(sql);
-            ca.registerOutParameter(1,OracleTypes.CURSOR);
-            ca.setInt(2, t);
-            ca.execute();
-            rs = (ResultSet)ca.getObject(2);
+            call = con.prepareCall(sql);
+            call.registerOutParameter(1,OracleTypes.CURSOR);
+            call.setInt(2, t);
+            call.executeQuery();
+            rs = (ResultSet)call.getObject(1);
             if(rs.next()){
-                
-                sec.setId_section(rs.getInt("ID_SECTION"));
-                sec.setId_subject(rs.getInt("ID_SUBJECT"));
-                sec.setId_person(rs.getInt("ID_PERSON"));
-                sec.setId_exam(rs.getInt("ID_EXAM"));
-                sec.setSection_group(rs.getString("SECTION_GROUP"));
-                
-                
+                st.setId_section(rs.getInt("ID_SECTION"));
+                st.setId_subject(rs.getInt("ID_SUBJECT"));
+                st.setId_person(rs.getInt("ID_PERSON"));
+                st.setId_exam(rs.getInt("ID_EXAM"));
+                st.setSection_group(rs.getString("SECTION_GROUP"));
             }
-            
-            ca.close();
+            call.close();
             rs.close();
         } catch (SQLException e) {
             throw e;
         }finally{
             try {
-                cn.close();
+                con.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
-        return sec;
+        return st;
         
     }
 
     @Override
     public ArrayList<Section> ListAll() throws Exception {
-    
-        ArrayList<Section> lista = new ArrayList<Section>();
+        ArrayList<Section> lista = new ArrayList<>();
+        con = conexion.getConnection();
+        call= null;
+        Section st;
+        ResultSet rs;
+        String sql = "{? = call PACK_MANAGE_SECTIONS.LIST_D}";
          try {
-             cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_SECTION.LIST_SE}";
-            ca = cn.prepareCall(sql);
-            ca.registerOutParameter(1,OracleTypes.CURSOR);
-            ca.execute();
-            rs = (ResultSet)ca.getObject(1);
+            call = con.prepareCall(sql);
+            call.registerOutParameter(1,OracleTypes.CURSOR);
+            call.executeQuery();
+            rs = (ResultSet)call.getObject(1);
             while(rs.next()){
-                
-                sec = new Section();
-                 sec.setId_section(rs.getInt("ID_SECTION"));
-                sec.setId_subject(rs.getInt("ID_SUBJECT"));
-                sec.setId_person(rs.getInt("ID_PERSON"));
-                sec.setId_exam(rs.getInt("ID_EXAM"));
-                sec.setSection_group(rs.getString("SECTION_GROUP"));
-                lista.add(sec);
+                st = new Section();
+                st.setId_section(rs.getInt("ID_SECTION"));
+                st.setId_subject(rs.getInt("ID_SUBJECT"));
+                st.setId_person(rs.getInt("ID_PERSON"));
+                st.setId_exam(rs.getInt("ID_EXAM"));
+                st.setSection_group(rs.getString("SECTION_GROUP"));
+                lista.add(st);
             }            
-            ca.close();
+            call.close();
             rs.close();
         } catch (SQLException e) {
             throw e;
         }finally{
             try {
-                cn.close();
+                con.close();
             } catch (SQLException e) {
                 System.out.println(e);
             }

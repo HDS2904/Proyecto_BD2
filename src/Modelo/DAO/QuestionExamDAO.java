@@ -35,7 +35,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
     @Override
     public void Create(QuestionExam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION_EXAM.INSERT_QEX(?,?,?)}";
+        String sql = "{call PACK_MANAGE_QUESTION_EXAMS.INSERT_D(?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             
@@ -65,7 +65,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
     @Override
     public void Update(QuestionExam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION_EXAM.UPDATE_QEX(?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_QUESTION_EXAMS.UPDATE_D(?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question_exam());
@@ -96,7 +96,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
     @Override
     public void Delete(QuestionExam t) throws Exception{
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_QUESTION_EXAM.DELETE_QEX(?)}";
+        String sql = "{call PACK_MANAGE_QUESTION_EXAMS.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question_exam());
@@ -126,7 +126,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
         
         qe = new QuestionExam();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_QUESTION_EXAM.SEARCH_QEX(?)}";
+        String sql = "{? = call PACK_MANAGE_QUESTION_EXAMS.SEARCH_D(?)}";
         
         
          try {
@@ -167,7 +167,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
         ArrayList<QuestionExam> lista = new ArrayList<QuestionExam>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_QUESTION_EXAM.LIST_QEX}";
+            String sql = "{? = call PACK_MANAGE_QUESTION_EXAMS.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

@@ -37,7 +37,7 @@ public class ThemeDAO implements ICRUD<Theme> {
     public void Create(Theme t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_THEME.INSERT_TH(?)}";
+        String sql = "{call PACK_MANAGE_THEMES.INSERT_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1,t.getName_theme());
@@ -66,7 +66,7 @@ public class ThemeDAO implements ICRUD<Theme> {
     
         
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_THEME.UPDATE_TH(?,?)}";
+        String sql = "{call PACK_MANAGE_THEMES.UPDATE_D(?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_subject());
@@ -96,7 +96,7 @@ public class ThemeDAO implements ICRUD<Theme> {
     public void Delete(Theme t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_THEME.DELETE_TH(?)}";
+        String sql = "{call PACK_MANAGE_THEMES.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_theme());
@@ -122,7 +122,7 @@ public class ThemeDAO implements ICRUD<Theme> {
     public Theme Search(int t) throws Exception {
         th = new Theme();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_THEME.SEARCH_TH(?)}";
+        String sql = "{? = call PACK_MANAGE_THEMES.SEARCH_D(?)}";
         
         
          try {
@@ -159,7 +159,7 @@ public class ThemeDAO implements ICRUD<Theme> {
         ArrayList<Theme> lista = new ArrayList<Theme>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_THEME.LIST_TH}";
+            String sql = "{? = call PACK_MANAGE_THEMES.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo.DAO;
 
 import Interfaz.ICRUD;
@@ -16,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTable;
 import oracle.jdbc.OracleTypes;
 
 /**
@@ -36,7 +31,7 @@ public class AlternativeDAO implements ICRUD<Alternative> {
     public void Create(Alternative t) throws Exception {
     
         cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_ALTERNATIVE.INSERT_AL(?,?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_ALTERNATIVES.INSERT_D(?,?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question());
@@ -69,7 +64,7 @@ public class AlternativeDAO implements ICRUD<Alternative> {
     public void Update(Alternative t) throws Exception {
     
          cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_ALTERNATIVE.UPDATE_AL(?,?,?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_ALTERNATIVES.UPDATE_D(?,?,?,?,?,?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_question());
@@ -103,7 +98,7 @@ public class AlternativeDAO implements ICRUD<Alternative> {
     public void Delete(Alternative t) throws Exception {
     
            cn = conexion.getConnection();
-        String sql = "{call PACK_MANAGE_ALTERNATIVE.DELETE_AL(?)}";
+        String sql = "{call PACK_MANAGE_ALTERNATIVES.DELETE_D(?)}";
         try {
             ps = cn.prepareStatement(sql);
             ps.setInt(1,t.getId_alternative());
@@ -130,7 +125,7 @@ public class AlternativeDAO implements ICRUD<Alternative> {
         
         al = new Alternative();
         cn = conexion.getConnection();
-        String sql = "{? = call PACK_MANAGE_ALTERNATIVE.SEARCH_AL(?)}";
+        String sql = "{? = call PACK_MANAGE_ALTERNATIVES.SEARCH_D(?)}";
         
         
          try {
@@ -171,7 +166,7 @@ public class AlternativeDAO implements ICRUD<Alternative> {
         ArrayList<Alternative> lista = new ArrayList<Alternative>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_ALTERNATIVE.LIST_AL}";
+            String sql = "{? = call PACK_MANAGE_ALTERNATIVES.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

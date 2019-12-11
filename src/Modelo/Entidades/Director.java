@@ -2,24 +2,25 @@
 package Modelo.Entidades;
 
 public class Director {
-    private String id_person;
+    private int id_person;
     private String code_director;
-    private String id_faculty;
+    private int id_faculty;
 
-    public Director(String id_person, String code_director, String id_faculty) {
+    public Director(int id_person, String code_director, int id_faculty) {
         this.id_person = id_person;
         this.code_director = code_director;
         this.id_faculty = id_faculty;
     }
     
     public Director(){
+        
     }
     
-    public String getId_person() {
+    public int getId_person() {
         return id_person;
     }
 
-    public void setId_person(String id_person) {
+    public void setId_person(int id_person) {
         this.id_person = id_person;
     }
 
@@ -31,14 +32,15 @@ public class Director {
         this.code_director = code_director;
     }
 
-    public String getId_faculty() {
+    public int getId_faculty() {
         return id_faculty;
     }
 
-    public void setId_faculty(String id_faculty) {
+    public void setId_faculty(int id_faculty) {
         this.id_faculty = id_faculty;
     }
 
+    
     @Override
     public String toString() {
         return "Director{" + "id_person=" + id_person + ", code_director=" + code_director + ", id_faculty=" + id_faculty + '}';

@@ -31,11 +31,31 @@ public class VSTeacher extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnexa = new javax.swing.JButton();
-        btncur = new javax.swing.JButton();
-        btnper = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
+        btn2 = new javax.swing.JButton();
+        btn1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        rSPanelsSlider1 = new rojerusan.RSPanelsSlider();
+        PanelP = new javax.swing.JPanel();
+        Panel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla2sec = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        tx2nalum = new javax.swing.JTextField();
+        btn2lim = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        btn2adm = new javax.swing.JButton();
+        tx2nom = new javax.swing.JTextField();
+        tx2id = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        btn2bus = new javax.swing.JButton();
+        Panel2 = new javax.swing.JPanel();
+        txtext12 = new javax.swing.JLabel();
+        txtext13 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        txtext14 = new javax.swing.JLabel();
         Panel0 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         titulo2 = new javax.swing.JLabel();
@@ -65,29 +85,6 @@ public class VSTeacher extends javax.swing.JFrame {
         btngcam = new javax.swing.JButton();
         btncand = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        Panel2 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        txtext12 = new javax.swing.JLabel();
-        txtext13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        Panel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablacur = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txnomg = new javax.swing.JTextField();
-        btndes = new javax.swing.JButton();
-        btnlims = new javax.swing.JButton();
-        btnads = new javax.swing.JButton();
-        btnups = new javax.swing.JButton();
-        cbsub = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        btnadms = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        txidg = new javax.swing.JTextField();
-        btnbuss = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,29 +103,165 @@ public class VSTeacher extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnexa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnexa.setForeground(new java.awt.Color(0, 153, 0));
-        btnexa.setText("EXAMEN");
-        jPanel2.add(btnexa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 120, 40));
+        btn3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn3.setForeground(new java.awt.Color(0, 0, 204));
+        btn3.setText("EXAMEN");
+        jPanel2.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 120, 40));
 
-        btncur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btncur.setForeground(new java.awt.Color(0, 153, 0));
-        btncur.setText("CURSOS");
-        jPanel2.add(btncur, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 120, 40));
+        btn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn2.setForeground(new java.awt.Color(0, 0, 204));
+        btn2.setText("CURSOS");
+        jPanel2.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 120, 40));
 
-        btnper.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnper.setForeground(new java.awt.Color(0, 153, 0));
-        btnper.setText("PERFIL");
-        jPanel2.add(btnper, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 120, 40));
+        btn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn1.setForeground(new java.awt.Color(0, 0, 204));
+        btn1.setText("PERFIL");
+        jPanel2.add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 120, 40));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 0));
         jLabel12.setText("Acciones");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 100, 20));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, 520));
 
-        rSPanelsSlider1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelP.setBackground(new java.awt.Color(255, 255, 255));
+        PanelP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel3.setBackground(new java.awt.Color(255, 255, 255));
+        Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel3.setName("Panel3"); // NOI18N
+        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel1.setText("Cursos a cargo");
+        Panel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, 20));
+
+        tabla2sec.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabla2sec);
+
+        Panel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 440, 350));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+
+        jLabel2.setText("Nombre Grupo:");
+
+        btn2lim.setText("Limpiar");
+
+        jLabel14.setText("Numero de alumnos:");
+
+        btn2adm.setText("Administrar");
+
+        jLabel17.setText("Código:");
+
+        btn2bus.setText("BUS");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btn2adm, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(btn2lim, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tx2id, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btn2bus)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tx2nalum, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tx2nom)))))
+                .addGap(16, 16, 16))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(tx2id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn2bus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tx2nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tx2nalum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn2adm, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn2lim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+        );
+
+        Panel3.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 290, 270));
+
+        PanelP.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+
+        Panel2.setBackground(new java.awt.Color(255, 255, 255));
+        Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel2.setName("Panel2"); // NOI18N
+        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtext12.setBackground(new java.awt.Color(204, 255, 255));
+        txtext12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtext12.setForeground(new java.awt.Color(0, 153, 51));
+        txtext12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtext12.setText("Generación de examen");
+        Panel2.add(txtext12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 300, 40));
+
+        txtext13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtext13.setForeground(new java.awt.Color(0, 153, 153));
+        txtext13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtext13.setText("Personalizado");
+        Panel2.add(txtext13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 190, 40));
+
+        jButton1.setBackground(new java.awt.Color(102, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/examen.png"))); // NOI18N
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 150, 160));
+
+        jButton2.setBackground(new java.awt.Color(102, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/examen.png"))); // NOI18N
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 150, 160));
+
+        txtext14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtext14.setForeground(new java.awt.Color(0, 153, 153));
+        txtext14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtext14.setText("Automatico");
+        Panel2.add(txtext14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 160, 40));
+
+        PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel0.setBackground(new java.awt.Color(153, 255, 255));
         Panel0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -144,7 +277,7 @@ public class VSTeacher extends javax.swing.JFrame {
         titulo2.setText("Bienvenido profesor");
         Panel0.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 710, 40));
 
-        rSPanelsSlider1.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+        PanelP.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Panel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -234,168 +367,9 @@ public class VSTeacher extends javax.swing.JFrame {
         jLabel11.setText("Datos Personales");
         Panel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 160, 20));
 
-        rSPanelsSlider1.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+        PanelP.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
-        Panel2.setBackground(new java.awt.Color(255, 255, 255));
-        Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel2.setName("Panel2"); // NOI18N
-        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
-        Panel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 150, 150));
-
-        txtext12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtext12.setForeground(new java.awt.Color(0, 153, 153));
-        txtext12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtext12.setText("Generar examen automatico");
-        Panel2.add(txtext12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 360, 40));
-
-        txtext13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtext13.setForeground(new java.awt.Color(0, 153, 153));
-        txtext13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtext13.setText("Generar examen manual");
-        Panel2.add(txtext13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 310, 40));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
-        Panel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 150, 150));
-
-        rSPanelsSlider1.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
-
-        Panel3.setBackground(new java.awt.Color(255, 255, 255));
-        Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel3.setName("Panel3"); // NOI18N
-        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("Cursos a cargo");
-        Panel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, 20));
-
-        tablacur.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tablacur);
-
-        Panel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, 260));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
-
-        jLabel2.setText("Nombre Grupo:");
-
-        btndes.setText("Eliminar");
-
-        btnlims.setText("Limpiar");
-
-        btnads.setText("Agregar");
-
-        btnups.setText("Modificar");
-
-        cbsub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-
-        jLabel14.setText("Curso:");
-
-        btnadms.setText("Administrar");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txnomg))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbsub, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnups)
-                    .addComponent(btnads))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnlims, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btndes, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(btnadms)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txnomg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbsub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnads)
-                    .addComponent(btndes))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnups)
-                    .addComponent(btnlims))
-                .addGap(18, 18, 18)
-                .addComponent(btnadms)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        Panel3.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 280, 250));
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
-
-        jLabel17.setText("Código:");
-
-        btnbuss.setText("BUS");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(txidg, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnbuss)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(txidg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnbuss))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        Panel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, 90));
-
-        rSPanelsSlider1.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
-
-        getContentPane().add(rSPanelsSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 850, 520));
+        getContentPane().add(PanelP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 850, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -441,26 +415,23 @@ public class VSTeacher extends javax.swing.JFrame {
     public javax.swing.JPanel Panel1;
     public javax.swing.JPanel Panel2;
     public javax.swing.JPanel Panel3;
-    public javax.swing.JButton btnadms;
-    public javax.swing.JButton btnads;
-    public javax.swing.JButton btnbuss;
+    public javax.swing.JPanel PanelP;
+    public javax.swing.JButton btn1;
+    public javax.swing.JButton btn2;
+    public javax.swing.JButton btn2adm;
+    public javax.swing.JButton btn2bus;
+    public javax.swing.JButton btn2lim;
+    public javax.swing.JButton btn3;
     public javax.swing.JButton btncand;
-    public javax.swing.JButton btncur;
-    public javax.swing.JButton btndes;
-    public javax.swing.JButton btnexa;
     public javax.swing.JButton btngcam;
-    public javax.swing.JButton btnlims;
-    public javax.swing.JButton btnper;
-    public javax.swing.JButton btnups;
-    public javax.swing.JComboBox<String> cbsub;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -473,7 +444,6 @@ public class VSTeacher extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -482,20 +452,21 @@ public class VSTeacher extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    public rojerusan.RSPanelsSlider rSPanelsSlider1;
-    public javax.swing.JTable tablacur;
+    public javax.swing.JTable tabla2sec;
     private javax.swing.JLabel titulo1;
     public javax.swing.JLabel titulo2;
+    public javax.swing.JTextField tx2id;
+    public javax.swing.JTextField tx2nalum;
+    public javax.swing.JTextField tx2nom;
     public javax.swing.JTextField txapep;
     public javax.swing.JTextField txcodp;
     public javax.swing.JTextField txdir;
     public javax.swing.JTextField txdni;
     public javax.swing.JTextField txema;
-    public javax.swing.JTextField txidg;
-    public javax.swing.JTextField txnomg;
     public javax.swing.JTextField txnomp;
     public javax.swing.JTextField txtel;
     public javax.swing.JLabel txtext12;
     public javax.swing.JLabel txtext13;
+    public javax.swing.JLabel txtext14;
     // End of variables declaration//GEN-END:variables
 }
