@@ -9,12 +9,12 @@ package Vistas;
  *
  * @author HDS
  */
-public class VDirector extends javax.swing.JFrame {
+public class VStudent extends javax.swing.JFrame {
 
     /**
      * Creates new form VSProfesore
      */
-    public VDirector() {
+    public VStudent() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -142,7 +142,7 @@ public class VDirector extends javax.swing.JFrame {
 
         titulo1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titulo1.setForeground(new java.awt.Color(255, 0, 0));
-        titulo1.setText("PORTAL DEL DIRECTOR");
+        titulo1.setText("PORTAL DEL ESTUDIANTE");
         jPanel1.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 60));
@@ -378,7 +378,7 @@ public class VDirector extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(tx3cod, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn3bus))
                             .addComponent(tx3nom)
                             .addComponent(tx3ape)))
@@ -745,18 +745,6 @@ public class VDirector extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VDirector.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

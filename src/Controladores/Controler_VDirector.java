@@ -11,7 +11,7 @@ import Modelo.Entidades.Director;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Section;
 import Modelo.Entidades.Subject;
-import Vistas.VDirector;
+import Vistas.VStudent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -31,13 +31,13 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     private SectionDAO stdao;
     private Person p;
     private Director d;
-    private VDirector vd;
+    private VStudent vd;
     private Subject sb_aper = new Subject();
     
     public Controler_VDirector(Director d, Person p){
         this.d = d;
         this.p = p;
-        vd = new VDirector();
+        vd = new VStudent();
         pdao = new PersonDAO();
         ddao = new DirectorDAO();
         sdao = new StudentDAO();
