@@ -144,7 +144,7 @@ public class PersonDAO implements ICRUD<Person>{
         call= null;
         Person ps = new Person();
         ResultSet rs = null;
-        String sql = "{? = call PACK_MANAGE_TEACHERS.LIST_T}";
+        String sql = "{? = call PACK_MANAGE_PERSONS.LIST_D}";
        
         try {
             call = con.prepareCall(sql);
