@@ -444,6 +444,6 @@ INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, an
 INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (37,'Homogenea de Grado 2','Homogenea de grado 1', 'No es homogenea', 'C');
 INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (38,'Homogenea de Grado 2','Homogenea de grado 1', 'No es homogenea', 'C');
 INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (39,'HOMOGÉNEA DE GRADO a','Homogénea de grado b', 'Homogénea de grado a+b', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (39,'No es homogénea','Homogénea de grado 2', 'Homogénea de grado 1', 'A');
+INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (40,'No es homogénea','Homogénea de grado 2', 'Homogénea de grado 1', 'A');
 
 
