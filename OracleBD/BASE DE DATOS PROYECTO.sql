@@ -206,10 +206,113 @@ ALTER TABLE ANSWERS_STUDENT MODIFY (N_QUESTION NOT NULL ENABLE);
 ALTER TABLE PERSON ADD CONSTRAINT limit_dni CHECK (DNI BETWEEN 10000000 AND 99999999);
 ALTER TABLE PERSON ADD CONSTRAINT limit_phone CHECK (PHONE BETWEEN 100000000 AND 999999999);
 ALTER TABLE PERSON ADD CONSTRAINT email_obli CHECK (REGEXP_LIKE(EMAIL, '@unmsm.edu.pe$')) enable novalidate;
-ALTER TABLE TEACHER ADD CONSTRAINT range_code CHECK (REGEXP_LIKE(CODE_TEACHER, 
+ALTER TABLE TEACHER ADD CONSTRAINT range_codet CHECK (REGEXP_LIKE(CODE_TEACHER, 
+'[0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z]')) enable novalidate;
+ALTER TABLE STUDENT ADD CONSTRAINT range_codes CHECK (REGEXP_LIKE(CODE_STUDENT, 
+'[0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z]')) enable novalidate;
+ALTER TABLE DIRECTOR ADD CONSTRAINT range_coded CHECK (REGEXP_LIKE(CODE_DIRECTOR, 
 '[0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z][0-9|a-z|A-Z]')) enable novalidate;
 ALTER TABLE QUESTION ADD CONSTRAINT RANGO_SCORE CHECK (SCORE BETWEEN 0 AND 20);
 ALTER TABLE ANSWERS_STUDENT ADD CONSTRAINT ANSWERS_STUDENT CHECK (N_QUESTION BETWEEN 0 AND 10);
+
+--------------------------------------------------------------------------------
+-- INSERTS --
+--------------------------------------------------------------------------------
+INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (NULL, 'Facultad de Sistemas y Software');
+INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (NULL, 'Facultad de Electronia y Electrica');
+INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (NULL, 'Facultad de Quimica');
+INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (NULL, 'Facultad de Industrial');
+INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (NULL, 'Facultad de Minas');
+
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (1, 'Sistemas');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (1, 'Software');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Electrica');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Electronica');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Telecomunicaciones');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (3, 'Quimica');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (3, 'Agroindustria');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (4, 'Industrial');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (4, 'Textil y Confecciones');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (5, 'Minas');
+INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (5, 'Metalurgica');
+
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Jose', 'Perez Martinez', 71548925, 958123648, 'Av Peru cdra 21', 'joseperez@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Miguel', 'Mejia Acevedo',71546768,  943211238, 'Av Peru cdra 15', 'miguelmejia@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Carolina', 'Alejo Guerrero', 74564456, 945645645, 'Av Universitaria cdra 11', 'carolinaalejo@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Pedro', 'Andrade Bujanda', 74564578, 945645677, 'Av Brasil cdra 3', 'pedroandrade@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Juan', 'Aremnta Romero', 71231212, 921312321, 'Av Bolivar cdra 6', 'juanaremnta@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Enrique', 'Bernabe Palomino', 73487624, 978678654, 'Av Bolivar cdra 9', 'enriquebernabe@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Angel', 'Ramos Gutierrez', 77897864, 912345642, 'Av Colonial cdra 7', 'angelramos@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('German', 'Arias Rodrigez', 71231234, 932134521, 'Av Marina cdra 10', 'germanarias@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Ruben', 'Quispe Quispe', 79789878, 912345645, 'Av Marina cdra 1', 'rubenquispe@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Fernando', 'Cardenas Alva', 74678652, 978967865, 'Av Sucre cdra 8', 'fernandocardenas@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Alberto', 'Gonzales Carrasco', 73213132, 945645312, 'Av La Mar cdra 7', 'albertogonzales@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Diana', 'Tavara Pineda', 72231230, 978987632, 'Av Peru cdra 9', 'dianatavara@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Maria', 'Bentacur Taborda', 70213154, 912345652, 'Av Bolivar cdra 12', 'mariabentacur@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Rubi', 'Gomez Villa', 77531312, 987645343, 'Av Colonial cdra 4', 'rubigomez@unmsm.edu.pe');
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Luis', 'Garcia Rua', 79876786, 902464356, 'Av La Paz cdra 6', 'luisgarcia@unmsm.edu.pe');
+
+INSERT INTO DIRECTOR (ID_PERSON, CODE_DIRECTOR, ID_FACULTY) VALUES (1,'10000001',1);
+INSERT INTO DIRECTOR (ID_PERSON, CODE_DIRECTOR, ID_FACULTY) VALUES (2,'10000002',2);
+
+INSERT INTO TEACHER (ID_PERSON, CODE_TEACHER) VALUES (3,'20000001');
+INSERT INTO TEACHER (ID_PERSON, CODE_TEACHER) VALUES (4,'20000002');
+INSERT INTO TEACHER (ID_PERSON, CODE_TEACHER) VALUES (5,'20000003');
+INSERT INTO TEACHER (ID_PERSON, CODE_TEACHER) VALUES (6,'20000004');
+INSERT INTO TEACHER (ID_PERSON, CODE_TEACHER) VALUES (7,'20000005');
+
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (8,'30000001',1);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (9,'30000002',1);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (10,'30000003',1);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (11,'30000004',1);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (12,'30000005',2);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (13,'30000006',2);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (14,'30000007',2);
+INSERT INTO STUDENT (ID_PERSON, CODE_STUDENT, ID_SCHOOL) VALUES (15,'30000008',2);
+
+INSERT INTO SUBJECT(name_subject) VALUES ('CALCULO I');
+INSERT INTO SUBJECT(name_subject) VALUES ('CALCULO II');
+INSERT INTO SUBJECT(name_subject) VALUES ('CALCULO III');
+INSERT INTO SUBJECT(name_subject) VALUES ('MATEMATICA BASICA');
+INSERT INTO SUBJECT(name_subject) VALUES ('MATEMATICA II');
+INSERT INTO SUBJECT(name_subject) VALUES ('BIOLOGIA');
+INSERT INTO SUBJECT(name_subject) VALUES ('ALGORITMICA I');
+INSERT INTO SUBJECT(name_subject) VALUES ('BASE DE DATOS I');
+
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'VARIABLES Y FUNCIONES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'SUCESIONES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'LIMITES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'DERIVADAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'TEOREMA DEL VALOR MEDIO Y SUS APLICACIONES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (1,'FUNCION EXPONENCIAL Y SU APLICACIONES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (2,'FUNCIONES EN VARIAS VARIABLES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (2,'DERIVACION IMPLICITA');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (2,'FUNCIONES HOMOGENEAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (2,'FUNCIONES DE R^n A R^m');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'INTEGRAL INDEFINIDA, INTEGRAL POR SUSTITUCION');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'TEOREMA FUNDAMENTAL DEL CALCULO');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'AREA, VALOR PROMEDIO, LONGUITUD DE UNA CURVA');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'INTEGRALES RELACIONADAS CON LAS FUNCIONES TRIGONOMÉTRICAS INVERSAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'TÉCNICAS DE INTEGRACIÓN ');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (3,'FORMAS INDETERMINADAS, REGLA DE L ´HOPITAL');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'COMBINATORIA, BINOMIO DE NEWTON');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'TRIGONOMETRIA');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'NUMEROS COMPLEJOS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'POLINOMIOS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'FUNCIONES LINEALES Y CUADRATICAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (4,'FUNCIONES EXPONENCIALES Y LOGARITMICAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'MATRICES DETERMINANTES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'DETERMINANTES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'SISTEMAS LINEALES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'VECTORES EN EL ESPACIO');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'ECUACIONES DE RECTAS Y PLANO');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (5,'RECTAS Y PLANOS EN EL ESPACIO');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'AGUA Y SALES MINERALES');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'GLUCIDOS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'LIPIDOS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'PROTEINAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'ENZIMAS');
+INSERT INTO THEME(id_Subject,name_Theme) VALUES (6,'ACIDOS NUCLEICOS');
 
 --------------------------------------------------------------------------------
 -- VISTAS
@@ -233,217 +336,3 @@ CREATE VIEW VIEW_SECTION_SUBJECT
   AS
   SELECT SC.ID_SECTION, SC.SECTION_GROUP, SB.NAME_SUBJECT
   FROM SECTION SC, SUBJECT SB, PERSON PERS WHERE SC.ID_PERSON = PERS.ID_PERSON AND SC.ID_SUBJECT = SB.ID_SUBJECT;
-
-                                                                 
-                                                                 
---------------------------------------------------------------------------------
--- INSERTS --
---------------------------------------------------------------------------------
-INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Jaime Jhon','Cordova Sanchez',10000000,123456789,'jesus maria 175','director@unmsm.edu.pe');
-INSERT INTO FACULTY (ID_PERSON, NAME_FACULTY) VALUES (null,'ingenieria de sistemas');
-insert into director (ID_PERSON, CODE_DIRECTOR, ID_FACULTY)values(43,'10000000',34);
-
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71548925', 'Jose', 'Perez Martinez', 958123648, 'Av Peru cdra 21', 'joseperez@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71546768', 'Miguel', 'Mejia Acevedo', 943211238, 'Av Peru cdra 15', 'miguelmejia@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('74564456', 'Carolina', 'Alejo Guerrero', 945645645, 'Av Universitaria cdra 11', 'carolinaalejo@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('74564578', 'Pedro', 'Andrade Bujanda', 945645677, 'Av Brasil cdra 3', 'pedroandrade@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71231212', 'Juan', 'Aremnta Romero', 921312321, 'Av Bolivar cdra 6', 'juanaremnta@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('73487624', 'Enrique', 'Bernabe Palomino', 978678654, 'Av Bolivar cdra 9', 'enriquebernabe@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('77897864', 'Angel', 'Ramos Gutierrez', 912345642, 'Av Colonial cdra 7', 'angelramos@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71231234', 'German', 'Arias Rodrigez', 932134521, 'Av Marina cdra 10', 'germanarias@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('79789878', 'Ruben', 'Quispe Quispe', 912345645, 'Av Marina cdra 1', 'rubenquispe@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('74678652', 'Fernando', 'Cardenas Alva', 978967865, 'Av Sucre cdra 8', 'fernandocardenas@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('73213132', 'Alberto', 'Gonzales Carrasco', 945645312, 'Av La Mar cdra 7', 'albertogonzales@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('72231230', 'Diana', 'Tavara Pineda', 978987632, 'Av Peru cdra 9', 'dianatavara@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('70213154', 'Maria', 'Bentacur Taborda', 912345652, 'Av Bolivar cdra 12', 'mariabentacur@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('77531312', 'Rubi', 'Gomez Villa', 987645343, 'Av Colonial cdra 4', 'rubigomez@gmail.com');
-INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('79876786', 'Luis', 'Garcia Rua', 902464356, 'Av La Paz cdra 6', 'luisgarcia@gmail.com');
-
-
-INSERT INTO DIRECTOR (id_Person, code_Director) VALUES (1, '6786');
-INSERT INTO DIRECTOR (id_Person, code_Director) VALUES (4, '1354');
-INSERT INTO DIRECTOR (id_Person, code_Director) VALUES (3, '3556');
-INSERT INTO DIRECTOR (id_Person, code_Director) VALUES (5, '2794');
-INSERT INTO DIRECTOR (id_Person, code_Director) VALUES (2, '1235');
-
-
-INSERT INTO TEACHER (id_Person, code_Teacher) VALUES (11, '2315');
-INSERT INTO TEACHER (id_Person, code_Teacher) VALUES (13, '3135');
-INSERT INTO TEACHER (id_Person, code_Teacher) VALUES (15, '9795');
-INSERT INTO TEACHER (id_Person, code_Teacher) VALUES (14, '1315');
-INSERT INTO TEACHER (id_Person, code_Teacher) VALUES (12, '7815');
-
-
-
-INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (1, 'Facultad de Ssitemas y Software');
-INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (3, 'Facultad de Electronia y Electrica');
-INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (5, 'Facultad de Quimica');
-INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (4, 'Facultad de Industrial');
-INSERT INTO FACULTY (id_Person, name_Faculty) VALUES (2, 'Facultad de Minas');
-
-
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (1, 'Sistemas');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (1, 'Software');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Electrica');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Electronica');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (2, 'Telecomunicaciones');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (3, 'Quimica');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (3, 'Agroindustria');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (4, 'Industrial');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (4, 'Textil y Confecciones');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (5, 'Minas');
-INSERT INTO SCHOOL (id_Faculty, name_School) VALUES (5, 'Metalurgica');
-
-
-INSERT INTO STUDENT (id_Person, code_Student, id_School) VALUES (6, '7786', 1);
-INSERT INTO STUDENT (id_Person, code_Student, id_School) VALUES (7, '6846', 2);
-INSERT INTO STUDENT (id_Person, code_Student, id_School) VALUES (10, '9126', 4);
-INSERT INTO STUDENT (id_Person, code_Student, id_School) VALUES (9, '3566', 6);
-INSERT INTO STUDENT (id_Person, code_Student, id_School) VALUES (8, '4566', 2);
-
-
-INSERT INTO SUBJECT(namesubject) VALUES ('CALCULO I');
-INSERT INTO SUBJECT(namesubject) VALUES ('CALCULO II');
-INSERT INTO SUBJECT(namesubject) VALUES ('CALCULO III');
-INSERT INTO SUBJECT(namesubject) VALUES ('MATEMATICA BASICA');
-INSERT INTO SUBJECT(namesubject) VALUES ('MATEMATICA II');
-INSERT INTO SUBJECT(namesubject) VALUES ('BIOLOGIA');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'VARIABLES Y FUNCIONES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'SUCESIONES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'LIMITES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'DERIVADAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'TEOREMA DEL VALOR MEDIO Y SUS APLICACIONES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (1,'FUNCION EXPONENCIAL Y SU APLICACIONES');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (2,'FUNCIONES EN VARIAS VARIABLES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (2,'DERIVACION IMPLICITA');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (2,'FUNCIONES HOMOGENEAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (2,'FUNCIONES DE R^n A R^m');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'INTEGRAL INDEFINIDA, INTEGRAL POR SUSTITUCION');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'TEOREMA FUNDAMENTAL DEL CALCULO');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'AREA, VALOR PROMEDIO, LONGUITUD DE UNA CURVA');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'INTEGRALES RELACIONADAS CON LAS FUNCIONES TRIGONOMÉTRICAS INVERSAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'TÉCNICAS DE INTEGRACIÓN ');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (3,'FORMAS INDETERMINADAS, REGLA DE L ́HOPITAL');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'COMBINATORIA, BINOMIO DE NEWTON');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'TRIGONOMETRIA');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'NUMEROS COMPLEJOS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'POLINOMIOS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'FUNCIONES LINEALES Y CUADRATICAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (4,'FUNCIONES EXPONENCIALES Y LOGARITMICAS');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'MATRICES DETERMINANTES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'DETERMINANTES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'SISTEMAS LINEALES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'VECTORES EN EL ESPACIO');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'ECUACIONES DE RECTAS Y PLANO');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (5,'RECTAS Y PLANOS EN EL ESPACIO');
-
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'AGUA Y SALES MINERALES');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'GLUCIDOS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'LIPIDOS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'PROTEINAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'ENZIMAS');
-INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'ACIDOS NUCLEICOS');
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Exprese el  área A de una esfera como funciión de su volumen V',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'¿Cuál es la imagen de la función f: R→R 
-f(x)=(𝑥−1)/(|x|+1)? ',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Un faro situado a 10 km de la costa gira a razón de 10 revoluciones por minuto. Si en t=0 el rayo de luz del faro incide en el punto P en la costa más cercano al faro, exprese la posición del rayo de luz a lo largo de la costa medida desde el punto P como función del tiempo, suponiendo que la costa es recta. Señale el dominio de la función',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Sea f : (0,∞) → R una función uno a uno y positiva y sea f^(−1)(y) su función inversa. 
-Determine la inversa de la función g
-g(x) = f(􏰝 (f(x) + 1)^(1/2) )',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ (􏰉1/n^2 + 2/n^2 +···+(n−1)/n^2)􏰊 ',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞􏰉(1/2!+2/3!+···+(n−1)/n!)􏰊',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ (􏰉1^2/n^3 + 2^2/n^3 +···+(n−1)^2/n^3)􏰊',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ 􏰉(1/1*2+1/2*3+···+1/(n)*(n+1))􏰊',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→1 √(x+3)−2/(x-1)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ |x+1|−1/(4 − x^2)',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ (100x^2+1)/(x^2+100)',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ (√(x+√(x+√(x)))/(√(x+1))',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la función derivada de y(x) = x|x| ',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Describa en qué puntos la función f (x) = |x^2 − 1| tiene derivada',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la derivada de la función f (x) = sen(g(x) + 2) en el punto x = 3, si g(3)=(π−12)/6 y dg/dx(3)=−4',5);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Sea f : R → R con f(0) = 1 y tal que, para cualesquiera x,h ∈ R, satisface f(x+h)−f(x)=8xh−2h+4h. Calcule f`(2)',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→π ((sen x)^2)/(x−π)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0+ ((sen x)^2)/(x−tan(x))',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0 (arcsen(x))/(arctan(x))',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0 ((3sen x)-sen(3x))/(3tan(x)−tan(3x))',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Encuentre el número real α tal que la curva f(x) = ex es tangente a la curva g(x) = αx^2',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Una especie de bacteria virulenta crece en un cultivo. Si la velocidad de crecimiento de la población bacteriana es proporcional al número de individuos presente, si en la población inicial hay 1000 bacterias y si el número de individuos se duplica después de los primeros 30 minutos, ¿cuántas bacterias habra ́ después de dos horas?',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Un cono circular recto de 24 cm de altura y 6 cm de radio en su base, se llena con agua y se coloca con su vértice apuntando hacia abajo. El agua empieza a salir a través de un orificio en el vértice con una velocidad, en cada instante, igual a la altura del agua en el cono en el instante en cuestión. Diga cuánto tarda en vaciarse el cono.',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'4^x+6^(x^2)=5^x+5^(x^2),5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA RECTA →r(t)=(1+t) i−t j,t∈R.',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r ( m ) = ( m + 1 )i + ( m2 − 1 )j , m ∈ R',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r(a)=(4−a) i−√a j,a≥0
-',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA CIRCUNFERENCIA r(θ)=3cosθ i+3senθ j,θ∈[0,2π)',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z)=1−√(1−x−y−z)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION  f(x)=ln(1−x^2)',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z) = e^(√ln(x^2+y^2))',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z) = e^(1−√(1−lny))',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR DA DERIVADA IMPLICITA x^2+xy+y2=7, P(1,2)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVADA IMPLICITA e^(1−xy) +ln(x/y)=1, P(1,1).',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVADA IMPLICITA xe^y +sen(xy)+y−ln2=0, P(0,ln2).',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVACION IMPLICITA F(x,y)=2x^2+4xy−y^4+67',5);
-
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=x^2 +y^3.',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=ln(xy)',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA Sea F (L, K) = AL^(a)Kbe^(cK/L)',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=lnu(x,y)',5);
-
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (1,'(36*πV^2)^(1/3)','(24πV^2)^(1/2)', '(16π*V^2)^(1/3)', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (2,'<−1,1>','[−1,1)', '<−1,1] ', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (3,'p:[0, 1]','p:[0, 1 >',
-'p:<0, 1> ', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (4,'g−1(y) = f−1([f−1(y)]^2 − 1) ','g−1(y) = f−1([f−1(y)]^3 − 1) ', 'g−1(y) = f−1([f−1(y)]^2) ', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (5,'1/2','1/4', '1/8', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (6,'-1','1', '0', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (7,'1/6 ','-1/6', '1/3', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (8,'-1','1', '0', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (9,'1/3','1/2', '1/4', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (10,'-1/2 ','-1/3', '1/4', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (11,'1/6 ','1/4', '1/2', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (12,'-1/2','1/4', '1/2', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (13,'2|x|','2|x| /5', '2|x| /6', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (14,'− 5x ','− 2 x ', '− 3x', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (15,'−3√3','−2√2', '−2√3', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (16,'6 ','-12', '12', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (17,'1 ','0', 'NN', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (18,'0 ','1', 'NN', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (19,'1 ','0', '-1', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (20,'1/2 ','-1/2', '0', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (21,'2e^2 ','4^e', '(1/4)e^2', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (22,'15000 bacterias ','16000 bacterias ', '18000 bacterias', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (23,'180 segundos','220 segundos', '216 segundos', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (24,'x = 0 y x = 1','x=1', 'x=0', 'A');
-
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (25,'y=1−x ','y=x-1', 'y=x+2', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (26,'y = x^2 − 2x ','y = x^2 − x ', 'y = x^2 − 3x ', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (27,'y=−√2−x','y=−√4−x ', 'y=−√3−x ', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (28,'x^2 + y^2 = 25','x^2 + y^2 = 16 ', 'x^2 + y^2 = 9 ', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (29,'−∞<x+y+z≤1','−∞<x+y+z≤2', '−∞<x+y+z≤4', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (30,'−1<x<3','−1<x<2', '−1<x<1 ', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (31,' - 1≤ x^2 + y^2 < ∞ ','4≤ x^2 + y^2 < ∞ ', '1 ≤ x^2 + y^2 < ∞ ', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (32,'0<y≤e ','0<y≤2e ', '0<y≤3e', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (33,' - (4/5)','4/5', '2/3 ', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (34,'−1','0', '1 ', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (35,'−(4+ln2) ','−(2+ln2) ', '−(2+ln4)', 'B');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (36,'-104','104', '1OO', 'A');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (37,'Homogenea de Grado 2','Homogenea de grado 1', 'No es homogenea', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (38,'Homogenea de Grado 2','Homogenea de grado 1', 'No es homogenea', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (39,'HOMOGÉNEA DE GRADO a','Homogénea de grado b', 'Homogénea de grado a+b', 'C');
-INSERT INTO ALTERNATIVE(id_Question,alternativeA, alternativeB, alternativeC, answer) VALUES (39,'No es homogénea','Homogénea de grado 2', 'Homogénea de grado 1', 'A');
-
-

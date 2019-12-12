@@ -166,7 +166,7 @@ public class SchoolDAO implements ICRUD<School>{
          ArrayList<School> lista = new ArrayList<School>();
          try {
              cn = conexion.getConnection();
-            String sql = "{? = call PACK_MANAGE_FACULTIES.LIST_D}";
+            String sql = "{? = call PACK_MANAGE_SCHOOLS.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.execute();

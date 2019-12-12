@@ -282,14 +282,15 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     s1.setCode_student(vd.tx2cod.getText());
                     ci = Integer.parseInt((vd.cb2esc.getSelectedItem()+"").substring(0,2).trim());
                     s1.setId_school(ci);
-                    p1.setFirs_name(vd.tx2nom.getText());
-                    p1.setLast_name(vd.tx2ape.getText());
-                    p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
-                    p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
-                    p1.setAddress(vd.tx2dir.getText());
-                    p1.setEmail(vd.tx2ema.getText());
-                    pdao.Create(p1);
-                    p1 = pdao.Search(ci);
+                    //p1.setFirs_name(vd.tx2nom.getText());
+                    //p1.setLast_name(vd.tx2ape.getText());
+                    //p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
+                    //p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
+                    //p1.setAddress(vd.tx2dir.getText());
+                    //p1.setEmail(vd.tx2ema.getText());
+                    //pdao.Create(p1);
+                    p1 = pdao.Search(Integer.parseInt(vd.tx2dni.getText()));
+                    s1.setId_person(p1.getId_person());
                     sdao.Create(s1);
                     break;
             case 2: //Modificar

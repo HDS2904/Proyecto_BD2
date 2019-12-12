@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class conexion {
     static Connection con = null;
-    static String user = "angel";
-    static String password = "angel";
+    static String user = "Jonathan_HDS";
+    static String password = "HDS2904";
     static String url = "jdbc:oracle:thin:@localhost:1521:orcl";
     static String driver = "oracle.jdbc.driver.OracleDriver";
     
@@ -18,7 +18,7 @@ public class conexion {
             con = DriverManager.getConnection(url, user, password);
             con.setAutoCommit(false);
             if(con != null){
-                //System.out.println("CONEXIÓN EXITOSA");
+                System.out.println("CONEXIÓN EXITOSA");
             }
         } catch (SQLException e) {
             throw e;
