@@ -196,7 +196,45 @@ public class AlternativeDAO implements ICRUD<Alternative> {
         return lista;
         
     }
-
+    
+    public Alternative Search_by_question(int t) throws Exception {
+        
+        al = new Alternative();
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_ALTERNATIVES.SEARCH_QU(?)}";
+        
+        
+         try {
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
+            ca.execute();
+            rs = (ResultSet)ca.getObject(1);
+            if(rs.next()){
+                
+                al.setId_alternative(rs.getInt("ID_ALTERNATIVE"));
+                al.setId_question(rs.getInt("ID_QUESTION"));
+                al.setAlternative_A(rs.getString("ALTERNATIVE_A"));
+                al.setAlternative_B(rs.getString("ALTERNATIVE_B"));
+                al.setAlternative_C(rs.getString("ALTERNATIVE_C"));
+                al.setAnswer(rs.getString("ANSWER"));
+                
+            }
+            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return al;
+        
+    }
 
        
 }

@@ -1,13 +1,16 @@
 package Principal;
 
+import Controladores.Controler_Alternative;
 import Controladores.Controler_Person;
 import Controladores.Controler_Question;
 import Controladores.GenerarExamenController;
+import Modelo.Entidades.Alternative;
 import Modelo.Entidades.GenerarExamen;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Question;
 import Vistas.Login;
 import java.util.ArrayList;
+import java.util.Collections;
 public class ProyectoHDS {
 
     public static void main(String[] args) throws Exception {
@@ -16,6 +19,9 @@ public class ProyectoHDS {
         ArrayList<GenerarExamen> list = ge.obtenerCantidad(6);
         GenerarExamen pex = ge.obtenerPreguntas(list);
         ArrayList<Question> examen;
+        
+        Controler_Alternative al = new Controler_Alternative();
+        
         try {
             ArrayList<Question> lis_p2;
             ArrayList<Question> lis_p3;
@@ -59,18 +65,24 @@ public class ProyectoHDS {
                 System.out.println("pregunta 5: "+q.getQuestion());
             }
             
-            examen= ge.obtenerExamen(lis_p2,lis_p3,lis_p4,lis_p5);
-            
+            examen= ge.obtenerExamen(lis_p5,lis_p4,lis_p3,lis_p2);
+            System.out.println("\n");
             for (Question q : examen) {
                 System.out.println("examen: "+q.getQuestion());
             }
+            System.out.println("\n");
+            Collections.shuffle(examen);
             
-            
+            for (Question q : examen) {
+                System.out.println("examen: "+q.getId_question()+" "+q.getQuestion());
+                Alternative li = al.SearchAlternative_by_question(q.getId_question());
+                System.out.println("alternativa A: "+li.getAlternative_A()+" alternativa B: "+li.getAlternative_B()+" alternativa C: "+li.getAlternative_C());
+                
+            }
         } catch (Exception e) {
         }
         
-        Login a = new Login();
-        a.setVisible(true);
+        
     }
     
 }
