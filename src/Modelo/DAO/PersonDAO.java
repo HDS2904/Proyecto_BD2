@@ -25,9 +25,7 @@ public class PersonDAO implements ICRUD<Person>{
         call = null;
         String sql = "{call PACK_MANAGE_PERSONS.INSERT_D(?,?,?,?,?,?)}";
         try {
-            System.out.println("paso1");
             call = con.prepareCall(sql);
-            System.out.println("paso2");
             call.setString(1, p.getFirs_name());
             call.setString(2, p.getLast_name());
             call.setInt(3, p.getDni());
@@ -142,7 +140,7 @@ public class PersonDAO implements ICRUD<Person>{
         ArrayList<Person> lista = new ArrayList<Person>();
         con = conexion.getConnection();
         call= null;
-        Person ps = new Person();
+        Person ps;
         ResultSet rs = null;
         String sql = "{? = call PACK_MANAGE_PERSONS.LIST_D}";
        
