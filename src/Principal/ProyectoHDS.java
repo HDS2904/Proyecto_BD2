@@ -5,6 +5,7 @@ import Controladores.Controler_Person;
 import Controladores.Controler_Question;
 import Controladores.GenerarExamenController;
 import Modelo.Entidades.Alternative;
+import Modelo.Entidades.AlternativeExam;
 import Modelo.Entidades.GenerarExamen;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Question;
@@ -76,7 +77,8 @@ public class ProyectoHDS {
             for (Question q : examen) {
                 System.out.println("examen: "+q.getId_question()+" "+q.getQuestion());
                 Alternative li = al.SearchAlternative_by_question(q.getId_question());
-                System.out.println("alternativa A: "+li.getAlternative_A()+" alternativa B: "+li.getAlternative_B()+" alternativa C: "+li.getAlternative_C());
+                AlternativeExam lo = al.mesclar_question(li);
+                System.out.println("alternativa A: "+lo.getAlternative_A()+" alternativa B: "+lo.getAlternative_B()+" alternativa C: "+lo.getAlternative_C());
                 
             }
         } catch (Exception e) {
