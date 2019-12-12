@@ -2,10 +2,12 @@
 package Vistas;
 
 import AppPackage.AnimationClass;
+import Controladores.Controler_Student;
 import Controladores.Controler_Teacher;
 import Controladores.Controler_VDirector;
 import Modelo.Entidades.Director;
 import Modelo.Entidades.Person;
+import Modelo.Entidades.Student;
 import Modelo.Entidades.Teacher;
 import Principal.conexion;
 import java.awt.Desktop;
@@ -159,11 +161,6 @@ public class Login extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
         pingreso.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
@@ -407,10 +404,6 @@ public class Login extends javax.swing.JFrame {
     ejecutar_accion();
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -524,9 +517,11 @@ public class Login extends javax.swing.JFrame {
     public void ejecutar_accion(){
         int op = jctipo.getSelectedIndex();
         //String user = txusers.getText();
-        String user = "10000001";
+        String user = "10000008";
+        //String user = "77865673";
         //int pass = Integer.parseInt(txpass.getText());
-        int pass = 71548925;
+        int pass = 73487624;
+        //int pass = 74678652;
         if(op != 0 && !(user.equals("")) && pass != 0){
             Connection con;
             Person p = new Person();
@@ -583,13 +578,27 @@ public class Login extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
                             }
                             break;
-                    case 3: ps = con.prepareStatement("SELECT ID_PERSON FROM STUDENT WHERE CODE_STUDENT = ? ");
+                    case 3: ps = con.prepareStatement("SELECT * FROM VIEW_STUDENT WHERE CODE_STUDENT = ? AND DNI = ?");
                             ps.setString(1, user);
+                            System.out.println(user);
                             ps.setInt(2, pass);
+                            System.out.println(pass);
                             rs = ps.executeQuery();
                             if(rs.next()){
-                                JOptionPane.showMessageDialog(null, "BIENVENIDO PROFESOR "+rs.getString("LAST_NAME"));
+                                Student t = new Student();
+                                t.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                t.setCode_student(rs.getString("CODE_STUDENT"));
+                                t.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                p.setFirs_name(rs.getString("FIRST_NAME")); 
+                                p.setLast_name(rs.getString("LAST_NAME"));
+                                p.setDni(Integer.parseInt(rs.getString("DNI")));
+                                p.setPhone(Integer.parseInt(rs.getString("PHONE")));
+                                p.setAddress(rs.getString("ADDRESS"));
+                                p.setEmail(rs.getString("EMAIL"));
+                                JOptionPane.showMessageDialog(null, "BIENVENIDO ESTUDIANTE "+rs.getString("LAST_NAME"));
+                                Controler_Student as = new Controler_Student(t,p);
                                 this.setVisible(false);
+                                as.inicio();
 
                             }else{
                                 JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
