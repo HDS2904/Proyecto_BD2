@@ -96,12 +96,17 @@ public class PersonDAO implements ICRUD<Person>{
 
     @Override
     public Person Search(int t) throws Exception{
+        String sql;
         con = conexion.getConnection();
         call = null;
         Person p = new Person();
         ResultSet rs;
         
-        String sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_D(?)}";
+        if(((int)(Math.log10(t)+1)) == 8)
+            sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_DNI(?)}";
+        else
+            sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_D(?)}";
+        
         
         try {
             call = con.prepareCall(sql);
