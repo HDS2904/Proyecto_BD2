@@ -28,16 +28,16 @@ CREATE TABLE DIRECTOR(
   ID_FACULTY NUMBER(4)
 );
 
-CREATE TABLE FACULTY(
-  ID_FACULTY NUMBER(4) GENERATED ALWAYS AS IDENTITY,
-  ID_PERSON NUMBER(4),
-  NAME_FACULTY VARCHAR2(50)
-);
-
 CREATE TABLE SCHOOL(
     ID_SCHOOL NUMBER(4) GENERATED ALWAYS AS IDENTITY,
     ID_FACULTY NUMBER(4),
     NAME_SCHOOL VARCHAR(50)
+);
+
+CREATE TABLE FACULTY(
+  ID_FACULTY NUMBER(4) GENERATED ALWAYS AS IDENTITY,
+  ID_PERSON NUMBER(4),
+  NAME_FACULTY VARCHAR2(50)
 );
 
 
@@ -234,6 +234,14 @@ CREATE VIEW VIEW_SECTION_SUBJECT
   SELECT SC.ID_SECTION, SC.SECTION_GROUP, SB.NAME_SUBJECT
   FROM SECTION SC, SUBJECT SB, PERSON PERS WHERE SC.ID_PERSON = PERS.ID_PERSON AND SC.ID_SUBJECT = SB.ID_SUBJECT;
 
+                                                                 
+                                                                 
+--------------------------------------------------------------------------------
+-- INSERTS --
+--------------------------------------------------------------------------------
+INSERT INTO PERSON (FIRST_NAME, LAST_NAME, DNI, PHONE, ADDRESS, EMAIL) VALUES ('Jaime Jhon','Cordova Sanchez',10000000,123456789,'jesus maria 175','director@unmsm.edu.pe');
+INSERT INTO FACULTY (ID_PERSON, NAME_FACULTY) VALUES (null,'ingenieria de sistemas');
+insert into director (ID_PERSON, CODE_DIRECTOR, ID_FACULTY)values(43,'10000000',34);
 
 INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71548925', 'Jose', 'Perez Martinez', 958123648, 'Av Peru cdra 21', 'joseperez@gmail.com');
 INSERT INTO PERSON (dni, FIRST_NAME, LAST_NAME, PHONE, ADDRESS, EMAIL) VALUES ('71546768', 'Miguel', 'Mejia Acevedo', 943211238, 'Av Peru cdra 15', 'miguelmejia@gmail.com');
