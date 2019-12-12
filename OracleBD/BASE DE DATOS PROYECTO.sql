@@ -349,57 +349,56 @@ INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'PROTEINAS');
 INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'ENZIMAS');
 INSERT INTO THEME(id_Subject,nameTheme) VALUES (6,'ACIDOS NUCLEICOS');
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Exprese el  área A de una esfera como funciión de su volumen V',3);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Exprese el  área A de una esfera como funciión de su volumen V',2);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'¿Cuál es la imagen de la función f: R→R 
-f(x)=(𝑥−1)/(|x|+1)? ',4);
+f(x)=(𝑥−1)/(|x|+1)? ',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Un faro situado a 10 km de la costa gira a razón de 10 revoluciones por minuto. Si en t=0 el rayo de luz del faro incide en el punto P en la costa más cercano al faro, exprese la posición del rayo de luz a lo largo de la costa medida desde el punto P como función del tiempo, suponiendo que la costa es recta. Señale el dominio de la función',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (1,'Sea f : (0,∞) → R una función uno a uno y positiva y sea f^(−1)(y) su función inversa. 
 Determine la inversa de la función g
 g(x) = f(􏰝 (f(x) + 1)^(1/2) )',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ (􏰉1/n^2 + 2/n^2 +···+(n−1)/n^2)􏰊 ',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞􏰉(1/2!+2/3!+···+(n−1)/n!)􏰊',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ (􏰉1/n^2 + 2/n^2 +···+(n−1)/n^2)􏰊 ',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞􏰉(1/2!+2/3!+···+(n−1)/n!)􏰊',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ (􏰉1^2/n^3 + 2^2/n^3 +···+(n−1)^2/n^3)􏰊',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (2,'lim n→∞ 􏰉(1/1*2+1/2*3+···+1/(n)*(n+1))􏰊',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→1 √(x+3)−2/(x-1)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ |x+1|−1/(4 − x^2)',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→1 √(x+3)−2/(x-1)',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ |x+1|−1/(4 − x^2)',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ (100x^2+1)/(x^2+100)',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (3,' lim x→∞ (√(x+√(x+√(x)))/(√(x+1))',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la función derivada de y(x) = x|x| ',3);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la función derivada de y(x) = x|x| ',2);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Describa en qué puntos la función f (x) = |x^2 − 1| tiene derivada',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la derivada de la función f (x) = sen(g(x) + 2) en el punto x = 3, si g(3)=(π−12)/6 y dg/dx(3)=−4',5);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Calcule la derivada de la función f (x) = sen(g(x) + 2) en el punto x = 3, si g(3)=(π−12)/6 y dg/dx(3)=−4',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (4,'Sea f : R → R con f(0) = 1 y tal que, para cualesquiera x,h ∈ R, satisface f(x+h)−f(x)=8xh−2h+4h. Calcule f`(2)',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→π ((sen x)^2)/(x−π)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0+ ((sen x)^2)/(x−tan(x))',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→π ((sen x)^2)/(x−π)',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0+ ((sen x)^2)/(x−tan(x))',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0 (arcsen(x))/(arctan(x))',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (5,'Aplique las reglas de L’Hopital: lim x→0 ((3sen x)-sen(3x))/(3tan(x)−tan(3x))',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Encuentre el número real α tal que la curva f(x) = ex es tangente a la curva g(x) = αx^2',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Una especie de bacteria virulenta crece en un cultivo. Si la velocidad de crecimiento de la población bacteriana es proporcional al número de individuos presente, si en la población inicial hay 1000 bacterias y si el número de individuos se duplica después de los primeros 30 minutos, ¿cuántas bacterias habra ́ después de dos horas?',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Encuentre el número real α tal que la curva f(x) = ex es tangente a la curva g(x) = αx^2',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Una especie de bacteria virulenta crece en un cultivo. Si la velocidad de crecimiento de la población bacteriana es proporcional al número de individuos presente, si en la población inicial hay 1000 bacterias y si el número de individuos se duplica después de los primeros 30 minutos, ¿cuántas bacterias habra ́ después de dos horas?',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'Un cono circular recto de 24 cm de altura y 6 cm de radio en su base, se llena con agua y se coloca con su vértice apuntando hacia abajo. El agua empieza a salir a través de un orificio en el vértice con una velocidad, en cada instante, igual a la altura del agua en el cono en el instante en cuestión. Diga cuánto tarda en vaciarse el cono.',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'4^x+6^(x^2)=5^x+5^(x^2),5);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (6,'4^x+6^(x^2)=5^x+5^(x^2)',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA RECTA →r(t)=(1+t) i−t j,t∈R.',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r ( m ) = ( m + 1 )i + ( m2 − 1 )j , m ∈ R',4);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r(a)=(4−a) i−√a j,a≥0
-',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA RECTA →r(t)=(1+t) i−t j,t∈R.',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r ( m ) = ( m + 1 )i + ( m2 − 1 )j , m ∈ R',3);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA PARÁBOLA →r(a)=(4−a) i−√a j,a≥0',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (7,'HALLAR LA ECUACION DE LA CIRCUNFERENCIA r(θ)=3cosθ i+3senθ j,θ∈[0,2π)',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z)=1−√(1−x−y−z)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION  f(x)=ln(1−x^2)',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z)=1−√(1−x−y−z)',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION  f(x)=ln(1−x^2)',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z) = e^(√ln(x^2+y^2))',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (8,'HALLAR EL DOMINIO DE LA FUNCION f(x,y,z) = e^(1−√(1−lny))',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR DA DERIVADA IMPLICITA x^2+xy+y2=7, P(1,2)',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVADA IMPLICITA e^(1−xy) +ln(x/y)=1, P(1,1).',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR DA DERIVADA IMPLICITA x^2+xy+y2=7, P(1,2)',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVADA IMPLICITA e^(1−xy) +ln(x/y)=1, P(1,1).',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVADA IMPLICITA xe^y +sen(xy)+y−ln2=0, P(0,ln2).',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (9,'HALLAR LA DERIVACION IMPLICITA F(x,y)=2x^2+4xy−y^4+67',5);
 
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=x^2 +y^3.',3);
-INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=ln(xy)',4);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=x^2 +y^3.',2);
+INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=ln(xy)',3);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA Sea F (L, K) = AL^(a)Kbe^(cK/L)',4);
 INSERT INTO QUESTION(id_Theme,question,score) VALUES (10,'COMPROBAR SI LA FUNCION ES HOMOGENEA f(x,y)=lnu(x,y)',5);
 
