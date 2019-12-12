@@ -50,15 +50,14 @@ public class VSTeacher extends javax.swing.JFrame {
         tx2id = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         btn2bus = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        tx2nom1 = new javax.swing.JTextField();
         Panel2 = new javax.swing.JPanel();
         txtext12 = new javax.swing.JLabel();
         txtext13 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtext14 = new javax.swing.JLabel();
-        Panel0 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        titulo2 = new javax.swing.JLabel();
         Panel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txcodp = new javax.swing.JTextField();
@@ -85,6 +84,9 @@ public class VSTeacher extends javax.swing.JFrame {
         btngcam = new javax.swing.JButton();
         btncand = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        Panel0 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        titulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,12 +108,12 @@ public class VSTeacher extends javax.swing.JFrame {
         btn3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn3.setForeground(new java.awt.Color(0, 0, 204));
         btn3.setText("EXAMEN");
-        jPanel2.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 120, 40));
+        jPanel2.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 120, 40));
 
         btn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn2.setForeground(new java.awt.Color(0, 0, 204));
         btn2.setText("CURSOS");
-        jPanel2.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 120, 40));
+        jPanel2.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
 
         btn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn1.setForeground(new java.awt.Color(0, 0, 204));
@@ -167,6 +169,8 @@ public class VSTeacher extends javax.swing.JFrame {
 
         btn2bus.setText("BUS");
 
+        jLabel15.setText("Nombre Curso:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -199,6 +203,12 @@ public class VSTeacher extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tx2nom)))))
                 .addGap(16, 16, 16))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tx2nom1)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,11 +218,15 @@ public class VSTeacher extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(tx2id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn2bus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tx2nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(tx2nom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(tx2nalum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,7 +237,7 @@ public class VSTeacher extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        Panel3.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 290, 270));
+        Panel3.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 290, 300));
 
         PanelP.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
@@ -262,22 +276,6 @@ public class VSTeacher extends javax.swing.JFrame {
         Panel2.add(txtext14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 160, 40));
 
         PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
-
-        Panel0.setBackground(new java.awt.Color(153, 255, 255));
-        Panel0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel0.setName("Panel2"); // NOI18N
-        Panel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
-        Panel0.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 150));
-
-        titulo2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        titulo2.setForeground(new java.awt.Color(0, 153, 153));
-        titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo2.setText("Bienvenido profesor");
-        Panel0.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 710, 40));
-
-        PanelP.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Panel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -369,6 +367,22 @@ public class VSTeacher extends javax.swing.JFrame {
 
         PanelP.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
+        Panel0.setBackground(new java.awt.Color(153, 255, 255));
+        Panel0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel0.setName("Panel2"); // NOI18N
+        Panel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
+        Panel0.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 150));
+
+        titulo2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        titulo2.setForeground(new java.awt.Color(0, 153, 153));
+        titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo2.setText("Bienvenido profesor");
+        Panel0.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 710, 40));
+
+        PanelP.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+
         getContentPane().add(PanelP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 850, 520));
 
         pack();
@@ -432,6 +446,7 @@ public class VSTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -458,6 +473,7 @@ public class VSTeacher extends javax.swing.JFrame {
     public javax.swing.JTextField tx2id;
     public javax.swing.JTextField tx2nalum;
     public javax.swing.JTextField tx2nom;
+    public javax.swing.JTextField tx2nom1;
     public javax.swing.JTextField txapep;
     public javax.swing.JTextField txcodp;
     public javax.swing.JTextField txdir;

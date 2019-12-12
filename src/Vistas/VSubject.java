@@ -37,35 +37,6 @@ public class VSubject extends javax.swing.JFrame {
         btnop2 = new javax.swing.JButton();
         btnop4 = new javax.swing.JButton();
         PanelP = new javax.swing.JPanel();
-        Panel0 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        titulo2 = new javax.swing.JLabel();
-        Panel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txcod1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        btnsav1 = new javax.swing.JButton();
-        btncan1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txnom1 = new javax.swing.JTextField();
-        jSeparator9 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
-        Panel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablacur = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txnom2 = new javax.swing.JTextField();
-        btndel2 = new javax.swing.JButton();
-        btnlim2 = new javax.swing.JButton();
-        btnsav2 = new javax.swing.JButton();
-        btnupd2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        txcod2 = new javax.swing.JTextField();
-        btnbus2 = new javax.swing.JButton();
         Panel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -81,6 +52,35 @@ public class VSubject extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         txcod3 = new javax.swing.JTextField();
         btnbus3 = new javax.swing.JButton();
+        Panel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablacur = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txnom2 = new javax.swing.JTextField();
+        btndel2 = new javax.swing.JButton();
+        btnlim2 = new javax.swing.JButton();
+        btnsav2 = new javax.swing.JButton();
+        btnupd2 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        txcod2 = new javax.swing.JTextField();
+        btnbus2 = new javax.swing.JButton();
+        Panel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txcod1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        btnsav1 = new javax.swing.JButton();
+        btncan1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txnom1 = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        Panel0 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        titulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,66 +129,117 @@ public class VSubject extends javax.swing.JFrame {
         PanelP.setBackground(new java.awt.Color(255, 255, 255));
         PanelP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel0.setBackground(new java.awt.Color(153, 255, 255));
-        Panel0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel0.setName("Panel2"); // NOI18N
-        Panel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel3.setBackground(new java.awt.Color(255, 255, 255));
+        Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel3.setName("Panel2"); // NOI18N
+        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
-        Panel0.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 150));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel5.setText("Temas en el Curso");
+        Panel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 20));
 
-        titulo2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        titulo2.setForeground(new java.awt.Color(0, 153, 153));
-        titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo2.setText("Bienvenido profesor");
-        Panel0.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 710, 40));
+        tablacur1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        PanelP.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+            }
+        ));
+        jScrollPane2.setViewportView(tablacur1);
 
-        Panel1.setBackground(new java.awt.Color(255, 255, 255));
-        Panel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel1.setName("Panel1"); // NOI18N
-        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, 300));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_User_96px_2.png"))); // NOI18N
-        Panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
 
-        txcod1.setBorder(null);
-        Panel1.add(txcod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 220, 30));
+        jLabel6.setText("Nombre del Tema:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel4.setText("Nombre del curso: ");
-        Panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
-        Panel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 220, 10));
+        btndel3.setText("Eliminar");
 
-        btnsav1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnsav1.setForeground(new java.awt.Color(0, 153, 0));
-        btnsav1.setText("Guardar Cambios");
-        btnsav1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel1.add(btnsav1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 150, 40));
+        btnlim3.setText("Limpiar");
 
-        btncan1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btncan1.setForeground(new java.awt.Color(0, 153, 0));
-        btncan1.setText("Cancelar");
-        btncan1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel1.add(btncan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 90, 40));
+        btnsav3.setText("Agregar");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel11.setText("Datos del Curso");
-        Panel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 160, 20));
+        btnupd3.setText("Modificar");
 
-        txnom1.setBorder(null);
-        Panel1.add(txnom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 220, 30));
-        Panel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 220, 10));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txnom3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnupd3)
+                    .addComponent(btnsav3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btndel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnlim3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txnom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnsav3)
+                    .addComponent(btndel3))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnupd3)
+                    .addComponent(btnlim3))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel14.setText("Nuevo Nombre del curso: ");
-        Panel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        Panel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 280, 220));
 
-        PanelP.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+
+        jLabel18.setText("Código:");
+
+        btnbus3.setText("BUS");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(txcod3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnbus3)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txcod3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnbus3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Panel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, 70));
+
+        PanelP.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel2.setBackground(new java.awt.Color(255, 255, 255));
         Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -302,117 +353,66 @@ public class VSubject extends javax.swing.JFrame {
 
         PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
-        Panel3.setBackground(new java.awt.Color(255, 255, 255));
-        Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel3.setName("Panel2"); // NOI18N
-        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel1.setBackground(new java.awt.Color(255, 255, 255));
+        Panel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel1.setName("Panel1"); // NOI18N
+        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel5.setText("Temas en el Curso");
-        Panel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 20));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_User_96px_2.png"))); // NOI18N
+        Panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
-        tablacur1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+        txcod1.setBorder(null);
+        Panel1.add(txcod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 220, 30));
 
-            }
-        ));
-        jScrollPane2.setViewportView(tablacur1);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel4.setText("Codigo del Sección: ");
+        Panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+        Panel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 220, 10));
 
-        Panel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 420, 300));
+        btnsav1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnsav1.setForeground(new java.awt.Color(0, 153, 0));
+        btnsav1.setText("Guardar Cambios");
+        btnsav1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel1.add(btnsav1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 150, 40));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+        btncan1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btncan1.setForeground(new java.awt.Color(0, 153, 0));
+        btncan1.setText("Cancelar");
+        btncan1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel1.add(btncan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 90, 40));
 
-        jLabel6.setText("Nombre del Tema:");
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel11.setText("Datos de la Sección");
+        Panel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 190, 20));
 
-        btndel3.setText("Eliminar");
+        txnom1.setBorder(null);
+        Panel1.add(txnom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 220, 30));
+        Panel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 220, 10));
 
-        btnlim3.setText("Limpiar");
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel14.setText("Nuevo Nombre de la sección: ");
+        Panel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
-        btnsav3.setText("Agregar");
+        PanelP.add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
-        btnupd3.setText("Modificar");
+        Panel0.setBackground(new java.awt.Color(153, 255, 255));
+        Panel0.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel0.setName("Panel2"); // NOI18N
+        Panel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txnom3)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnupd3)
-                    .addComponent(btnsav3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btndel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnlim3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txnom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnsav3)
-                    .addComponent(btndel3))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnupd3)
-                    .addComponent(btnlim3))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-profesor.png"))); // NOI18N
+        Panel0.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 150, 150));
 
-        Panel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 280, 220));
+        titulo2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        titulo2.setForeground(new java.awt.Color(0, 153, 153));
+        titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo2.setText("Bienvenido profesor");
+        Panel0.add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 710, 40));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
-
-        jLabel18.setText("Código:");
-
-        btnbus3.setText("BUS");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel18)
-                .addGap(18, 18, 18)
-                .addComponent(txcod3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnbus3)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txcod3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnbus3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        Panel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, 70));
-
-        PanelP.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+        PanelP.add(Panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         getContentPane().add(PanelP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 850, 520));
 
