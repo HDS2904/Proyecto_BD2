@@ -2,9 +2,9 @@
 package Vistas;
 import AppPackage.AnimationClass;
 import Controladores.Controler_Teacher;
+import Controladores.Controler_VDirector;
 import Modelo.Entidades.Director;
 import Modelo.Entidades.Person;
-import Modelo.Entidades.Student;
 import Modelo.Entidades.Teacher;
 import Principal.conexion;
 import java.awt.Desktop;
@@ -513,9 +513,9 @@ public class Login extends javax.swing.JFrame {
     public void ejecutar_accion(){
         int op = jctipo.getSelectedIndex();
         //String user = txusers.getText();
-        String user = "10000101";
+        String user = "10000000";
         //int pass = Integer.parseInt(txpass.getText());
-        int pass = 47089746;
+        int pass = 10000000;
         if(op != 0 && !(user.equals("")) && pass != 0){
             Connection con;
             Person p = new Person();
@@ -524,13 +524,25 @@ public class Login extends javax.swing.JFrame {
             try {
                 con = conexion.getConnection();
                 switch(op){
-                    case 1: ps = con.prepareStatement("SELECT ID_PERSON FROM DIRECTOR WHERE CODE_DIRECTOR = ?");
+                    case 1: ps = con.prepareStatement("SELECT * FROM VIEW_DIRECTOR WHERE CODE_DIRECTOR = ? AND DNI = ?");
                             ps.setString(1, user);
                             ps.setInt(2, pass);
                             rs = ps.executeQuery();
                             if(rs.next()){
+                                Director d = new Director();
+                                d.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                d.setCode_director(rs.getString("CODE_DIRECTOR"));
+                                p.setId_person(Integer.parseInt(rs.getString("ID_PERSON")));
+                                p.setFirs_name(rs.getString("FIRST_NAME"));
+                                p.setLast_name(rs.getString("LAST_NAME"));
+                                p.setDni(Integer.parseInt(rs.getString("DNI")));
+                                p.setPhone(Integer.parseInt(rs.getString("PHONE")));
+                                p.setAddress(rs.getString("ADDRESS"));
+                                p.setEmail(rs.getString("EMAIL"));
                                 JOptionPane.showMessageDialog(null, "BIENVENIDO DIRECTOR "+rs.getString("LAST_NAME"));
-
+                                Controler_VDirector as = new Controler_VDirector(d,p);
+                                this.setVisible(false);
+                                as.inicio();
                             }else{
                                 JOptionPane.showMessageDialog(null,"Usuario o Contraseña Errada");
                             }

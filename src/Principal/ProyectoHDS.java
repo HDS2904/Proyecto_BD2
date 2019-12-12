@@ -68,6 +68,9 @@ public class ProyectoHDS {
             
         } catch (Exception e) {
         }
+        
+        Login a = new Login();
+        a.setVisible(true);
     }
     
 }

@@ -32,11 +32,17 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     private Person p;
     private Director d;
     private VDirector vd;
-    private Subject sb_aper = new Subject();
     
     public Controler_VDirector(Director d, Person p){
         this.d = d;
         this.p = p;
+        pdao = new PersonDAO();
+        ddao = new DirectorDAO();
+        sdao = new StudentDAO();
+        tdao = new TeacherDAO();
+        sbdao = new SubjectDAO();
+        stdao = new SectionDAO();
+        
         vd = new VDirector();
         pdao = new PersonDAO();
         ddao = new DirectorDAO();
@@ -45,12 +51,25 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         sbdao= new SubjectDAO();
         stdao = new SectionDAO();
         
-        this.vd.tabla4sec.addMouseListener(this);
-        this.vd.btn4bus.addActionListener(this);
-        this.vd.btn4ins.addActionListener(this);
-        this.vd.btn4mod.addActionListener(this);
-        this.vd.btn4del.addActionListener(this);
-        this.vd.btn4lim.addActionListener(this);
+        this.vd.btn1.addActionListener(this);
+        this.vd.btn2.addActionListener(this);
+        this.vd.btn3.addActionListener(this);
+        this.vd.btn4.addActionListener(this);
+        this.vd.btn5.addActionListener(this);
+        
+        this.vd.btn1sav.addActionListener(this);
+        this.vd.btn1can.addActionListener(this);
+        
+        this.vd.btn2bus.addActionListener(this);
+        this.vd.btn2ins.addActionListener(this);
+        this.vd.btn2mod.addActionListener(this);
+        this.vd.btn2del.addActionListener(this);
+        this.vd.btn2lim.addActionListener(this);
+        
+    }
+    
+    public Controler_VDirector(){
+        
     }
     
     public void inicio(){
@@ -58,10 +77,64 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         vd.setLocationRelativeTo(null);
         vd.titulo2.setText("BIENVENIDO PROFESOR "+p.getLast_name());
         vd.setVisible(true);
+        
+        vd.Panel0.setVisible(true);
+        vd.Panel1.setVisible(false);
+        vd.Panel2.setVisible(false);
+        vd.Panel3.setVisible(false);
+        vd.Panel4.setVisible(false);
+        vd.Panel5.setVisible(false);
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
+        //Interaccion de ventana
+        if(ae.getSource() == vd.btn1){
+            datos();
+            vd.Panel0.setVisible(false);
+            vd.Panel1.setVisible(true);
+            vd.Panel2.setVisible(false);
+            vd.Panel3.setVisible(false);
+            vd.Panel4.setVisible(false);
+            vd.Panel5.setVisible(false);
+        }
+        
+        if(ae.getSource() == vd.btn2){
+            vd.Panel0.setVisible(false);
+            vd.Panel1.setVisible(false);
+            vd.Panel2.setVisible(true);
+            vd.Panel3.setVisible(false);
+            vd.Panel4.setVisible(false);
+            vd.Panel5.setVisible(false);
+        }
+        
+        if(ae.getSource() == vd.btn3){
+            vd.Panel0.setVisible(false);
+            vd.Panel1.setVisible(true);
+            vd.Panel2.setVisible(false);
+            vd.Panel3.setVisible(true);
+            vd.Panel4.setVisible(false);
+            vd.Panel5.setVisible(false);
+        }
+        
+        if(ae.getSource() == vd.btn4){
+            vd.Panel0.setVisible(false);
+            vd.Panel1.setVisible(false);
+            vd.Panel2.setVisible(false);
+            vd.Panel3.setVisible(false);
+            vd.Panel4.setVisible(true);
+            vd.Panel5.setVisible(false);
+        }
+        
+        if(ae.getSource() == vd.btn5){
+            vd.Panel0.setVisible(false);
+            vd.Panel1.setVisible(false);
+            vd.Panel2.setVisible(false);
+            vd.Panel3.setVisible(false);
+            vd.Panel4.setVisible(false);
+            vd.Panel5.setVisible(true);
+        }
+        
         //ACCIONES PANEL DE EDITAR PERFIL
         if(ae.getSource() == vd.btn1sav){
             try {
@@ -178,7 +251,6 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     public void search_sub()throws Exception{
         Section st = stdao.Search(Integer.parseInt(vd.tx4cod.getText()));
         Subject sb = sbdao.Search(st.getId_subject());
-        sb_aper = sb;
         vd.tx4nom.setText(st.getSection_group());
         vd.cb4cur.setSelectedIndex(sb.getId_subject());
     }
