@@ -108,6 +108,11 @@ public class VSTeacher extends javax.swing.JFrame {
         btn3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn3.setForeground(new java.awt.Color(0, 0, 204));
         btn3.setText("EXAMEN");
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 120, 40));
 
         btn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -387,6 +392,10 @@ public class VSTeacher extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn3ActionPerformed
 
     /**
      * @param args the command line arguments
