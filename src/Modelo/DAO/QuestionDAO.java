@@ -172,7 +172,7 @@ public class QuestionDAO implements ICRUD<Question>{
                 qu = new Question();
                 qu.setId_question(rs.getInt("ID_QUESTION"));
                 qu.setId_theme(rs.getInt("ID_THEME"));
-                qu.setQuestion(rs.getString("ID_SUBJECT"));
+                qu.setQuestion(rs.getString("QUESTION"));
                 qu.setScore(rs.getInt("SCORE"));
                 lista.add(qu);
             }            
@@ -190,5 +190,39 @@ public class QuestionDAO implements ICRUD<Question>{
         return lista;
     }
 
-    
+    public ArrayList<Question> Search_by_subject(int t) throws Exception {
+        ArrayList<Question> lista = new ArrayList<Question>();
+        qu = new Question();
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_QUESTIONS.SEARCH_QU_SUB(?)}";
+        
+        
+         try {
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
+            ca.execute();
+            rs = (ResultSet)ca.getObject(1);
+            while(rs.next()){
+                
+                qu = new Question();
+                qu.setId_question(rs.getInt("ID_QUESTION"));
+                qu.setId_theme(rs.getInt("ID_THEME"));
+                qu.setQuestion(rs.getString("QUESTION"));
+                qu.setScore(rs.getInt("SCORE"));
+                lista.add(qu);
+            }            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return lista;
+    }
 }
