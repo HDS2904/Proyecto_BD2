@@ -2,14 +2,19 @@
 package Controladores;
 
 import Modelo.DAO.DirectorDAO;
+import Modelo.DAO.FacultyDAO;
 import Modelo.DAO.PersonDAO;
+import Modelo.DAO.SchoolDAO;
 import Modelo.DAO.SectionDAO;
 import Modelo.DAO.StudentDAO;
 import Modelo.DAO.SubjectDAO;
 import Modelo.DAO.TeacherDAO;
 import Modelo.Entidades.Director;
+import Modelo.Entidades.Faculty;
 import Modelo.Entidades.Person;
+import Modelo.Entidades.School;
 import Modelo.Entidades.Section;
+import Modelo.Entidades.Student;
 import Modelo.Entidades.Subject;
 import Vistas.VDirector;
 import java.awt.event.ActionEvent;
@@ -36,12 +41,6 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     public Controler_VDirector(Director d, Person p){
         this.d = d;
         this.p = p;
-        pdao = new PersonDAO();
-        ddao = new DirectorDAO();
-        sdao = new StudentDAO();
-        tdao = new TeacherDAO();
-        sbdao = new SubjectDAO();
-        stdao = new SectionDAO();
         
         vd = new VDirector();
         pdao = new PersonDAO();
@@ -60,11 +59,14 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn1sav.addActionListener(this);
         this.vd.btn1can.addActionListener(this);
         
+        this.vd.tabla2est.addMouseListener(this);
         this.vd.btn2bus.addActionListener(this);
         this.vd.btn2ins.addActionListener(this);
         this.vd.btn2mod.addActionListener(this);
         this.vd.btn2del.addActionListener(this);
         this.vd.btn2lim.addActionListener(this);
+        this.vd.cb2fac.addActionListener(this);
+        this.vd.cb2esc.addActionListener(this);
         
     }
     
@@ -100,6 +102,12 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         }
         
         if(ae.getSource() == vd.btn2){
+            try {
+                list_student();
+                list_school(1);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Error al Cargar lista de alumnos: "+ex);
+            }
             vd.Panel0.setVisible(false);
             vd.Panel1.setVisible(false);
             vd.Panel2.setVisible(true);
@@ -147,46 +155,56 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         if(ae.getSource() == vd.btn1can){
             datos();
         }
-        //ACCIONES DE SECCION 
-        if(ae.getSource() == vd.btn4ins){
-            try {
-                insert_section();
-                load_subject();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
-            }
-        }
         
-        if(ae.getSource() == vd.btn4bus){
+        //ACCIONES DE STUDENT
+        if(ae.getSource() == vd.btn2bus){
             try {
-                search_sub();
+                mant_student(4);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Error al buscar sección: "+ex);
             }
         }
         
-        if(ae.getSource() == vd.btn4mod){
-            System.out.println("pasoooo ups");
+        if(ae.getSource() == vd.btn2ins){
             try {
-                update_section();
-                load_subject();
+                mant_student(1);
+                list_student();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
+            }
+        }
+        
+        if(ae.getSource() == vd.btn2mod){
+            try {
+                mant_student(2);
+                list_student();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Error al editar datos: "+ex);
             }
         }
         
-        if(ae.getSource() == vd.btn4del){
+        if(ae.getSource() == vd.btn2del){
             try {
-                delete_section();
-                load_subject();
+                mant_student(3);
+                list_student();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Error al borrar datos: "+ex);
             }
         }
         
-        if(ae.getSource() == vd.btn4lim){
-            limpiar();
+        if(ae.getSource() == vd.cb2fac){
+            try {
+                list_school(2);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Error al desplegar school: "+ex);
+            }
         }
+        
+        if(ae.getSource() == vd.btn2lim){
+            limpiar(1);
+        }
+        
+        //ACCIONES DE TEACHER
         
       
     }
@@ -212,6 +230,111 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         pdao.Update(p);
         ddao.Update(d);
     }
+    
+    public void list_student()throws Exception{
+        DefaultTableModel ad = new DefaultTableModel();
+        ad.setColumnIdentifiers(new Object[]{"ID","Código","Nombres","Apellidos","DNI","Telefono","Dirección","Email"});
+        ArrayList<Student> s = sdao.ListAll();
+        Person p1;
+        for (Student s1 : s) {
+            p1 = pdao.Search(s1.getId_person());
+            ad.addRow(new Object[]{s1.getId_person(),s1.getCode_student(),p1.getFirs_name(),p1.getLast_name(),
+                p1.getDni(),p1.getPhone(),p1.getAddress(),p1.getEmail()});
+        }
+       
+        TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(ad);
+        vd.tabla2est.setRowSorter(order);
+        vd.tabla2est.setModel(ad);
+    }
+    
+    public void list_school(int a)throws Exception{
+        
+        if(a==1){
+            FacultyDAO fdao = new FacultyDAO();
+            vd.cb2fac.removeAllItems();
+            vd.cb2fac.addItem("Seleccione");
+            ArrayList<Faculty> fs = fdao.ListAll();
+            for (Faculty f1 : fs) {
+                vd.cb2fac.addItem(f1.getName_faculty());
+            }
+        }
+        if(vd.cb2fac.getSelectedIndex() != 0 ){
+            SchoolDAO scdao = new SchoolDAO();
+            vd.cb2esc.removeAllItems();
+            vd.cb2esc.addItem("Seleccione");
+            ArrayList<School> sc = scdao.ListAll();
+            for (School sc1 : sc) {
+                if(sc1.getId_faculty() == vd.cb2fac.getSelectedIndex())
+                    vd.cb2esc.addItem(sc1.getId_school()+" ."+ sc1.getName_school());
+            }
+            
+        }
+        
+        
+    }
+    
+    public void mant_student(int op)throws Exception{
+        Person p1 = new Person();
+        Student s1 = new Student();
+        int ci;
+        switch(op){
+            case 1: //Insertar
+                    s1.setCode_student(vd.tx2cod.getText());
+                    ci = Integer.parseInt((vd.cb2esc.getSelectedItem()+"").substring(0,2).trim());
+                    s1.setId_school(ci);
+                    p1.setFirs_name(vd.tx2nom.getText());
+                    p1.setLast_name(vd.tx2ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
+                    p1.setAddress(vd.tx2dir.getText());
+                    p1.setEmail(vd.tx2ema.getText());
+                    pdao.Create(p1);
+                    p1 = pdao.Search(ci);
+                    sdao.Create(s1);
+                    break;
+            case 2: //Modificar
+                    s1.setId_person(Integer.parseInt(vd.tx2id.getText()));
+                    s1.setCode_student(vd.tx2cod.getText());
+                    ci = Integer.parseInt((vd.cb2esc.getSelectedItem()+"").substring(0,2).trim());
+                    s1.setId_school(ci);
+                    p1.setId_person(Integer.parseInt(vd.tx2id.getText()));
+                    p1.setFirs_name(vd.tx2nom.getText());
+                    p1.setLast_name(vd.tx2ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
+                    p1.setAddress(vd.tx2dir.getText());
+                    p1.setEmail(vd.tx2ema.getText());
+                    pdao.Update(p1);
+                    sdao.Update(s1);
+                    break;
+            case 3: //Eliminar
+                    p1.setId_person(Integer.parseInt(vd.tx2id.getText()));
+                    pdao.Delete(p1);
+                    break;
+            case 4: //Buscar
+                    vd.cb2fac.setSelectedIndex(1); //OJO SOLO ESTO ES POR DEFECTO MOMENTANEMAENTE
+                    p1 = pdao.Search(Integer.parseInt(vd.tx2id.getText()));
+                    s1 = sdao.Search(Integer.parseInt(vd.tx2id.getText()));
+                    vd.tx2id.setText(s1.getId_person()+"");
+                    vd.tx2cod.setText(s1.getCode_student());
+                    vd.tx2nom.setText(p1.getFirs_name());
+                    vd.tx2ape.setText(p1.getLast_name());
+                    vd.tx2dni.setText(p1.getDni()+"");
+                    vd.cb2esc.setSelectedIndex(s1.getId_school());
+                    vd.tx2tel.setText(p1.getPhone()+"");
+                    vd.tx2dir.setText(p1.getAddress());
+                    vd.tx2ema.setText(p1.getEmail());
+                    break;
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     
     public void load_subject()throws Exception{
         DefaultTableModel ad = new DefaultTableModel();
@@ -271,10 +394,28 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         stdao.Delete(st);
     }
     
-    public void limpiar(){
-        vd.cb4cur.setSelectedIndex(0);
-        vd.tx4nom.setText("");
-        vd.tx4cod.setText("");
+    public void limpiar(int op){
+        switch(op){
+            case 1: //limpiar panel estudiante
+                    vd.tx2id.setText("");
+                    vd.tx2cod.setText("");
+                    vd.tx2nom.setText("");
+                    vd.tx2ape.setText("");
+                    vd.tx2dni.setText("");
+                    vd.tx2tel.setText("");
+                    vd.tx2dir.setText("");
+                    vd.tx2ema.setText("");
+                    break;
+            case 2: //limpiar panel Profesores
+                    break;
+            case 3: //Limpiar panel curso
+                    break;
+            case 4: //Limpiar panel seccion
+                    vd.cb4cur.setSelectedIndex(0);
+                    vd.tx4nom.setText("");
+                    vd.tx4cod.setText("");
+                    break;
+        }
     }
 
     

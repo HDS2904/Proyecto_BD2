@@ -436,6 +436,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -522,9 +523,9 @@ public class Login extends javax.swing.JFrame {
     public void ejecutar_accion(){
         int op = jctipo.getSelectedIndex();
         //String user = txusers.getText();
-        String user = "10000000";
+        String user = "10000001";
         //int pass = Integer.parseInt(txpass.getText());
-        int pass = 10000000;
+        int pass = 71548925;
         if(op != 0 && !(user.equals("")) && pass != 0){
             Connection con;
             Person p = new Person();
