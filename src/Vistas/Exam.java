@@ -5,7 +5,9 @@
  */
 package Vistas;
 
+import Controladores.Controler_Section;
 import Controladores.Controler_Teacher;
+import Modelo.Entidades.Section;
 import Modelo.Entidades.Subject;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -175,7 +177,11 @@ public class Exam extends javax.swing.JFrame {
     }//GEN-LAST:event_cboNumActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        obtenerParametros();
+        try {
+            obtenerParametros();
+        } catch (Exception ex) {
+            Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -231,6 +237,8 @@ public class Exam extends javax.swing.JFrame {
 
     ArrayList<Subject> lista_s = new ArrayList();
     Controler_Teacher te = new Controler_Teacher();
+    Controler_Section se = new Controler_Section();
+    
     private void cargarLista() throws Exception {
         lista_s = te.search_sub(pro);
         cboSub.removeAllItems();
@@ -242,27 +250,29 @@ public class Exam extends javax.swing.JFrame {
         
     }
 
-    private void obtenerParametros() {
+    private void obtenerParametros() throws Exception {
         Subject aux = (Subject) cboSub.getSelectedItem();
         int numero = (int) cboNum.getSelectedItem();
         txtAux.setText(numero+" "+aux.getName_subject());
+        Section sec = se.SearchSection_Te_Su(pro, aux.getId_subject());
+        
         
         switch (numero) {
             case 5:
-                Exam_pre_5 exa5 = new Exam_pre_5();
+                Exam_pre_5 exa5 = new Exam_pre_5(numero,sec.getId_section());
                 exa5.setVisible(true);
                 
                 break;
             case 6:
-                Exam_pre_6 exa6 = new Exam_pre_6();
+                Exam_pre_6 exa6 = new Exam_pre_6(numero,sec.getId_section());
                 exa6.setVisible(true);
                 break;
             case 7:
-                Exam_pre_7 exa7 = new Exam_pre_7();
+                Exam_pre_7 exa7 = new Exam_pre_7(numero,sec.getId_section());
                 exa7.setVisible(true);
                 break;
             case 8:
-                Exam_pre_8 exa8 = new Exam_pre_8();
+                Exam_pre_8 exa8 = new Exam_pre_8(numero,sec.getId_section());
                 exa8.setVisible(true);
                 break;
             

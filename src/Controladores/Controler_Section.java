@@ -26,21 +26,21 @@ public class Controler_Section {
     
     public String CreateSection(Section p) throws Exception{
         dao.Create(p);
-        mensaje="Alternative CREADA";
+        mensaje="Seccion CREADA";
         
         return mensaje;
     }
     
     public String actualizarSection(Section p) throws Exception{
         dao.Update(p);
-        mensaje="Alternative ACTUALIZADA";
+        mensaje="Seccion ACTUALIZADA";
         
         return mensaje;
     }
     
     public String DeleteSection(Section p) throws Exception{
         dao.Delete(p);
-        mensaje="Alternative ELIMINADA";
+        mensaje="Seccion ELIMINADA";
         
         return mensaje;
     }

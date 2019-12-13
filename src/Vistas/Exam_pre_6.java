@@ -14,7 +14,7 @@ public class Exam_pre_6 extends javax.swing.JFrame {
     /**
      * Creates new form Exam_pre_6
      */
-    public Exam_pre_6() {
+    public Exam_pre_6(int cant,int sec) {
         initComponents();
     }
 
@@ -368,7 +368,7 @@ public class Exam_pre_6 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Exam_pre_6().setVisible(true);
+                //new Exam_pre_6().setVisible(true);
             }
         });
     }

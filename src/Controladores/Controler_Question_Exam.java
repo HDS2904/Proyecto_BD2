@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class Controler_QuestionExam {
+public class Controler_Question_Exam {
     
     private QuestionExamDAO dao;
     String mensaje ="";
 
-    public Controler_QuestionExam() {
+    public Controler_Question_Exam() {
         
         dao = new QuestionExamDAO();
         

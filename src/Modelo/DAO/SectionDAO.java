@@ -30,13 +30,12 @@ public class SectionDAO implements ICRUD<Section>{
     public void Create(Section t) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_SECTIONS.INSERT_D(?,?,?,?)}";
+        String sql = "{call PACK_MANAGE_SECTIONS.INSERT_D(?,?,?)}";
         try {
             call = con.prepareCall(sql);
             call.setInt(1,t.getId_subject());
             call.setInt(2,t.getId_person());
-            call.setInt(3,t.getId_exam());
-            call.setString(4,t.getSection_group());
+            call.setString(3,t.getSection_group());
             call.execute();
             call.close();
         } catch (SQLException ex) {

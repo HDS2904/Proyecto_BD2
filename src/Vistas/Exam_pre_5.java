@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import Controladores.Controler_Exam;
+import Controladores.Controler_Section;
+
 /**
  *
  * @author Usuario
@@ -14,8 +17,15 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     /**
      * Creates new form Exam_pre_5
      */
-    public Exam_pre_5() {
+    
+    int cantidad,seccion;
+    
+    public Exam_pre_5(int cant,int sec) {
         initComponents();
+        cantidad = cant;
+        seccion = sec;
+        cargarDatos();
+        
     }
 
     /**
@@ -329,7 +339,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Exam_pre_5().setVisible(true);
+                //new Exam_pre_5().setVisible(true);
             }
         });
     }
@@ -371,4 +381,18 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     private javax.swing.JRadioButton rtnAlterC_4;
     private javax.swing.JRadioButton rtnAlterC_5;
     // End of variables declaration//GEN-END:variables
+
+    Controler_Exam ex = new Controler_Exam();
+    Controler_Section se = new Controler_Section();
+
+    
+    
+    private void cargarDatos() {
+    
+        
+        
+    }
+    
+    
+    
 }

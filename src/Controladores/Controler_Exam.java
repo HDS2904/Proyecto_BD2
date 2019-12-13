@@ -59,7 +59,7 @@ public class Controler_Exam {
                 
     }
     
-    public ArrayList<Question> PlantillaExam(ArrayList<Question> preguntas,int cant, int curso) throws Exception{
+    public ArrayList<Question> PlantillaExam(int cant, int curso) throws Exception{
         
         Controler_Question qu = new Controler_Question();
         GenerarExamenController ge = new GenerarExamenController();

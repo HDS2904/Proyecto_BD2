@@ -85,10 +85,10 @@ public class ProyectoHDS {
 //            }
 //        } catch (Exception e) {
 //        }
-        Login log = new Login();
-        log.setVisible(true);
+        //Login log = new Login();
+        //log.setVisible(true);
        
-        
+                
     }
     
 }
