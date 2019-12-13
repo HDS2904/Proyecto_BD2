@@ -336,20 +336,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     public void load_section()throws Exception{
         DefaultTableModel ad = new DefaultTableModel();
         ad.setColumnIdentifiers(new Object[]{"ID_Section","Name_Section","Profesor","Subject"});

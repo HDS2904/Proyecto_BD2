@@ -38,26 +38,6 @@ public class VDirector extends javax.swing.JFrame {
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         PanelP = new javax.swing.JPanel();
-        Panel5 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tabla5sec = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        tx5nom = new javax.swing.JTextField();
-        btn5del = new javax.swing.JButton();
-        btn5lim = new javax.swing.JButton();
-        btn5ins = new javax.swing.JButton();
-        btn5mod = new javax.swing.JButton();
-        cb5cur = new javax.swing.JComboBox<>();
-        jLabel34 = new javax.swing.JLabel();
-        tx5pro = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
-        btn5busp = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        tx5cod = new javax.swing.JTextField();
-        btn5bus = new javax.swing.JButton();
         Panel2 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -89,6 +69,26 @@ public class VDirector extends javax.swing.JFrame {
         tx2id = new javax.swing.JTextField();
         btn2bus = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
+        Panel5 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla5sec = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        tx5nom = new javax.swing.JTextField();
+        btn5del = new javax.swing.JButton();
+        btn5lim = new javax.swing.JButton();
+        btn5ins = new javax.swing.JButton();
+        btn5mod = new javax.swing.JButton();
+        cb5cur = new javax.swing.JComboBox<>();
+        jLabel34 = new javax.swing.JLabel();
+        tx5pro = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        btn5busp = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        tx5cod = new javax.swing.JTextField();
+        btn5bus = new javax.swing.JButton();
         Panel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -211,147 +211,6 @@ public class VDirector extends javax.swing.JFrame {
 
         PanelP.setBackground(new java.awt.Color(255, 255, 255));
         PanelP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Panel5.setBackground(new java.awt.Color(255, 255, 255));
-        Panel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel5.setName("Panel3"); // NOI18N
-        Panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel32.setText("Administracion de Sección");
-        Panel5.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 250, 20));
-
-        tabla5sec.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane4.setViewportView(tabla5sec);
-
-        Panel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 420, 380));
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
-
-        jLabel33.setText("Nombre Sección:");
-
-        btn5del.setText("Eliminar");
-
-        btn5lim.setText("Limpiar");
-
-        btn5ins.setText("Agregar");
-
-        btn5mod.setText("Modificar");
-
-        cb5cur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-
-        jLabel34.setText("Curso:");
-
-        jLabel39.setText("Código Profesor:");
-
-        btn5busp.setText("BUS");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel33)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tx5nom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel34)
-                            .addGap(18, 18, 18)
-                            .addComponent(cb5cur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn5ins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn5mod, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn5lim, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn5del, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel39)
-                                .addGap(18, 18, 18)
-                                .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn5busp)))))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(tx5nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb5cur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn5busp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn5ins)
-                    .addComponent(btn5del))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn5mod)
-                    .addComponent(btn5lim))
-                .addContainerGap())
-        );
-
-        Panel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 300, 280));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
-
-        jLabel35.setText("Código:");
-
-        btn5bus.setText("BUS");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel35)
-                .addGap(18, 18, 18)
-                .addComponent(tx5cod, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btn5bus)
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(tx5cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn5bus))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        Panel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 300, 90));
-
-        PanelP.add(Panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel2.setBackground(new java.awt.Color(255, 255, 255));
         Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -487,7 +346,7 @@ public class VDirector extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(tx2dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(cb2fac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -553,6 +412,147 @@ public class VDirector extends javax.swing.JFrame {
         Panel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 270, 50));
 
         PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
+
+        Panel5.setBackground(new java.awt.Color(255, 255, 255));
+        Panel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel5.setName("Panel3"); // NOI18N
+        Panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel32.setText("Administracion de Sección");
+        Panel5.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 250, 20));
+
+        tabla5sec.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(tabla5sec);
+
+        Panel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 420, 380));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+
+        jLabel33.setText("Nombre Sección:");
+
+        btn5del.setText("Eliminar");
+
+        btn5lim.setText("Limpiar");
+
+        btn5ins.setText("Agregar");
+
+        btn5mod.setText("Modificar");
+
+        cb5cur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+
+        jLabel34.setText("Curso:");
+
+        jLabel39.setText("Código Profesor:");
+
+        btn5busp.setText("BUS");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel33)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(tx5nom, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel34)
+                            .addGap(18, 18, 18)
+                            .addComponent(cb5cur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btn5ins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn5mod, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn5lim, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn5del, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addGap(18, 18, 18)
+                                .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn5busp)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(tx5nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb5cur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn5busp))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn5ins)
+                    .addComponent(btn5del))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn5mod)
+                    .addComponent(btn5lim))
+                .addContainerGap())
+        );
+
+        Panel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 300, 280));
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+
+        jLabel35.setText("Código:");
+
+        btn5bus.setText("BUS");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel35)
+                .addGap(18, 18, 18)
+                .addComponent(tx5cod, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btn5bus)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(tx5cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn5bus))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        Panel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 300, 90));
+
+        PanelP.add(Panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel4.setBackground(new java.awt.Color(255, 255, 255));
         Panel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -641,7 +641,7 @@ public class VDirector extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn4mod)
                     .addComponent(btn4lim))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         Panel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 280, 220));
@@ -673,7 +673,7 @@ public class VDirector extends javax.swing.JFrame {
                     .addComponent(jLabel31)
                     .addComponent(tx4cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn4bus))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         Panel4.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, 90));
