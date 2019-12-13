@@ -51,7 +51,7 @@ public class VDirector extends javax.swing.JFrame {
         btn5mod = new javax.swing.JButton();
         cb5cur = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
-        tx5nom1 = new javax.swing.JTextField();
+        tx5pro = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         btn5busp = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -283,7 +283,7 @@ public class VDirector extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel39)
                         .addGap(18, 18, 18)
-                        .addComponent(tx5nom1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn5busp)))
                 .addContainerGap())
@@ -295,14 +295,14 @@ public class VDirector extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(tx5nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb5cur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
-                    .addComponent(tx5nom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx5pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn5busp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1102,6 +1102,6 @@ public class VDirector extends javax.swing.JFrame {
     public javax.swing.JTextField tx4nom;
     public javax.swing.JTextField tx5cod;
     public javax.swing.JTextField tx5nom;
-    public javax.swing.JTextField tx5nom1;
+    public javax.swing.JTextField tx5pro;
     // End of variables declaration//GEN-END:variables
 }

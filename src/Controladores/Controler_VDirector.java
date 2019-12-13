@@ -16,8 +16,8 @@ import Modelo.Entidades.School;
 import Modelo.Entidades.Section;
 import Modelo.Entidades.Student;
 import Modelo.Entidades.Subject;
-import Modelo.Entidades.Teacher;
 import Vistas.VDirector;
+import Vistas.prof_select;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -219,9 +219,15 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         }
         
         //ACCIONES SECCION
+        if(ae.getSource() == vd.btn5busp){
+            prof_select ps = new prof_select();
+            ps.setVisible(true);
+            //vd.tx5pro = ps.select;
+        }
+        
         if(ae.getSource() == vd.btn5ins){
             try {
-                insert_section();
+                mant_section(1);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Error al desplegar school: "+ex);
             }
@@ -303,7 +309,6 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     s1.setCode_student(vd.tx2cod.getText());
                     System.out.println(s1.getCode_student());
                     ci = Integer.parseInt((vd.cb2esc.getSelectedItem()+"").substring(0,2).trim());
-                    
                     s1.setId_school(ci);
                     p1.setFirs_name(vd.tx2nom.getText());
                     p1.setLast_name(vd.tx2ape.getText());
@@ -388,17 +393,27 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         vd.cb5cur.addItem("Seleccione");
         ArrayList<Subject> sba = sbdao.ListAll();
         for (Subject sb1 : sba) {
-            vd.cb5cur.addItem(sb1.getName_subject());
+            vd.cb5cur.addItem(sb1.getId_subject()+" ."+sb1.getName_subject());
         }
     }
    
-    public void insert_section()throws Exception{
+    public void mant_section(int op)throws Exception{
         Section st = new Section();
-        st.setId_person(p.getId_person());
-        st.setId_subject(vd.cb5cur.getSelectedIndex());
-        st.setId_exam(0);
-        st.setSection_group(vd.tx4nom.getText());
-        stdao.Create(st);
+        int ci;
+        switch(op){
+            case 1: //Insertar
+                    st.setId_person(Integer.parseInt(vd.tx5pro.getText()));
+                    ci = Integer.parseInt((vd.cb5cur.getSelectedItem()+"").substring(0,2).trim());
+                    st.setId_subject(ci);
+                    st.setId_exam(0);
+                    st.setSection_group(vd.tx5nom.getText());
+                    stdao.Create(st);
+                    break;
+            case 2: //Modificar
+                    
+                    break;
+        }
+        
     }
     
     public void search_sub()throws Exception{
