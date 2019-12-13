@@ -3,12 +3,14 @@ package Principal;
 import Controladores.Controler_Alternative;
 import Controladores.Controler_Person;
 import Controladores.Controler_Question;
+import Controladores.Controler_Section;
 import Controladores.GenerarExamenController;
 import Modelo.Entidades.Alternative;
 import Modelo.Entidades.AlternativeExam;
 import Modelo.Entidades.GenerarExamen;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Question;
+import Modelo.Entidades.Section;
 import Vistas.Login;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,6 +87,7 @@ public class ProyectoHDS {
 //        }
         Login log = new Login();
         log.setVisible(true);
+       
         
     }
     

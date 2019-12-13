@@ -180,7 +180,7 @@ public class SectionDAO implements ICRUD<Section>{
         call = null;
         Section st = new Section();
         ResultSet rs;
-        String sql = "{? = call PACK_MANAGE_SECTIONS.SEARCH_D(?,?)}";
+        String sql = "{? = call PACK_MANAGE_SECTIONS.SEARCH_TE_SU(?,?)}";
          try {
             call = con.prepareCall(sql);
             call.registerOutParameter(1,OracleTypes.CURSOR);
