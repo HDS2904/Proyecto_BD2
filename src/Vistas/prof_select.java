@@ -22,10 +22,12 @@ public class prof_select extends javax.swing.JFrame {
     TeacherDAO tdao;
     PersonDAO pdao;
     DefaultTableModel ad;
-    public int select;
+    int select;
     
     public prof_select() {
         initComponents();
+        this.setTitle("CURSOS");
+        this.setLocationRelativeTo(null);
         select = 0;
         tdao = new TeacherDAO();
         pdao = new PersonDAO();
@@ -133,7 +135,8 @@ public class prof_select extends javax.swing.JFrame {
     }//GEN-LAST:event_tablapMouseClicked
 
     private void btnselActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnselActionPerformed
-        ret();
+        this.setVisible(false);
+        
     }//GEN-LAST:event_btnselActionPerformed
 
     /**
@@ -192,9 +195,13 @@ public class prof_select extends javax.swing.JFrame {
         tablap.setRowSorter(order);
         tablap.setModel(ad);
     }
-        
-    public int ret(){
+
+    public int getSelect() {
         return select;
+    }
+
+    public void setSelect(int select) {
+        this.select = select;
     }
 
 }

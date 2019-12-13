@@ -38,12 +38,14 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     private Person p;
     private Director d;
     private VDirector vd;
+    private prof_select ps;
     
     public Controler_VDirector(Director d, Person p){
         this.d = d;
         this.p = p;
         
         vd = new VDirector();
+        ps = new prof_select();
         pdao = new PersonDAO();
         ddao = new DirectorDAO();
         sdao = new StudentDAO();
@@ -56,6 +58,8 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn3.addActionListener(this);
         this.vd.btn4.addActionListener(this);
         this.vd.btn5.addActionListener(this);
+        this.ps.btnsel.addActionListener(this);
+        
         //panel 1
         this.vd.btn1sav.addActionListener(this);
         this.vd.btn1can.addActionListener(this);
@@ -75,6 +79,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn5mod.addActionListener(this);
         this.vd.btn5del.addActionListener(this);
         this.vd.btn5lim.addActionListener(this);
+        this.vd.btn5busp.addActionListener(this);
         
     }
     
@@ -98,142 +103,115 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        //Interaccion de ventana
-        if(ae.getSource() == vd.btn1){
-            datos();
-            vd.Panel0.setVisible(false);
-            vd.Panel1.setVisible(true);
-            vd.Panel2.setVisible(false);
-            vd.Panel3.setVisible(false);
-            vd.Panel4.setVisible(false);
-            vd.Panel5.setVisible(false);
-        }
-        
-        if(ae.getSource() == vd.btn2){
-            try {
+        try {
+            //Interaccion de ventana
+            if(ae.getSource() == vd.btn1){
+                datos();
+                vd.Panel0.setVisible(false);
+                vd.Panel1.setVisible(true);
+                vd.Panel2.setVisible(false);
+                vd.Panel3.setVisible(false);
+                vd.Panel4.setVisible(false);
+                vd.Panel5.setVisible(false);
+            }
+            if(ae.getSource() == vd.btn2){
                 list_student();
                 list_school(1);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al Cargar lista de alumnos: "+ex);
+                vd.Panel0.setVisible(false);
+                vd.Panel1.setVisible(false);
+                vd.Panel2.setVisible(true);
+                vd.Panel3.setVisible(false);
+                vd.Panel4.setVisible(false);
+                vd.Panel5.setVisible(false);
             }
-            vd.Panel0.setVisible(false);
-            vd.Panel1.setVisible(false);
-            vd.Panel2.setVisible(true);
-            vd.Panel3.setVisible(false);
-            vd.Panel4.setVisible(false);
-            vd.Panel5.setVisible(false);
-        }
-        
-        if(ae.getSource() == vd.btn3){
-            vd.Panel0.setVisible(false);
-            vd.Panel1.setVisible(true);
-            vd.Panel2.setVisible(false);
-            vd.Panel3.setVisible(true);
-            vd.Panel4.setVisible(false);
-            vd.Panel5.setVisible(false);
-        }
-        
-        if(ae.getSource() == vd.btn4){
-            vd.Panel0.setVisible(false);
-            vd.Panel1.setVisible(false);
-            vd.Panel2.setVisible(false);
-            vd.Panel3.setVisible(false);
-            vd.Panel4.setVisible(true);
-            vd.Panel5.setVisible(false);
-        }
-        
-        if(ae.getSource() == vd.btn5){
-            try {
+            if(ae.getSource() == vd.btn3){
+                vd.Panel0.setVisible(false);
+                vd.Panel1.setVisible(true);
+                vd.Panel2.setVisible(false);
+                vd.Panel3.setVisible(true);
+                vd.Panel4.setVisible(false);
+                vd.Panel5.setVisible(false);
+            }
+            if(ae.getSource() == vd.btn4){
+                vd.Panel0.setVisible(false);
+                vd.Panel1.setVisible(false);
+                vd.Panel2.setVisible(false);
+                vd.Panel3.setVisible(false);
+                vd.Panel4.setVisible(true);
+                vd.Panel5.setVisible(false);
+            }
+            if(ae.getSource() == vd.btn5){
                 load_section();
                 list_subject();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al Cargar lista de alumnos: "+ex);
+                vd.Panel0.setVisible(false);
+                vd.Panel1.setVisible(false);
+                vd.Panel2.setVisible(false);
+                vd.Panel3.setVisible(false);
+                vd.Panel4.setVisible(false);
+                vd.Panel5.setVisible(true);
             }
-            vd.Panel0.setVisible(false);
-            vd.Panel1.setVisible(false);
-            vd.Panel2.setVisible(false);
-            vd.Panel3.setVisible(false);
-            vd.Panel4.setVisible(false);
-            vd.Panel5.setVisible(true);
-        }
-        
-        //ACCIONES PANEL DE EDITAR PERFIL
-        if(ae.getSource() == vd.btn1sav){
-            try {
+
+            //ACCIONES PANEL DE EDITAR PERFIL
+            if(ae.getSource() == vd.btn1sav){
                 edit_director();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
             }
-        }
-        
-        if(ae.getSource() == vd.btn1can){
-            datos();
-        }
-        
-        //ACCIONES DE STUDENT
-        if(ae.getSource() == vd.btn2bus){
-            try {
+            if(ae.getSource() == vd.btn1can){
+                datos();
+            }
+
+            //ACCIONES DE STUDENT
+            if(ae.getSource() == vd.btn2bus){
                 mant_student(4);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al buscar sección: "+ex);
             }
-        }
-        
-        if(ae.getSource() == vd.btn2ins){
-            try {
+            if(ae.getSource() == vd.btn2ins){
                 mant_student(1);
                 list_student();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
             }
-        }
-        
-        if(ae.getSource() == vd.btn2mod){
-            try {
+            if(ae.getSource() == vd.btn2mod){
                 mant_student(2);
                 list_student();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al editar datos: "+ex);
             }
-        }
-        
-        if(ae.getSource() == vd.btn2del){
-            try {
+            if(ae.getSource() == vd.btn2del){
                 mant_student(3);
                 list_student();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al borrar datos: "+ex);
             }
-        }
-        
-        if(ae.getSource() == vd.cb2fac){
-            try {
-                list_school(2);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al desplegar school: "+ex);
+            if(ae.getSource() == vd.cb2fac){
+                    list_school(2);
             }
-        }
-        
-        if(ae.getSource() == vd.btn2lim){
-            limpiar(1);
-        }
-        
-        //ACCIONES SECCION
-        if(ae.getSource() == vd.btn5busp){
-            prof_select ps = new prof_select();
-            ps.setVisible(true);
-            //vd.tx5pro = ps.select;
-        }
-        
-        if(ae.getSource() == vd.btn5ins){
-            try {
-                mant_section(1);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al desplegar school: "+ex);
+            if(ae.getSource() == vd.btn2lim){
+                limpiar(1);
             }
+            
+            //ACCIONES SECCION
+            if(ae.getSource() == vd.btn5busp){
+                ps.setVisible(true);
+                vd.tx5pro.setText(ps.getSelect()+"");
+            }
+            if(ae.getSource() == ps.btnsel){
+                vd.tx5pro.setText(ps.getSelect()+"");
+            }
+            if(ae.getSource() == vd.btn5ins){
+                    mant_section(1);
+                    load_section();
+            }
+            if(ae.getSource() == vd.btn5mod){
+                    mant_section(2);
+                    load_section();
+            }
+            if(ae.getSource() == vd.btn5del){
+                    mant_section(3);
+                    load_section();
+            }
+            if(ae.getSource() == vd.btn5bus){
+                    mant_section(4);
+                    load_section();
+            }
+            if(ae.getSource() == vd.btn5lim){
+                    limpiar(5);
+            }
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(null,"ERROR: "+e);
         }
-        
-      
     }
     
     public void datos(){
@@ -459,6 +437,12 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     vd.cb4cur.setSelectedIndex(0);
                     vd.tx4nom.setText("");
                     vd.tx4cod.setText("");
+                    break;
+            case 5: //limpiar panel sección
+                    vd.tx5cod.setText("");
+                    vd.tx5nom.setText("");
+                    vd.tx5pro.setText("");
+                    vd.cb5cur.setSelectedIndex(0);
                     break;
         }
     }
