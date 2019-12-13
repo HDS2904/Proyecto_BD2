@@ -177,5 +177,40 @@ public class SectionDAO implements ICRUD<Section>{
         return lista;
     }
 
+    public Section Search_TE_SU(int id_te, int id_su) throws Exception {
+        con = conexion.getConnection();
+        call = null;
+        Section st = new Section();
+        ResultSet rs;
+        String sql = "{? = call PACK_MANAGE_SECTIONS.SEARCH_D(?,?)}";
+         try {
+            call = con.prepareCall(sql);
+            call.registerOutParameter(1,OracleTypes.CURSOR);
+            call.setInt(2, id_te);
+            call.setInt(3, id_su);
+            call.executeQuery();
+            rs = (ResultSet)call.getObject(1);
+            if(rs.next()){
+                st.setId_section(rs.getInt("ID_SECTION"));
+                st.setId_subject(rs.getInt("ID_SUBJECT"));
+                st.setId_person(rs.getInt("ID_PERSON"));
+                st.setId_exam(rs.getInt("ID_EXAM"));
+                st.setSection_group(rs.getString("SECTION_GROUP"));
+            }
+            call.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return st;
+        
+    }
+    
     
 }
