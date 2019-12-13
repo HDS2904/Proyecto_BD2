@@ -29,6 +29,12 @@ public class Controler_Teacher implements MouseListener, ActionListener{
     private Subject sb_aper;
     private SubjectDAO sbdao;
     private SectionDAO stdao;
+
+    public Controler_Teacher() {
+        this.tdao = new TeacherDAO();
+    }
+    
+    
     
     public Controler_Teacher(Teacher t, Person p){
         this.t = t;
@@ -52,9 +58,7 @@ public class Controler_Teacher implements MouseListener, ActionListener{
         this.vst.btn2adm.addActionListener(this);
     }
     
-    public Controler_Teacher(){
-        
-    }
+    
     
     public void inicio(){
         vst.setTitle("PROFESORES");
@@ -188,7 +192,14 @@ public class Controler_Teacher implements MouseListener, ActionListener{
         vst.tx2id.setText("");
     }
     
-    
+    public ArrayList<Subject> search_sub(int t) throws Exception{
+        
+        ArrayList<Subject> lista = new ArrayList<>();
+        
+        lista = tdao.Search_Sub(t);
+        
+        return lista;
+    }
     
     
     
