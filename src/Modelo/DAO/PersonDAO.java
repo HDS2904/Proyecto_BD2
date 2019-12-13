@@ -76,7 +76,7 @@ public class PersonDAO implements ICRUD<Person>{
     public void Delete(Person p) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_PERSONS.DELETE_P(?)";
+        String sql = "{call PACK_MANAGE_PERSONS.DELETE_D(?)";
         
         try {
             call = con.prepareCall(sql);
@@ -101,13 +101,13 @@ public class PersonDAO implements ICRUD<Person>{
         call = null;
         Person p = new Person();
         ResultSet rs;
-        
+        System.out.println("boolean: " +(((int)(Math.log10(t)+1)) == 8));
         if(((int)(Math.log10(t)+1)) == 8)
             sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_DNI(?)}";
         else
             sql = "{? = call PACK_MANAGE_PERSONS.SEARCH_D(?)}";
         
-        
+        System.out.println(sql);
         try {
             call = con.prepareCall(sql);
             call.registerOutParameter(1,OracleTypes.CURSOR);
@@ -136,7 +136,6 @@ public class PersonDAO implements ICRUD<Person>{
                 System.out.println(e);
             }
         }
-        System.out.println("te devolvio");
         return p;
     }
 

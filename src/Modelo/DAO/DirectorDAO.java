@@ -28,11 +28,12 @@ public class DirectorDAO implements ICRUD<Director>{
     public void Create(Director t) throws Exception {
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_DIRECTORS.INSERT_D(?,?)}";
+        String sql = "{call PACK_MANAGE_DIRECTORS.INSERT_D(?.?,?)}";
         try {
             call = con.prepareCall(sql);
-            call.setString(1, t.getCode_director());
-            call.setInt(2, t.getId_faculty());
+            call.setInt(1, t.getId_person());
+            call.setString(2, t.getCode_director());
+            call.setInt(3, t.getId_faculty());
             call.execute();
             call.close();
         } catch (SQLException e) {

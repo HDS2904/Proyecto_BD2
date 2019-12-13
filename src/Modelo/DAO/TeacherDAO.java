@@ -22,10 +22,11 @@ public class TeacherDAO implements ICRUD<Teacher>{
     public void Create(Teacher t) throws Exception{
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_TEACHERS.INSERT_D(?)}";
+        String sql = "{call PACK_MANAGE_TEACHERS.INSERT_D(?,?)}";
         try {
             call = con.prepareCall(sql);
-            call.setString(1, t.getCode_teacher());
+            call.setInt(1, t.getId_person());
+            call.setString(2, t.getCode_teacher());
             call.execute();
             call.close();
         } catch (SQLException e) {

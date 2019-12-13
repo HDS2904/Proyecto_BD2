@@ -16,6 +16,7 @@ import Modelo.Entidades.School;
 import Modelo.Entidades.Section;
 import Modelo.Entidades.Student;
 import Modelo.Entidades.Subject;
+import Modelo.Entidades.Teacher;
 import Vistas.VDirector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,10 +56,10 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn3.addActionListener(this);
         this.vd.btn4.addActionListener(this);
         this.vd.btn5.addActionListener(this);
-        
+        //panel 1
         this.vd.btn1sav.addActionListener(this);
         this.vd.btn1can.addActionListener(this);
-        
+        //Panel 2
         this.vd.tabla2est.addMouseListener(this);
         this.vd.btn2bus.addActionListener(this);
         this.vd.btn2ins.addActionListener(this);
@@ -67,6 +68,13 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn2lim.addActionListener(this);
         this.vd.cb2fac.addActionListener(this);
         this.vd.cb2esc.addActionListener(this);
+        //Panel 5
+        this.vd.tabla5sec.addMouseListener(this);
+        this.vd.btn5bus.addActionListener(this);
+        this.vd.btn5ins.addActionListener(this);
+        this.vd.btn5mod.addActionListener(this);
+        this.vd.btn5del.addActionListener(this);
+        this.vd.btn5lim.addActionListener(this);
         
     }
     
@@ -135,6 +143,12 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         }
         
         if(ae.getSource() == vd.btn5){
+            try {
+                load_section();
+                list_subject();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Error al Cargar lista de alumnos: "+ex);
+            }
             vd.Panel0.setVisible(false);
             vd.Panel1.setVisible(false);
             vd.Panel2.setVisible(false);
@@ -204,7 +218,14 @@ public class Controler_VDirector implements MouseListener, ActionListener{
             limpiar(1);
         }
         
-        //ACCIONES DE TEACHER
+        //ACCIONES SECCION
+        if(ae.getSource() == vd.btn5ins){
+            try {
+                insert_section();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,"Error al desplegar school: "+ex);
+            }
+        }
         
       
     }
@@ -280,17 +301,20 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         switch(op){
             case 1: //Insertar
                     s1.setCode_student(vd.tx2cod.getText());
+                    System.out.println(s1.getCode_student());
                     ci = Integer.parseInt((vd.cb2esc.getSelectedItem()+"").substring(0,2).trim());
+                    
                     s1.setId_school(ci);
-                    //p1.setFirs_name(vd.tx2nom.getText());
-                    //p1.setLast_name(vd.tx2ape.getText());
-                    //p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
-                    //p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
-                    //p1.setAddress(vd.tx2dir.getText());
-                    //p1.setEmail(vd.tx2ema.getText());
-                    //pdao.Create(p1);
+                    p1.setFirs_name(vd.tx2nom.getText());
+                    p1.setLast_name(vd.tx2ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx2dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx2tel.getText()));
+                    p1.setAddress(vd.tx2dir.getText());
+                    p1.setEmail(vd.tx2ema.getText());
+                    pdao.Create(p1);
                     p1 = pdao.Search(Integer.parseInt(vd.tx2dni.getText()));
                     s1.setId_person(p1.getId_person());
+                    System.out.println(s1.getId_person());
                     sdao.Create(s1);
                     break;
             case 2: //Modificar
@@ -321,7 +345,6 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     vd.tx2nom.setText(p1.getFirs_name());
                     vd.tx2ape.setText(p1.getLast_name());
                     vd.tx2dni.setText(p1.getDni()+"");
-                    vd.cb2esc.setSelectedIndex(s1.getId_school());
                     vd.tx2tel.setText(p1.getPhone()+"");
                     vd.tx2dir.setText(p1.getAddress());
                     vd.tx2ema.setText(p1.getEmail());
@@ -337,36 +360,42 @@ public class Controler_VDirector implements MouseListener, ActionListener{
     
     
     
-    public void load_subject()throws Exception{
+    
+    
+    
+    
+    
+    
+    
+    public void load_section()throws Exception{
         DefaultTableModel ad = new DefaultTableModel();
-        ad.setColumnIdentifiers(new Object[]{"ID_Section","Name_Section","Subject"});
+        ad.setColumnIdentifiers(new Object[]{"ID_Section","Name_Section","Profesor","Subject"});
         ArrayList<Section> st = stdao.ListAll();
+        Person p1;
         Subject sb;
         for (Section st1 : st) {
-            if(st1.getId_person() == p.getId_person()){
+                p1= pdao.Search(st1.getId_person());
                 sb = sbdao.Search(st1.getId_subject());
-                ad.addRow(new Object[]{st1.getId_section(),st1.getSection_group(),sb.getName_subject()});
-            }
+                ad.addRow(new Object[]{st1.getId_section(),st1.getSection_group(),p1.getLast_name(),sb.getName_subject()});
         }
-       
         TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(ad);
-        vd.tabla4sec.setRowSorter(order);
-        vd.tabla4sec.setModel(ad);
+        vd.tabla5sec.setRowSorter(order);
+        vd.tabla5sec.setModel(ad);
     }
     
     public void list_subject()throws Exception{
-        vd.cb4cur.removeAllItems();
-        vd.cb4cur.addItem("Seleccione");
+        vd.cb5cur.removeAllItems();
+        vd.cb5cur.addItem("Seleccione");
         ArrayList<Subject> sba = sbdao.ListAll();
         for (Subject sb1 : sba) {
-            vd.cb4cur.addItem(sb1.getName_subject());
+            vd.cb5cur.addItem(sb1.getName_subject());
         }
     }
    
     public void insert_section()throws Exception{
         Section st = new Section();
         st.setId_person(p.getId_person());
-        st.setId_subject(vd.cb4cur.getSelectedIndex());
+        st.setId_subject(vd.cb5cur.getSelectedIndex());
         st.setId_exam(0);
         st.setSection_group(vd.tx4nom.getText());
         stdao.Create(st);
@@ -419,16 +448,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     @Override
     public void mouseClicked(MouseEvent me) {

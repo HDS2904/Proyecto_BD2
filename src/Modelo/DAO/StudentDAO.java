@@ -27,11 +27,12 @@ public class StudentDAO implements ICRUD<Student>{
     public void Create(Student t) throws Exception {
         con = conexion.getConnection();
         call = null;
-        String sql = "{call PACK_MANAGE_STUDENTS.INSERT_D(?,?)}";
+        String sql = "{call PACK_MANAGE_STUDENTS.INSERT_D(?,?,?)}";
         try {
             call = con.prepareCall(sql);
-            call.setString(1, t.getCode_student());
-            call.setInt(2, t.getId_school());
+            call.setInt(1, t.getId_person());
+            call.setString(2, t.getCode_student());
+            call.setInt(3, t.getId_school());
             call.execute();
             call.close();
         } catch (SQLException e) {
