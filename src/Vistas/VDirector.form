@@ -321,7 +321,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="tx5nom1" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="tx5pro" min="-2" pref="88" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                   <Component id="btn5busp" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -338,15 +338,15 @@
                               <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tx5nom" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cb5cur" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tx5nom1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tx5pro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn5busp" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -425,7 +425,7 @@
                     <Property name="text" type="java.lang.String" value="Curso:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tx5nom1">
+                <Component class="javax.swing.JTextField" name="tx5pro">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
