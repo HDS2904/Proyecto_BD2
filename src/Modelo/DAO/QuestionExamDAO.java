@@ -124,17 +124,18 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
     @Override
     public QuestionExam Search(int t) throws Exception {
         
+        ca=null;
         qe = new QuestionExam();
         cn = conexion.getConnection();
+        ResultSet rs;
         String sql = "{? = call PACK_MANAGE_QUESTION_EXAMS.SEARCH_D(?)}";
-        
         
          try {
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.setInt(2, t);
-            ca.execute();
-            rs = (ResultSet)ca.getObject(2);
+            ca.executeQuery();
+            rs = (ResultSet)ca.getObject(1);
             if(rs.next()){
                 
                 qe.setId_question_exam(rs.getInt("ID_QUESTION_EXAM"));
@@ -210,7 +211,7 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
             ca.setInt(2, t);
             ca.setInt(3, n);
             ca.execute();
-            rs = (ResultSet)ca.getObject(2);
+            rs = (ResultSet)ca.getObject(1);
             if(rs.next()){
                 
                 qe.setId_question_exam(rs.getInt("ID_QUESTION_EXAM"));

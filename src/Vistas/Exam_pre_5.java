@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -510,12 +511,12 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         ex.CreateExam(aux_ex);
         
         aux_ex = ex.SearchExam_by_sec(seccion);
-        aux_qu_ex = new QuestionExam();
+        
         aux_al_ex = new AlternativeExam();
         int i=1;
         
         for (Question q : list_qu) {
-            
+            aux_qu_ex = new QuestionExam();
             aux_qu_ex.setId_exam(aux_ex.getId_exam());
             aux_qu_ex.setN_question(i);
             aux_qu_ex.setQuestion(q.getQuestion());
@@ -524,21 +525,21 @@ public class Exam_pre_5 extends javax.swing.JFrame {
             
         }
         
-        for (int k = 0; k<list_qex.size() ;k++) {
-            aux_qu_ex=qex.SearchQuestionExam_Qu(list_qex.get(k).getId_exam(), list_qex.get(k).getN_question());
-            list_qex_a.add(aux_qu_ex);
-        }
-        
         for (QuestionExam q : list_qex) {
             
             String msg = qex.CreateQuestionExam(q);
             
         }
         
+        for (int k = 0; k<list_qex.size() ;k++) {
+            aux_qu_ex = new QuestionExam();
+            aux_qu_ex=qex.SearchQuestionExam_Qu(list_qex.get(k).getId_exam(), list_qex.get(k).getN_question());
+            list_qex_a.add(aux_qu_ex);
+        }
         
         int j=0;
         for (Alternative q : list_al) {
-            
+            aux_al_ex = new AlternativeExam();
             aux_al_ex.setAlternative_A(q.getAlternative_A());
             aux_al_ex.setAlternative_B(q.getAlternative_B());
             aux_al_ex.setAlternative_C(q.getAlternative_C());
@@ -554,7 +555,11 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         }
         
         
+        JOptionPane.showConfirmDialog(null, "EXAMEN CREADO");
         
+        
+        
+        this.dispose();
         
         
     }
