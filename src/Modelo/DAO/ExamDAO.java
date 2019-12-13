@@ -127,8 +127,8 @@ public class ExamDAO implements ICRUD<Exam>{
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
             ca.setInt(2, t);
-            ca.execute();
-            rs = (ResultSet)ca.getObject(2);
+            ca.executeQuery();
+            rs = (ResultSet)ca.getObject(1);
             if(rs.next()){
                 
                 exa.setId_exam(rs.getInt("ID_EXAM"));
@@ -161,7 +161,7 @@ public class ExamDAO implements ICRUD<Exam>{
             String sql = "{? = call PACK_MANAGE_EXAMS.LIST_D}";
             ca = cn.prepareCall(sql);
             ca.registerOutParameter(1,OracleTypes.CURSOR);
-            ca.execute();
+            ca.executeQuery();
             rs = (ResultSet)ca.getObject(1);
             while(rs.next()){
                 
@@ -184,5 +184,40 @@ public class ExamDAO implements ICRUD<Exam>{
         return lista;
         
     }
-
+    
+    public Exam Search_by_sec(int t) throws Exception {
+        exa = new Exam();
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_EXAMS.SEARCH_BY_SEC(?)}";
+        
+        
+         try {
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
+            ca.executeQuery();
+            rs = (ResultSet)ca.getObject(1);
+            if(rs.next()){
+                
+                exa.setId_exam(rs.getInt("ID_EXAM"));
+                exa.setId_section(rs.getInt("ID_SECTION"));
+                
+                
+                
+            }
+            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return exa;
+    }
+    
 }

@@ -56,4 +56,9 @@ public class Controler_Question_Exam {
                 
     }
     
+    public QuestionExam SearchQuestionExam_Qu(int t,int n) throws Exception{
+        
+        return dao.Search_Qu(t,n);
+    }
+    
 }

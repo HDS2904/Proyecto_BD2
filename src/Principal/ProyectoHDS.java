@@ -1,12 +1,14 @@
 package Principal;
 
 import Controladores.Controler_Alternative;
+import Controladores.Controler_Exam;
 import Controladores.Controler_Person;
 import Controladores.Controler_Question;
 import Controladores.Controler_Section;
 import Controladores.GenerarExamenController;
 import Modelo.Entidades.Alternative;
 import Modelo.Entidades.AlternativeExam;
+import Modelo.Entidades.Exam;
 import Modelo.Entidades.GenerarExamen;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Question;
@@ -87,8 +89,11 @@ public class ProyectoHDS {
 //        }
         //Login log = new Login();
         //log.setVisible(true);
-       
-                
+        
+        Controler_Exam ex = new Controler_Exam();
+        Exam q = ex.SearchExam(1);
+        
+        
     }
     
 }

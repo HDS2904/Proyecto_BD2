@@ -196,5 +196,45 @@ public class QuestionExamDAO implements ICRUD<QuestionExam>{
         
         
     }
+    
+    public QuestionExam Search_Qu(int t, int n) throws Exception {
+        
+        qe = new QuestionExam();
+        cn = conexion.getConnection();
+        String sql = "{? = call PACK_MANAGE_QUESTION_EXAMS.SEARCH_QU(?,?)}";
+        
+        
+         try {
+            ca = cn.prepareCall(sql);
+            ca.registerOutParameter(1,OracleTypes.CURSOR);
+            ca.setInt(2, t);
+            ca.setInt(3, n);
+            ca.execute();
+            rs = (ResultSet)ca.getObject(2);
+            if(rs.next()){
+                
+                qe.setId_question_exam(rs.getInt("ID_QUESTION_EXAM"));
+                qe.setId_exam(rs.getInt("ID_EXAM"));
+                qe.setQuestion(rs.getString("QUESTION"));
+                qe.setN_question(rs.getInt("N_QUESTION"));
+                
+                
+                
+            }
+            
+            ca.close();
+            rs.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return qe;
+        
+    }
 
 }

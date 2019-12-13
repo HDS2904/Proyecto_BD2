@@ -59,6 +59,11 @@ public class Controler_Exam {
                 
     }
     
+    public Exam SearchExam_by_sec(int t) throws Exception{
+        
+        return dao.Search_by_sec(t);
+    }
+    
     public ArrayList<Question> PlantillaExam(int cant, int curso) throws Exception{
         
         Controler_Question qu = new Controler_Question();
