@@ -37,6 +37,11 @@ public class Subject {
     public void setName_subject(String name_subject) {
         this.name_subject = name_subject;
     }
+
+    @Override
+    public String toString() {
+        return name_subject;
+    }
     
     
     
