@@ -87,11 +87,11 @@ public class ProyectoHDS {
 //            }
 //        } catch (Exception e) {
 //        }
-        //Login log = new Login();
-        //log.setVisible(true);
+        Login log = new Login();
+        log.setVisible(true);
         
-        Controler_Exam ex = new Controler_Exam();
-        Exam q = ex.SearchExam(1);
+        //Controler_Exam ex = new Controler_Exam();
+        //Exam q = ex.SearchExam(1);
         
         
     }
