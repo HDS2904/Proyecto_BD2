@@ -5,6 +5,24 @@
  */
 package Vistas;
 
+import Controladores.Controler_Alternative;
+import Controladores.Controler_Alternative_Exam;
+import Controladores.Controler_Exam;
+import Controladores.Controler_Question_Exam;
+import Controladores.Controler_Section;
+import Modelo.Entidades.Alternative;
+import Modelo.Entidades.AlternativeExam;
+import Modelo.Entidades.Exam;
+import Modelo.Entidades.Question;
+import Modelo.Entidades.QuestionExam;
+import Modelo.Entidades.Section;
+import Modelo.Entidades.Subject;
+import Modelo.Entidades.Teacher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Usuario
@@ -14,8 +32,15 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     /**
      * Creates new form Exam_pre_5
      */
-    public Exam_pre_5() {
+    
+    int cantidad,seccion;
+    
+    public Exam_pre_5(int cant,int sec) throws Exception {
         initComponents();
+        cantidad = cant;
+        seccion = sec;
+        cargarDatos();
+        
     }
 
     /**
@@ -35,27 +60,27 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
         rtnAlterA_1 = new javax.swing.JRadioButton();
         rtnAlterB_1 = new javax.swing.JRadioButton();
         rtnAlterC_1 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
         rtnAlterA_2 = new javax.swing.JRadioButton();
         rtnAlterB_2 = new javax.swing.JRadioButton();
         rtnAlterC_2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
         rtnAlterA_3 = new javax.swing.JRadioButton();
         rtnAlterB_3 = new javax.swing.JRadioButton();
         rtnAlterC_3 = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
         rtnAlterA_4 = new javax.swing.JRadioButton();
         rtnAlterB_4 = new javax.swing.JRadioButton();
         rtnAlterC_4 = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lbl5 = new javax.swing.JLabel();
         rtnAlterA_5 = new javax.swing.JRadioButton();
         rtnAlterB_5 = new javax.swing.JRadioButton();
         rtnAlterC_5 = new javax.swing.JRadioButton();
@@ -68,7 +93,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
 
         jLabel1.setText("Examen");
 
-        jLabel3.setText("1");
+        lbl1.setText("1");
 
         buttonGroup1.add(rtnAlterA_1);
         rtnAlterA_1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +108,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
 
         jLabel2.setText("PREGUNTA 1:");
 
-        jLabel4.setText("2");
+        lbl2.setText("2");
 
         buttonGroup2.add(rtnAlterA_2);
         rtnAlterA_2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +123,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
 
         jLabel5.setText("PREGUNTA 2:");
 
-        jLabel6.setText("3");
+        lbl3.setText("3");
 
         buttonGroup3.add(rtnAlterA_3);
         rtnAlterA_3.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +138,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
 
         jLabel7.setText("PREGUNTA 3:");
 
-        jLabel8.setText("4");
+        lbl4.setText("4");
 
         buttonGroup4.add(rtnAlterA_4);
         rtnAlterA_4.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +153,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
 
         jLabel9.setText("PREGUNTA 4:");
 
-        jLabel10.setText("5");
+        lbl5.setText("5");
 
         buttonGroup5.add(rtnAlterA_5);
         rtnAlterA_5.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +175,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -174,10 +199,10 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                             .addComponent(rtnAlterA_1)
                             .addComponent(rtnAlterB_1))
                         .addGap(0, 1041, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -186,7 +211,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rtnAlterA_1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -196,7 +221,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rtnAlterA_2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -206,7 +231,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rtnAlterA_3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -216,7 +241,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rtnAlterA_4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -226,7 +251,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rtnAlterA_5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -239,8 +264,18 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel2);
 
         btnAcep.setText("Aceptar");
+        btnAcep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcepActionPerformed(evt);
+            }
+        });
 
         btnCanc.setText("Cancelar");
+        btnCanc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,7 +289,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(191, 191, 191)
                 .addComponent(btnAcep)
@@ -299,6 +334,27 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rtnAlterA_5ActionPerformed
 
+    private void btnCancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancActionPerformed
+        this.dispose();
+        Exam_pre exa;
+        try {
+            exa = new Exam_pre(aux_se.getId_person());
+            exa.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Exam_pre_5.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+    }//GEN-LAST:event_btnCancActionPerformed
+
+    private void btnAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcepActionPerformed
+        try {
+            crearExamen();
+        } catch (Exception ex) {
+            Logger.getLogger(Exam_pre_5.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAcepActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,7 +385,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Exam_pre_5().setVisible(true);
+                //new Exam_pre_5().setVisible(true);
             }
         });
     }
@@ -343,18 +399,18 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
     private javax.swing.JRadioButton rtnAlterA_1;
     private javax.swing.JRadioButton rtnAlterA_2;
     private javax.swing.JRadioButton rtnAlterA_3;
@@ -371,4 +427,138 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     private javax.swing.JRadioButton rtnAlterC_4;
     private javax.swing.JRadioButton rtnAlterC_5;
     // End of variables declaration//GEN-END:variables
+
+    Controler_Exam ex = new Controler_Exam();
+    Controler_Section se = new Controler_Section();
+    Controler_Alternative al = new Controler_Alternative();
+
+    Controler_Question_Exam qex = new Controler_Question_Exam();
+    Controler_Alternative_Exam aex = new Controler_Alternative_Exam();
+    
+    ArrayList<AlternativeExam> list_aex = new ArrayList();
+    ArrayList<QuestionExam> list_qex = new ArrayList();
+    ArrayList<QuestionExam> list_qex_a = new ArrayList();
+    
+    ArrayList<Alternative> list_al = new ArrayList();
+    ArrayList<Question> list_qu = new ArrayList();
+    Section aux_se;
+    Subject aux_su;
+    Teacher aux_te;
+    Question aux_qu;
+    Alternative aux_al;
+    QuestionExam aux_qu_ex;
+    AlternativeExam aux_al_ex;
+    Exam aux_ex;
+    
+    private void cargarDatos() throws Exception {
+    
+        aux_se = se.SearchSection(seccion);
+        list_qu = ex.PlantillaExam(cantidad, aux_se.getId_subject());
+                
+        llenarPregunta(list_qu);
+        for (Question x : list_qu) {
+              
+            aux_al = al.SearchAlternative_by_question(x.getId_question());
+            list_al.add(aux_al);
+            
+        }
+        llenarAlternativas(list_al);
+        
+        
+        
+    }
+    
+    private void llenarPregunta(ArrayList<Question> x){
+        
+        lbl1.setText(x.get(0).getQuestion());
+        lbl2.setText(x.get(1).getQuestion());
+        lbl3.setText(x.get(2).getQuestion());
+        lbl4.setText(x.get(3).getQuestion());
+        lbl5.setText(x.get(4).getQuestion());
+        
+        
+    }
+
+    private void llenarAlternativas(ArrayList<Alternative> x) {
+    
+        rtnAlterA_1.setText(x.get(0).getAlternative_A());
+        rtnAlterB_1.setText(x.get(0).getAlternative_B());
+        rtnAlterC_1.setText(x.get(0).getAlternative_C());
+        
+        rtnAlterA_2.setText(x.get(1).getAlternative_A());
+        rtnAlterB_2.setText(x.get(1).getAlternative_B());
+        rtnAlterC_2.setText(x.get(1).getAlternative_C());
+        
+        rtnAlterA_3.setText(x.get(2).getAlternative_A());
+        rtnAlterB_3.setText(x.get(2).getAlternative_B());
+        rtnAlterC_3.setText(x.get(2).getAlternative_C());
+        
+        rtnAlterA_4.setText(x.get(3).getAlternative_A());
+        rtnAlterB_4.setText(x.get(3).getAlternative_B());
+        rtnAlterC_4.setText(x.get(3).getAlternative_C());
+        
+        rtnAlterA_5.setText(x.get(4).getAlternative_A());
+        rtnAlterB_5.setText(x.get(4).getAlternative_B());
+        rtnAlterC_5.setText(x.get(4).getAlternative_C());
+        
+    }
+
+    private void crearExamen() throws Exception {
+    
+        aux_ex = new Exam();
+        aux_ex.setId_section(seccion);
+        ex.CreateExam(aux_ex);
+        
+        aux_ex = ex.SearchExam_by_sec(seccion);
+        aux_qu_ex = new QuestionExam();
+        aux_al_ex = new AlternativeExam();
+        int i=1;
+        
+        for (Question q : list_qu) {
+            
+            aux_qu_ex.setId_exam(aux_ex.getId_exam());
+            aux_qu_ex.setN_question(i);
+            aux_qu_ex.setQuestion(q.getQuestion());
+            i++;
+            list_qex.add(aux_qu_ex);
+            
+        }
+        
+        for (int k = 0; k<list_qex.size() ;k++) {
+            aux_qu_ex=qex.SearchQuestionExam_Qu(list_qex.get(k).getId_exam(), list_qex.get(k).getN_question());
+            list_qex_a.add(aux_qu_ex);
+        }
+        
+        for (QuestionExam q : list_qex) {
+            
+            String msg = qex.CreateQuestionExam(q);
+            
+        }
+        
+        
+        int j=0;
+        for (Alternative q : list_al) {
+            
+            aux_al_ex.setAlternative_A(q.getAlternative_A());
+            aux_al_ex.setAlternative_B(q.getAlternative_B());
+            aux_al_ex.setAlternative_C(q.getAlternative_C());
+            aux_qu_ex=list_qex_a.get(j);
+            aux_al_ex.setId_question_exam(aux_qu_ex.getId_question_exam());
+            list_aex.add(aux_al_ex);
+            j++;
+            
+        }
+        
+        for (AlternativeExam al : list_aex) {
+            String msg =aex.CreateAlternativeExam(al);
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
 }

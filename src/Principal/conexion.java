@@ -13,14 +13,14 @@ public class conexion {
     static String driver = "oracle.jdbc.driver.OracleDriver";
     
     public static Connection getConnection() throws SQLException{
-        System.out.println(url+" "+ password);
+        
         try {
             Class.forName(driver).newInstance();
             
             con = DriverManager.getConnection(url, user, password);
             con.setAutoCommit(false);
             if(con != null){
-                System.out.println("CONEXIÓN EXITOSA");
+                //System.out.println("CONEXIÓN EXITOSA");
             }
         } catch (SQLException e) {
             throw e;

@@ -5,7 +5,9 @@
  */
 package Vistas;
 
+import Controladores.Controler_Section;
 import Controladores.Controler_Teacher;
+import Modelo.Entidades.Section;
 import Modelo.Entidades.Subject;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -15,14 +17,14 @@ import java.util.logging.Logger;
  *
  * @author Usuario
  */
-public class Exam extends javax.swing.JFrame {
+public class Exam_pre extends javax.swing.JFrame {
 
     /**
      * Creates new form Exam
      */
     
     int pro;
-    public Exam(int id_pro) throws Exception {
+    public Exam_pre(int id_pro) throws Exception {
         initComponents();
         pro = id_pro;
         cargarLista();
@@ -175,7 +177,11 @@ public class Exam extends javax.swing.JFrame {
     }//GEN-LAST:event_cboNumActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        obtenerParametros();
+        try {
+            obtenerParametros();
+        } catch (Exception ex) {
+            Logger.getLogger(Exam_pre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -195,23 +201,24 @@ public class Exam extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Exam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exam_pre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Exam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exam_pre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Exam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exam_pre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Exam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Exam_pre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Exam(3).setVisible(true);
+                    new Exam_pre(3).setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Exam_pre.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -231,6 +238,8 @@ public class Exam extends javax.swing.JFrame {
 
     ArrayList<Subject> lista_s = new ArrayList();
     Controler_Teacher te = new Controler_Teacher();
+    Controler_Section se = new Controler_Section();
+    
     private void cargarLista() throws Exception {
         lista_s = te.search_sub(pro);
         cboSub.removeAllItems();
@@ -242,28 +251,34 @@ public class Exam extends javax.swing.JFrame {
         
     }
 
-    private void obtenerParametros() {
+    private void obtenerParametros() throws Exception {
         Subject aux = (Subject) cboSub.getSelectedItem();
-        int numero = (int) cboNum.getSelectedItem();
+        int numero = Integer.parseInt(cboNum.getSelectedItem().toString());
         txtAux.setText(numero+" "+aux.getName_subject());
+        Section sec = se.SearchSection_Te_Su(pro, aux.getId_subject());
+        System.out.println(sec.getId_person()+sec.getId_subject());
         
         switch (numero) {
             case 5:
-                Exam_pre_5 exa5 = new Exam_pre_5();
+                Exam_pre_5 exa5 = new Exam_pre_5(numero,sec.getId_section());
                 exa5.setVisible(true);
+                this.dispose();
                 
                 break;
             case 6:
-                Exam_pre_6 exa6 = new Exam_pre_6();
+                Exam_pre_6 exa6 = new Exam_pre_6(numero,sec.getId_section());
                 exa6.setVisible(true);
+                this.dispose();
                 break;
             case 7:
-                Exam_pre_7 exa7 = new Exam_pre_7();
+                Exam_pre_7 exa7 = new Exam_pre_7(numero,sec.getId_section());
                 exa7.setVisible(true);
+                this.dispose();
                 break;
             case 8:
-                Exam_pre_8 exa8 = new Exam_pre_8();
+                Exam_pre_8 exa8 = new Exam_pre_8(numero,sec.getId_section());
                 exa8.setVisible(true);
+                this.dispose();
                 break;
             
             default:

@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class Controler_QuestionExam {
+public class Controler_Question_Exam {
     
     private QuestionExamDAO dao;
     String mensaje ="";
 
-    public Controler_QuestionExam() {
+    public Controler_Question_Exam() {
         
         dao = new QuestionExamDAO();
         
@@ -54,6 +54,11 @@ public class Controler_QuestionExam {
                 
        return dao.ListAll();
                 
+    }
+    
+    public QuestionExam SearchQuestionExam_Qu(int t,int n) throws Exception{
+        
+        return dao.Search_Qu(t,n);
     }
     
 }
