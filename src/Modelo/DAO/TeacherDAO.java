@@ -169,7 +169,7 @@ public class TeacherDAO implements ICRUD<Teacher>{
             rs = (ResultSet)call.getObject(1);
              while(rs.next()){
                 curso = new Subject();
-                curso.setId_subject(Integer.parseInt(rs.getString("ID_SUBJECT")));
+                curso.setId_subject(rs.getInt("ID_SUBJECT"));
                 curso.setName_subject(rs.getString("NAME_SUBJECT"));
                 lista.add(curso);
              }
