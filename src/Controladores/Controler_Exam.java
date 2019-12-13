@@ -7,7 +7,10 @@ package Controladores;
 
 import Modelo.DAO.ExamDAO;
 import Modelo.Entidades.Exam;
+import Modelo.Entidades.GenerarExamen;
+import Modelo.Entidades.Question;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -55,5 +58,46 @@ public class Controler_Exam {
        return dao.ListAll();
                 
     }
+    
+    public ArrayList<Question> PlantillaExam(ArrayList<Question> preguntas,int cant, int curso) throws Exception{
+        
+        Controler_Question qu = new Controler_Question();
+        GenerarExamenController ge = new GenerarExamenController();
+        ArrayList<GenerarExamen> list = ge.obtenerCantidad(cant);
+        GenerarExamen pex = ge.obtenerPreguntas(list);
+        ArrayList<Question> examen = new ArrayList<>();
+        ArrayList<Question> list_q = qu.SearchQuestion_by_subject(curso);
+        Controler_Alternative al = new Controler_Alternative();
+        
+        try {
+            ArrayList<Question> lis_p2;
+            ArrayList<Question> lis_p3;
+            ArrayList<Question> lis_p4;
+            ArrayList<Question> lis_p5;
+            
+                        
+            lis_p2 = ge.obtenerPreguntasScore(list_q, 2);
+            lis_p3 = ge.obtenerPreguntasScore(list_q, 3);
+            lis_p4 = ge.obtenerPreguntasScore(list_q, 4);
+            lis_p5 = ge.obtenerPreguntasScore(list_q, 5);
+                        
+            lis_p2 = ge.obtenerPreguntasExamen(lis_p2, pex.getPregunta2());
+            lis_p3 = ge.obtenerPreguntasExamen(lis_p3, pex.getPregunta3());
+            lis_p4 = ge.obtenerPreguntasExamen(lis_p4, pex.getPregunta4());
+            lis_p5 = ge.obtenerPreguntasExamen(lis_p5, pex.getPregunta5());
+                                    
+            
+            
+            examen= ge.obtenerExamen(lis_p5,lis_p4,lis_p3,lis_p2);
+            
+            Collections.shuffle(examen);
+            
+        } catch (Exception e) {
+        }
+        
+        
+        return examen;
+    }
+    
     
 }

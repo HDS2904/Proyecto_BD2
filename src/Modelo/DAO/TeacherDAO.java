@@ -2,6 +2,7 @@
 package Modelo.DAO;
 
 import Interfaz.ICRUD;
+import Modelo.Entidades.Subject;
 import Modelo.Entidades.Teacher;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -150,5 +151,39 @@ public class TeacherDAO implements ICRUD<Teacher>{
         }
         return lista;
     }
-    
+    public ArrayList<Subject> Search_Sub(int t) throws Exception{
+        
+        ArrayList<Subject> lista = new ArrayList<>();
+        Subject curso ;
+        con = conexion.getConnection();
+        call = null;
+        Teacher te = new Teacher();
+        ResultSet rs;
+        String sql = "{? = call PACK_MANAGE_TEACHERS.SEARCH_SUB(?)}";
+        
+        try {
+            call = con.prepareCall(sql);
+            call.registerOutParameter(1,OracleTypes.CURSOR);
+            call.setInt(2, t);
+            call.executeQuery();
+            rs = (ResultSet)call.getObject(1);
+             while(rs.next()){
+                curso = new Subject();
+                curso.setId_subject(Integer.parseInt(rs.getString("ID_SUBJECT")));
+                curso.setName_subject(rs.getString("NAME_SUBJECT"));
+                lista.add(curso);
+             }
+             rs.close();
+             call.close();
+        } catch (SQLException e) {
+            throw e;
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return lista;
+    }
 }
