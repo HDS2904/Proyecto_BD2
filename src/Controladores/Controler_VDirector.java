@@ -388,8 +388,24 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     stdao.Create(st);
                     break;
             case 2: //Modificar
-                    
+                    st.setId_section(Integer.parseInt(vd.tx5cod.getText()));
+                    st.setId_person(Integer.parseInt(vd.tx5pro.getText()));
+                    ci = Integer.parseInt((vd.cb5cur.getSelectedItem()+"").substring(0,2).trim());
+                    st.setId_subject(ci);
+                    st.setId_exam(0);
+                    st.setSection_group(vd.tx5nom.getText());
+                    stdao.Update(st);
                     break;
+            case 3: //Eliminar
+                    st.setId_section(Integer.parseInt(vd.tx5cod.getText()));
+                    stdao.Delete(st);
+                    break;
+            case 4: //Buscar
+                    st = stdao.Search(Integer.parseInt(vd.tx5cod.getText()));
+                    vd.tx5pro.setText(st.getId_person()+"");
+                    vd.cb5cur.setSelectedIndex(st.getId_subject());
+                    vd.tx5nom.setText(st.getSection_group());
+                    break;        
         }
         
     }
