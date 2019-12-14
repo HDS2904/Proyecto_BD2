@@ -336,11 +336,12 @@ public class Exam_pre_5 extends javax.swing.JFrame {
     }//GEN-LAST:event_rtnAlterA_5ActionPerformed
 
     private void btnCancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancActionPerformed
-        this.dispose();
+        
         Exam_pre exa;
         try {
             exa = new Exam_pre(aux_se.getId_person());
             exa.setVisible(true);
+            this.dispose();
         } catch (Exception ex) {
             Logger.getLogger(Exam_pre_5.class.getName()).log(Level.SEVERE, null, ex);
             
@@ -555,7 +556,7 @@ public class Exam_pre_5 extends javax.swing.JFrame {
         }
         
         
-        JOptionPane.showConfirmDialog(null, "EXAMEN CREADO");
+        JOptionPane.showMessageDialog(null, "EXAMEN CREADO");
         
         
         
