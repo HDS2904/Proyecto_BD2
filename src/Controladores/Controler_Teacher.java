@@ -56,6 +56,8 @@ public class Controler_Teacher implements MouseListener, ActionListener{
         this.vst.btn2bus.addActionListener(this);
         this.vst.btn2lim.addActionListener(this);
         this.vst.btn2adm.addActionListener(this);
+        //Panel generar examen
+        this.vst.btn2gen.addActionListener(this);
     }
     
     

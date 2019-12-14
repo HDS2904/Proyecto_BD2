@@ -1,10 +1,10 @@
+
 package Principal;
 
 import Controladores.Controler_Alternative;
 import Controladores.Controler_Exam;
 import Controladores.Controler_Person;
 import Controladores.Controler_Question;
-import Controladores.Controler_Question_Exam;
 import Controladores.Controler_Section;
 import Controladores.GenerarExamenController;
 import Modelo.Entidades.Alternative;
@@ -13,7 +13,6 @@ import Modelo.Entidades.Exam;
 import Modelo.Entidades.GenerarExamen;
 import Modelo.Entidades.Person;
 import Modelo.Entidades.Question;
-import Modelo.Entidades.QuestionExam;
 import Modelo.Entidades.Section;
 import Vistas.Login;
 import java.util.ArrayList;
@@ -89,14 +88,11 @@ public class ProyectoHDS {
 //            }
 //        } catch (Exception e) {
 //        }
-        //Login log = new Login();
-        //log.setVisible(true);
+        Login log = new Login();
+        log.setVisible(true);
         
-        Controler_Question_Exam qex = new Controler_Question_Exam();
-        QuestionExam a=qex.SearchQuestionExam_Qu(5, 3);
-        
-        System.out.println(a.getQuestion());
-        
+        //Controler_Exam ex = new Controler_Exam();
+        //Exam q = ex.SearchExam(1);
         
         
     }

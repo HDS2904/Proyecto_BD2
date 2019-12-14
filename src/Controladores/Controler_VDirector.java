@@ -16,6 +16,7 @@ import Modelo.Entidades.School;
 import Modelo.Entidades.Section;
 import Modelo.Entidades.Student;
 import Modelo.Entidades.Subject;
+import Modelo.Entidades.Teacher;
 import Vistas.VDirector;
 import Vistas.prof_select;
 import java.awt.event.ActionEvent;
@@ -72,6 +73,15 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         this.vd.btn2lim.addActionListener(this);
         this.vd.cb2fac.addActionListener(this);
         this.vd.cb2esc.addActionListener(this);
+        //Panel 3
+        this.vd.tabla3pro.addMouseListener(this);
+        this.vd.btn3bus.addActionListener(this);
+        this.vd.btn3ins.addActionListener(this);
+        this.vd.btn3mod.addActionListener(this);
+        this.vd.btn3del.addActionListener(this);
+        this.vd.btn3lim.addActionListener(this);
+        //Panel 4
+        
         //Panel 5
         this.vd.tabla5sec.addMouseListener(this);
         this.vd.btn5bus.addActionListener(this);
@@ -125,6 +135,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                 vd.Panel5.setVisible(false);
             }
             if(ae.getSource() == vd.btn3){
+                load_teacher();
                 vd.Panel0.setVisible(false);
                 vd.Panel1.setVisible(true);
                 vd.Panel2.setVisible(false);
@@ -142,7 +153,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
             }
             if(ae.getSource() == vd.btn5){
                 load_section();
-                list_subject();
+                combox_subject();
                 vd.Panel0.setVisible(false);
                 vd.Panel1.setVisible(false);
                 vd.Panel2.setVisible(false);
@@ -182,6 +193,26 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                 limpiar(1);
             }
             
+            //ACCIONES DE TEACHER
+            if(ae.getSource() == vd.btn3bus){
+                mant_teacher(4);
+            }
+            if(ae.getSource() == vd.btn3ins){
+                mant_teacher(1);
+                load_teacher();
+            }
+            if(ae.getSource() == vd.btn3mod){
+                mant_teacher(2);
+                load_teacher();
+            }
+            if(ae.getSource() == vd.btn3del){
+                mant_teacher(3);
+                load_teacher();
+            }
+            if(ae.getSource() == vd.btn3lim){
+                limpiar(2);
+            }
+            
             //ACCIONES SECCION
             if(ae.getSource() == vd.btn5busp){
                 ps.setVisible(true);
@@ -209,6 +240,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
             if(ae.getSource() == vd.btn5lim){
                     limpiar(5);
             }
+            
         } catch (Exception e) {
            JOptionPane.showMessageDialog(null,"ERROR: "+e);
         }
@@ -353,7 +385,7 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         vd.tabla5sec.setModel(ad);
     }
     
-    public void list_subject()throws Exception{
+    public void combox_subject()throws Exception{
         vd.cb5cur.removeAllItems();
         vd.cb5cur.addItem("Seleccione");
         ArrayList<Subject> sba = sbdao.ListAll();
@@ -397,6 +429,142 @@ public class Controler_VDirector implements MouseListener, ActionListener{
         
     }
     
+    public void load_teacher()throws Exception{
+        DefaultTableModel ad = new DefaultTableModel();
+        ad.setColumnIdentifiers(new Object[]{"ID","Código","Nombres","Apellidos","DNI","Telefono","Dirección","Email"});
+        ArrayList<Teacher> t = tdao.ListAll();
+        Person p1;
+        for (Teacher t1 : t) {
+            p1 = pdao.Search(t1.getId_person());
+            ad.addRow(new Object[]{t1.getId_person(),t1.getCode_teacher(),p1.getFirs_name(),p1.getLast_name(),
+                p1.getDni(),p1.getPhone(),p1.getAddress(),p1.getEmail()});
+        }
+       
+        TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(ad);
+        vd.tabla3pro.setRowSorter(order);
+        vd.tabla3pro.setModel(ad);
+    }
+    
+    public void mant_teacher(int op)throws Exception{
+        Person p1 = new Person();
+        Teacher t1 = new Teacher();
+        int ci;
+        switch(op){
+            case 1: //Insertar
+                    t1.setCode_teacher(vd.tx3cod.getText());
+                    p1.setFirs_name(vd.tx3nom.getText());
+                    p1.setLast_name(vd.tx3ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx3dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx3tel.getText()));
+                    p1.setAddress(vd.tx3dir.getText());
+                    p1.setEmail(vd.tx3ema.getText());
+                    pdao.Create(p1);
+                    p1 = pdao.Search(Integer.parseInt(vd.tx3dni.getText()));
+                    t1.setId_person(p1.getId_person());
+                    tdao.Create(t1);
+                    break;
+            case 2: //Modificar
+                    t1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    t1.setCode_teacher(vd.tx3cod.getText());
+                    p1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    p1.setFirs_name(vd.tx3nom.getText());
+                    p1.setLast_name(vd.tx3ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx3dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx3tel.getText()));
+                    p1.setAddress(vd.tx3dir.getText());
+                    p1.setEmail(vd.tx3ema.getText());
+                    pdao.Update(p1);
+                    tdao.Update(t1);
+                    break;
+            case 3: //Eliminar
+                    p1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    pdao.Delete(p1);
+                    break;
+            case 4: //Buscar
+                    p1 = pdao.Search(Integer.parseInt(vd.tx3id.getText()));
+                    t1 = tdao.Search(Integer.parseInt(vd.tx3id.getText()));
+                    vd.tx3id.setText(t1.getId_person()+"");
+                    vd.tx3cod.setText(t1.getCode_teacher());
+                    vd.tx3nom.setText(p1.getFirs_name());
+                    vd.tx3ape.setText(p1.getLast_name());
+                    vd.tx3dni.setText(p1.getDni()+"");
+                    vd.tx3tel.setText(p1.getPhone()+"");
+                    vd.tx3dir.setText(p1.getAddress());
+                    vd.tx3ema.setText(p1.getEmail());
+                    break;
+        }
+        
+    }
+    
+    public void load_subject()throws Exception{
+        DefaultTableModel ad = new DefaultTableModel();
+        ad.setColumnIdentifiers(new Object[]{"ID","Código","Nombres","Apellidos","DNI","Telefono","Dirección","Email"});
+        ArrayList<Teacher> t = tdao.ListAll();
+        Person p1;
+        for (Teacher t1 : t) {
+            p1 = pdao.Search(t1.getId_person());
+            ad.addRow(new Object[]{t1.getId_person(),t1.getCode_teacher(),p1.getFirs_name(),p1.getLast_name(),
+                p1.getDni(),p1.getPhone(),p1.getAddress(),p1.getEmail()});
+        }
+       
+        TableRowSorter<TableModel> order = new TableRowSorter<TableModel>(ad);
+        vd.tabla3pro.setRowSorter(order);
+        vd.tabla3pro.setModel(ad);
+    }
+    
+    public void mant_subject(int op)throws Exception{
+        Person p1 = new Person();
+        Teacher t1 = new Teacher();
+        int ci;
+        switch(op){
+            case 1: //Insertar
+                    t1.setCode_teacher(vd.tx3cod.getText());
+                    p1.setFirs_name(vd.tx3nom.getText());
+                    p1.setLast_name(vd.tx3ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx3dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx3tel.getText()));
+                    p1.setAddress(vd.tx3dir.getText());
+                    p1.setEmail(vd.tx3ema.getText());
+                    pdao.Create(p1);
+                    p1 = pdao.Search(Integer.parseInt(vd.tx3dni.getText()));
+                    t1.setId_person(p1.getId_person());
+                    tdao.Create(t1);
+                    break;
+            case 2: //Modificar
+                    t1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    t1.setCode_teacher(vd.tx3cod.getText());
+                    p1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    p1.setFirs_name(vd.tx3nom.getText());
+                    p1.setLast_name(vd.tx3ape.getText());
+                    p1.setDni(Integer.parseInt(vd.tx3dni.getText()));
+                    p1.setPhone(Integer.parseInt(vd.tx3tel.getText()));
+                    p1.setAddress(vd.tx3dir.getText());
+                    p1.setEmail(vd.tx3ema.getText());
+                    pdao.Update(p1);
+                    tdao.Update(t1);
+                    break;
+            case 3: //Eliminar
+                    p1.setId_person(Integer.parseInt(vd.tx3id.getText()));
+                    pdao.Delete(p1);
+                    break;
+            case 4: //Buscar
+                    p1 = pdao.Search(Integer.parseInt(vd.tx3id.getText()));
+                    t1 = tdao.Search(Integer.parseInt(vd.tx3id.getText()));
+                    vd.tx3id.setText(t1.getId_person()+"");
+                    vd.tx3cod.setText(t1.getCode_teacher());
+                    vd.tx3nom.setText(p1.getFirs_name());
+                    vd.tx3ape.setText(p1.getLast_name());
+                    vd.tx3dni.setText(p1.getDni()+"");
+                    vd.tx3tel.setText(p1.getPhone()+"");
+                    vd.tx3dir.setText(p1.getAddress());
+                    vd.tx3ema.setText(p1.getEmail());
+                    break;
+        }
+        
+    }
+    
+    
+    
     public void search_sub()throws Exception{
         Section st = stdao.Search(Integer.parseInt(vd.tx4cod.getText()));
         Subject sb = sbdao.Search(st.getId_subject());
@@ -433,6 +601,14 @@ public class Controler_VDirector implements MouseListener, ActionListener{
                     vd.tx2ema.setText("");
                     break;
             case 2: //limpiar panel Profesores
+                    vd.tx3id.setText("");
+                    vd.tx3cod.setText("");
+                    vd.tx3nom.setText("");
+                    vd.tx3ape.setText("");
+                    vd.tx3dni.setText("");
+                    vd.tx3tel.setText("");
+                    vd.tx3dir.setText("");
+                    vd.tx3ema.setText("");
                     break;
             case 3: //Limpiar panel curso
                     break;

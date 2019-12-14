@@ -36,6 +36,10 @@ public class VSTeacher extends javax.swing.JFrame {
         btn1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         PanelP = new javax.swing.JPanel();
+        Panel2 = new javax.swing.JPanel();
+        txtext12 = new javax.swing.JLabel();
+        btn2gen = new javax.swing.JButton();
+        txtext14 = new javax.swing.JLabel();
         Panel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,12 +56,6 @@ public class VSTeacher extends javax.swing.JFrame {
         btn2bus = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         tx2nom1 = new javax.swing.JTextField();
-        Panel2 = new javax.swing.JPanel();
-        txtext12 = new javax.swing.JLabel();
-        txtext13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        txtext14 = new javax.swing.JLabel();
         Panel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txcodp = new javax.swing.JTextField();
@@ -134,6 +132,31 @@ public class VSTeacher extends javax.swing.JFrame {
 
         PanelP.setBackground(new java.awt.Color(255, 255, 255));
         PanelP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel2.setBackground(new java.awt.Color(255, 255, 255));
+        Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Panel2.setName("Panel2"); // NOI18N
+        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtext12.setBackground(new java.awt.Color(204, 255, 255));
+        txtext12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtext12.setForeground(new java.awt.Color(0, 153, 51));
+        txtext12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtext12.setText("Generación de examen");
+        Panel2.add(txtext12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 300, 40));
+
+        btn2gen.setBackground(new java.awt.Color(102, 255, 255));
+        btn2gen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/examen.png"))); // NOI18N
+        btn2gen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Panel2.add(btn2gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 150, 160));
+
+        txtext14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtext14.setForeground(new java.awt.Color(0, 153, 153));
+        txtext14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtext14.setText("Automatico");
+        Panel2.add(txtext14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 160, 40));
+
+        PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel3.setBackground(new java.awt.Color(255, 255, 255));
         Panel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -245,42 +268,6 @@ public class VSTeacher extends javax.swing.JFrame {
         Panel3.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 290, 300));
 
         PanelP.add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
-
-        Panel2.setBackground(new java.awt.Color(255, 255, 255));
-        Panel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        Panel2.setName("Panel2"); // NOI18N
-        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtext12.setBackground(new java.awt.Color(204, 255, 255));
-        txtext12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtext12.setForeground(new java.awt.Color(0, 153, 51));
-        txtext12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtext12.setText("Generación de examen");
-        Panel2.add(txtext12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 300, 40));
-
-        txtext13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtext13.setForeground(new java.awt.Color(0, 153, 153));
-        txtext13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtext13.setText("Personalizado");
-        Panel2.add(txtext13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 190, 40));
-
-        jButton1.setBackground(new java.awt.Color(102, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/examen.png"))); // NOI18N
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 150, 160));
-
-        jButton2.setBackground(new java.awt.Color(102, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/examen.png"))); // NOI18N
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Panel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 150, 160));
-
-        txtext14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtext14.setForeground(new java.awt.Color(0, 153, 153));
-        txtext14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtext14.setText("Automatico");
-        Panel2.add(txtext14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 160, 40));
-
-        PanelP.add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Panel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -443,12 +430,11 @@ public class VSTeacher extends javax.swing.JFrame {
     public javax.swing.JButton btn2;
     public javax.swing.JButton btn2adm;
     public javax.swing.JButton btn2bus;
+    public javax.swing.JButton btn2gen;
     public javax.swing.JButton btn2lim;
     public javax.swing.JButton btn3;
     public javax.swing.JButton btncand;
     public javax.swing.JButton btngcam;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -491,7 +477,6 @@ public class VSTeacher extends javax.swing.JFrame {
     public javax.swing.JTextField txnomp;
     public javax.swing.JTextField txtel;
     public javax.swing.JLabel txtext12;
-    public javax.swing.JLabel txtext13;
     public javax.swing.JLabel txtext14;
     // End of variables declaration//GEN-END:variables
 }
