@@ -9,6 +9,7 @@ import Modelo.Entidades.Person;
 import Modelo.Entidades.Section;
 import Modelo.Entidades.Subject;
 import Modelo.Entidades.Teacher;
+import Vistas.Exam_pre;
 import Vistas.VSTeacher;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ public class Controler_Teacher implements MouseListener, ActionListener{
     private Subject sb_aper;
     private SubjectDAO sbdao;
     private SectionDAO stdao;
+    private Exam_pre ep;
 
     public Controler_Teacher() {
         this.tdao = new TeacherDAO();
@@ -56,6 +58,7 @@ public class Controler_Teacher implements MouseListener, ActionListener{
         this.vst.btn2bus.addActionListener(this);
         this.vst.btn2lim.addActionListener(this);
         this.vst.btn2adm.addActionListener(this);
+        
         //Panel generar examen
         this.vst.btn2gen.addActionListener(this);
     }
@@ -76,69 +79,67 @@ public class Controler_Teacher implements MouseListener, ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        //ACCIONES DE BOTONES PRINCIPALES
-        if(ae.getSource() == vst.btn1){
-            datos();
-            vst.Panel0.setVisible(false);
-            vst.Panel1.setVisible(true);
-            vst.Panel2.setVisible(false);
-            vst.Panel3.setVisible(false);
-        }
-        
-        if(ae.getSource() == vst.btn3){
-            vst.Panel0.setVisible(false);
-            vst.Panel1.setVisible(false);
-            vst.Panel2.setVisible(true);
-            vst.Panel3.setVisible(false);
-        }
-        
-        if(ae.getSource() == vst.btn2){
-            vst.Panel3.setVisible(true);
-            try {
-                load_subject();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
+        try {
+            //ACCIONES DE BOTONES PRINCIPALES
+            if(ae.getSource() == vst.btn1){
+                datos();
+                vst.Panel0.setVisible(false);
+                vst.Panel1.setVisible(true);
+                vst.Panel2.setVisible(false);
+                vst.Panel3.setVisible(false);
+            }
+
+            if(ae.getSource() == vst.btn3){
+                vst.Panel0.setVisible(false);
+                vst.Panel1.setVisible(false);
+                vst.Panel2.setVisible(true);
+                vst.Panel3.setVisible(false);
+            }
+
+            if(ae.getSource() == vst.btn2){
+                vst.Panel3.setVisible(true);
+                    load_subject();
+
+                vst.Panel0.setVisible(false);
+                vst.Panel1.setVisible(false);
+                vst.Panel2.setVisible(false);
+                vst.Panel3.setVisible(true);
+            }
+
+            //ACCIONES PANEL DE EDITAR PERFIL
+            if(ae.getSource() == vst.btngcam){
+                    edit_teacher();
+            }
+
+            if(ae.getSource() == vst.btncand){
+                datos();
             }
             
-            vst.Panel0.setVisible(false);
-            vst.Panel1.setVisible(false);
-            vst.Panel2.setVisible(false);
-            vst.Panel3.setVisible(true);
-        }
-        
-        //ACCIONES PANEL DE EDITAR PERFIL
-        if(ae.getSource() == vst.btngcam){
-            try {
-                edit_teacher();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al guardar datos: "+ex);
+            //PANEL GENERAR EXAMEN
+            if(ae.getSource() == vst.btn2gen){
+                Exam_pre ep = new Exam_pre(t.getId_person());
+                ep.setVisible(true);
             }
-        }
-        
-        if(ae.getSource() == vst.btncand){
-            datos();
-        }
-        
-        //ACCIONES DE SECCION 
-        if(ae.getSource() == vst.btn2bus){
-            try {
-                search_sub();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al buscar sección: "+ex);
+
+            //ACCIONES DE SECCION 
+            if(ae.getSource() == vst.btn2bus){
+                    search_sub();
             }
+
+            if(ae.getSource() == vst.btn2lim){
+                limpiar();
+            }
+
+            if(ae.getSource() == vst.btn2adm){
+                Controler_VSubject su = new Controler_VSubject(sb_aper);
+                vst.setVisible(false);
+                su.inicio();
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-        
-        if(ae.getSource() == vst.btn2lim){
-            limpiar();
-        }
-        
-        if(ae.getSource() == vst.btn2adm){
-            Controler_VSubject su = new Controler_VSubject(sb_aper);
-            vst.setVisible(false);
-            su.inicio();
-        }
-        
     }
     
     public void datos(){

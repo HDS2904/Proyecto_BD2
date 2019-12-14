@@ -84,6 +84,11 @@ public class Exam_pre_8 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAcep.setText("Aceptar");
+        btnAcep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcepActionPerformed(evt);
+            }
+        });
 
         btnCanc.setText("Cancelar");
 
@@ -417,6 +422,10 @@ public class Exam_pre_8 extends javax.swing.JFrame {
     private void rtnAlterA_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtnAlterA_8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rtnAlterA_8ActionPerformed
+
+    private void btnAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcepActionPerformed
+    this.setVisible(false);
+    }//GEN-LAST:event_btnAcepActionPerformed
 
     /**
      * @param args the command line arguments

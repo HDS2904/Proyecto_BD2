@@ -182,6 +182,7 @@ public class Exam_pre extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Exam_pre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
