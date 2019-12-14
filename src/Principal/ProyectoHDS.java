@@ -90,11 +90,6 @@ public class ProyectoHDS {
 //        }
         Login log = new Login();
         log.setVisible(true);
-        
-        //Controler_Exam ex = new Controler_Exam();
-        //Exam q = ex.SearchExam(1);
-        
-        
     }
     
 }

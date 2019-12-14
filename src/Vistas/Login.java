@@ -519,13 +519,13 @@ public class Login extends javax.swing.JFrame {
         //String user = txusers.getText();
 
         //String user = "30000001";//STUDENT
-        //String user = "20000001";//TEACHER
-        String user = "10000001";//DIRECTOR
+        String user = "20000003";//TEACHER
+        //String user = "10000001";//DIRECTOR
         //int pass = Integer.parseInt(txpass.getText());
 
         //int pass = 71231234;//STUDENT
-        //int pass = 74564456;//TEACHER
-        int pass = 71548925;//DIRECTOR
+        //int pass = 71231212;//TEACHER
+        int pass = 71231212;//DIRECTOR
         
         if(op != 0 && !(user.equals("")) && pass != 0){
             Connection con;

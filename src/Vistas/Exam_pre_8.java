@@ -468,6 +468,8 @@ public class Exam_pre_8 extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Exam_pre_5.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnAcepActionPerformed
 
     /**
